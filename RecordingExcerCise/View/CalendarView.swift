@@ -25,6 +25,10 @@ struct CalendarView: View {
         
         //  뷰의 움직임을 위한 Navigation
         NavigationView{
+            //  화면 가로 값
+            let width = UIScreen.main.bounds.width
+            let height = UIScreen.main.bounds.height
+            
             ZStack{
                 Color
                     .gray.opacity(0.3)
@@ -39,7 +43,7 @@ struct CalendarView: View {
                             .padding(.horizontal,16)
                             .overlay(UICalendarView(pageCurrent: $viewModel.currentPage, titleText: $viewModel.titleText).padding(10).padding(.horizontal,16))
                     }
-                    Spacer().frame(height: 392)
+                    Spacer().frame(height: height*0.46445497)
                 }
 
                 if showblind{
@@ -51,11 +55,12 @@ struct CalendarView: View {
                 
                 //  하단 메인 버튼
                 VStack{
-                    Spacer().frame(height: 589)
+                    Spacer().frame(height: height*0.697867)
                     HStack{
-                        Spacer().frame(width: 314)
+                        Spacer().frame(width: width*0.8051292)
                         Button{
                             showblind.toggle()
+                            print(height)
                         }label: {
                             ZStack{
                                 Circle()
