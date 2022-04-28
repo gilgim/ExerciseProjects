@@ -52,32 +52,7 @@ struct CalendarView: View {
                             showblind = false
                         }
                 }
-                
-                //  하단 메인 버튼
-                VStack{
-                    Spacer().frame(height: height*0.697867)
-                    HStack{
-                        Spacer().frame(width: width*0.8051292)
-                        Button{
-                            showblind.toggle()
-                            print(height)
-                        }label: {
-                            ZStack{
-                                Circle()
-                                ZStack{
-                                    Image(systemName: "calendar.badge.plus")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .foregroundColor(.white)
-                                        .offset(x:2,y: 2)
-                                }
-                                .padding(18)
-                            }
-                        }
-                        Spacer().frame(width: 16)
-                    }
-                    Spacer().frame(height: 70)
-                }
+                AnimatedExpandableButton(isShowGray: self.$showblind)
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(Text(TitleString))
@@ -97,9 +72,11 @@ struct CalendarView: View {
                                 Image(systemName: "chevron.backward")
                                     .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
                                 Text("이전 달")
+                                    .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
                             }
                         }
                     }
+                    .disabled(showblind)
                 }
                 
                 //  네비게이션 오른쪽
@@ -110,11 +87,13 @@ struct CalendarView: View {
                         ZStack{
                             HStack{
                                 Text("다음 달")
+                                    .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
                             }
                         }
                     }
+                    .disabled(showblind)
                 }
             }
         }
@@ -127,6 +106,7 @@ struct CalendarView_Previews: PreviewProvider {
     }
 }
 
+//  캘린더 뷰
 struct UICalendarView : UIViewRepresentable{
     
     //  CalendarViewModel에 양도될 Binding 변수
@@ -196,7 +176,6 @@ struct UICalendarView : UIViewRepresentable{
         }
     }
 }
-
 //  CalendarView에서 다루는 Date의 델리게이트 역할 수행
 class CalendarViewModel : NSObject,ObservableObject{
     @Published var currentPage : Date = Date()
