@@ -25,76 +25,79 @@ struct CalendarView: View {
         
         //  뷰의 움직임을 위한 Navigation
         NavigationView{
-            //  화면 가로 값
-            let width = UIScreen.main.bounds.width
-            let height = UIScreen.main.bounds.height
-            
-            ZStack{
-                Color
-                    .gray.opacity(0.3)
-                    .ignoresSafeArea()
-                
-                //  캘린더
-                VStack{
-                    Spacer().frame(height: 10)
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(.white)
-                            .padding(.horizontal,16)
-                            .overlay(UICalendarView(pageCurrent: $viewModel.currentPage, titleText: $viewModel.titleText).padding(10).padding(.horizontal,16))
+            GeometryReader{ geo in
+                let width = geo.size.width
+                let height = geo.size.height
+                ZStack{
+                    Color
+                        .gray.opacity(0.3)
+                        .ignoresSafeArea()
+                    
+                    //  캘린더
+                    VStack{
+                        Spacer().frame(height: 10)
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundColor(.white)
+                                .padding(.horizontal,16)
+                                .overlay(UICalendarView(pageCurrent: $viewModel.currentPage, titleText: $viewModel.titleText).padding(10).padding(.horizontal,16))
+                        }
+                        Spacer().frame(height: height*0.545201668984701)
                     }
-                    Spacer().frame(height: height*0.46445497)
+
+                    if showblind{
+                        Color.black.opacity(0.4).ignoresSafeArea().transition(AnyTransition.opacity.animation(.linear(duration: 0.15)))
+                            .onTapGesture {
+                                withAnimation() {
+                                    showblind = false
+                                }
+                            }
+                    }
+                    AnimatedExpandableButton(isShowGray: self.$showblind)
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(Text(TitleString))
+                
+                //  상단 툴바
+                .toolbar {
+                    
+                    //  네비게이션 왼쪽
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        
+                        //  상단 다음달 버튼
+                        Button{
+                            viewModel.currentPage = Calendar.current.date(byAdding: .month, value: -1, to: viewModel.currentPage)!
+                        }label: {
+                            ZStack{
+                                HStack{
+                                    Image(systemName: "chevron.backward")
+                                        .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
+                                    Text("이전 달")
+                                        .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
+                                }
+                            }
+                        }
+                        .disabled(showblind)
+                    }
+                    
+                    //  네비게이션 오른쪽
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button{
+                            viewModel.currentPage = Calendar.current.date(byAdding: .month, value: +1, to: viewModel.currentPage)!
+                        }label: {
+                            ZStack{
+                                HStack{
+                                    Text("다음 달")
+                                        .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
+                                }
+                            }
+                        }
+                        .disabled(showblind)
+                    }
                 }
 
-                if showblind{
-                    Color.black.opacity(0.4).ignoresSafeArea().transition(AnyTransition.opacity.animation(.linear(duration: 0.15)))
-                        .onTapGesture {
-                            showblind = false
-                        }
-                }
-                AnimatedExpandableButton(isShowGray: self.$showblind)
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(Text(TitleString))
-            
-            //  상단 툴바
-            .toolbar {
-                
-                //  네비게이션 왼쪽
-                ToolbarItem(placement: .navigationBarLeading) {
-                    
-                    //  상단 다음달 버튼
-                    Button{
-                        viewModel.currentPage = Calendar.current.date(byAdding: .month, value: -1, to: viewModel.currentPage)!
-                    }label: {
-                        ZStack{
-                            HStack{
-                                Image(systemName: "chevron.backward")
-                                    .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
-                                Text("이전 달")
-                                    .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
-                            }
-                        }
-                    }
-                    .disabled(showblind)
-                }
-                
-                //  네비게이션 오른쪽
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button{
-                        viewModel.currentPage = Calendar.current.date(byAdding: .month, value: +1, to: viewModel.currentPage)!
-                    }label: {
-                        ZStack{
-                            HStack{
-                                Text("다음 달")
-                                    .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
-                            }
-                        }
-                    }
-                    .disabled(showblind)
-                }
             }
         }
     }

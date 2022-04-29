@@ -25,87 +25,115 @@ struct ExpandableButtonView: View {
     @State var isExpanded = false
     @Binding var isShowGray : Bool
     var body: some View {
-        ZStack {
-            Color.brown
-            let width = UIScreen.main.bounds.width
-            let height = UIScreen.main.bounds.height - (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0) - (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0)
-            
-            if true {
-                VStack{
-                    Spacer().frame(height: height*0.63302752293)
-                    HStack{
-                        Spacer().frame(width: width*0.8051292)
-                        
-                        Button(action: secondaryItems[0].action ?? self.none)
-                        {
-                            ZStack{
-                                Circle()
-//                                ZStack{
-//                                    Image(systemName: secondaryItems[0].image)
-//                                        .resizable()
-//                                        .scaledToFill()
-//                                        .foregroundColor(.white)
-//                                }
+        GeometryReader{ geo in
+            ZStack {
+                let width = geo.size.width
+                let height = geo.size.height
+                
+                if isShowGray {
+                    VStack{
+                        Spacer().frame(height: isShowGray ? height*0.624478442280946 : height*0.829619921363)
+                        HStack{
+                            Spacer().frame(width: width*0.8051292)
+                            
+                            Button(action: secondaryItems[0].action ?? self.none)
+                            {
+                                ZStack{
+                                    Circle()
+                                    ZStack{
+                                        Image(systemName: secondaryItems[0].image)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .foregroundColor(.white)
+                                    }
+                                    .padding(18)
+                                }
                             }
+                            Spacer().frame(width: 16)
                         }
-                        Spacer().frame(width: 16)
+                        Spacer().frame(height: isShowGray ? height*0.292072322670376 : height*0.091743119266055)
                     }
-                    Spacer().frame(height: height*0.2752293577)
+                    .transition(.offset(x: 0, y: 140))
+                    
+                    VStack{
+                        Spacer().frame(height: height*0.721835883171071)
+                        HStack{
+                            Spacer().frame(width: width*0.8051292)
+                            
+                            Button(action: secondaryItems[1].action ?? self.none)
+                            {
+                                ZStack{
+                                    Circle()
+                                    ZStack{
+                                        Image(systemName: secondaryItems[1].image)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .foregroundColor(.white)
+                                    }
+                                    .padding(18)
+                                }
+                            }
+                            Spacer().frame(width: 16)
+                        }
+                        Spacer().frame(height: height*0.19471488178025)
+                    }
+                    .transition(.offset(x: 0, y: 70))
+                    
+                    VStack{
+                        Spacer().frame(height: height*0.916550764951321)
+                        HStack{
+                            Spacer().frame(width: width*0.8051292)
+                            
+                            Button(action: secondaryItems[2].action ?? self.none)
+                            {
+                                ZStack{
+                                    Circle()
+                                    ZStack{
+                                        Image(systemName: secondaryItems[2].image)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .foregroundColor(.white)
+                                    }
+                                    .padding(18)
+                                }
+                            }
+                            Spacer().frame(width: 16)
+                        }
+                    }
+                    .transition(.offset(x: 0, y: -70))
                 }
                 
+                //  클릭하는 뷰
                 VStack{
-                    Spacer().frame(height: height*0.63302752293)
+                    Spacer().frame(height: height*0.829619921363)
                     HStack{
                         Spacer().frame(width: width*0.8051292)
                         
-                        Button(action: secondaryItems[0].action ?? self.none)
-                        {
+                        Button(action: {
+                            withAnimation {
+                                print(height)
+                                self.isExpanded.toggle()
+                                self.isShowGray.toggle()
+                            }
+                            self.primaryItem.action?()
+                        }) {
                             ZStack{
                                 Circle()
                                 ZStack{
-                                    Image(systemName: secondaryItems[0].image)
+                                    Image(systemName: "calendar.badge.plus")
                                         .resizable()
                                         .scaledToFit()
                                         .foregroundColor(.white)
+                                        .offset(x:2,y: 2)
                                 }
+                                .padding(18)
                             }
                         }
+                        
                         Spacer().frame(width: 16)
                     }
-                    Spacer().frame(height: height*0.2752293577)
+                    Spacer().frame(height: height*0.091743119266055)
                 }
-            }
-            
-            //  클릭하는 뷰
-            VStack{
-                Spacer().frame(height: height*0.829619921363)
-                HStack{
-                    Spacer().frame(width: width*0.8051292)
-                    
-                    Button(action: {
-                        withAnimation {
-                            print(height)
-                            self.isExpanded.toggle()
-                            self.isShowGray.toggle()
-                        }
-                        self.primaryItem.action?()
-                    }) {
-                        ZStack{
-                            Circle()
-                            ZStack{
-                                Image(systemName: "calendar.badge.plus")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .foregroundColor(.white)
-                                    .offset(x:2,y: 2)
-                            }
-                            .padding(18)
-                        }
-                    }
-                    
-                    Spacer().frame(width: 16)
-                }
-                Spacer().frame(height: height*0.091743119266055)
             }
         }
     }
