@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C3239FAC27E47F820076BE3F /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3239FAB27E47F820076BE3F /* UserInfoView.swift */; };
 		C3239FB127E4815C0076BE3F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3239FB027E4815C0076BE3F /* Launch Screen.storyboard */; };
 		C3239FB727E486BB0076BE3F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3239FB627E486BB0076BE3F /* CalendarView.swift */; };
 		C346AC20281FC88800B9B4E3 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346AC1F281FC88800B9B4E3 /* RoutineView.swift */; };
@@ -26,7 +25,6 @@
 		34EE279BF4AC7E47F74C7878 /* Pods-RecordingExcerCise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordingExcerCise.debug.xcconfig"; path = "Target Support Files/Pods-RecordingExcerCise/Pods-RecordingExcerCise.debug.xcconfig"; sourceTree = "<group>"; };
 		6FB392BCD9308C03C3EE2248 /* Pods_RecordingExcerCise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecordingExcerCise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A81559F3E9A6FBC3A3ECECF /* Pods-RecordingExcerCise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordingExcerCise.release.xcconfig"; path = "Target Support Files/Pods-RecordingExcerCise/Pods-RecordingExcerCise.release.xcconfig"; sourceTree = "<group>"; };
-		C3239FAB27E47F820076BE3F /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		C3239FB027E4815C0076BE3F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C3239FB627E486BB0076BE3F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		C346AC1F281FC88800B9B4E3 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 				C3BC7EFD27E1710100882B46 /* ContentView.swift */,
 				C3E2870527F675DC00C78988 /* Color.swift */,
 				C3239FB027E4815C0076BE3F /* Launch Screen.storyboard */,
-				C3239FAB27E47F820076BE3F /* UserInfoView.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -278,7 +275,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3239FAC27E47F820076BE3F /* UserInfoView.swift in Sources */,
 				C346AC22281FD0FF00B9B4E3 /* ExerciseView.swift in Sources */,
 				C398C8D1281A1EE30099A000 /* FloatingButton.swift in Sources */,
 				C346AC27281FD1D800B9B4E3 /* SettingView.swift in Sources */,
