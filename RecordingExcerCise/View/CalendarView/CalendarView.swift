@@ -20,27 +20,28 @@ struct CalendarView: View {
         dateFormatter.dateFormat = "yyyy년 M월"
         return dateFormatter.string(from: viewModel.currentPage)
     }
-    
     var body: some View {
-        
         //  뷰의 움직임을 위한 Navigation
         NavigationView{
             GeometryReader{ geo in
-                let width = geo.size.width
                 let height = geo.size.height
                 ZStack{
-                    Color
-                        .gray.opacity(0.3)
-                        .ignoresSafeArea()
-                    
+                    ZStack{
+                        Color.Color_09
+                            .edgesIgnoringSafeArea(.top)
+                        Color.Color_13
+                        Color.Color_13
+                            .edgesIgnoringSafeArea(.bottom)
+                    }
                     //  캘린더
                     VStack{
                         Spacer().frame(height: 10)
                         ZStack{
                             RoundedRectangle(cornerRadius: 15)
-                                .foregroundColor(.white)
+                                .foregroundColor(.Color_14)
                                 .padding(.horizontal,16)
                                 .overlay(UICalendarView(pageCurrent: $viewModel.currentPage, titleText: $viewModel.titleText).padding(10).padding(.horizontal,16))
+                                .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
                         }
                         Spacer().frame(height: height*0.545201668984701)
                     }
@@ -57,7 +58,6 @@ struct CalendarView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(Text(TitleString))
-                
                 //  상단 툴바
                 .toolbar {
                     
@@ -71,9 +71,9 @@ struct CalendarView: View {
                             ZStack{
                                 HStack{
                                     Image(systemName: "chevron.backward")
-                                        .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
+                                        .foregroundColor(showblind ? .black.opacity(0.4) : .Color_27)
                                     Text("이전 달")
-                                        .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
+                                        .foregroundColor(showblind ? .black.opacity(0.4) : .Color_27)
                                 }
                             }
                         }
@@ -88,16 +88,15 @@ struct CalendarView: View {
                             ZStack{
                                 HStack{
                                     Text("다음 달")
-                                        .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
+                                        .foregroundColor(showblind ? .black.opacity(0.4) : .Color_27)
                                     Image(systemName: "chevron.right")
-                                        .foregroundColor(showblind ? .black.opacity(0.4) : .blue)
+                                        .foregroundColor(showblind ? .black.opacity(0.4) : .Color_27)
                                 }
                             }
                         }
                         .disabled(showblind)
                     }
                 }
-
             }
         }
     }
@@ -118,6 +117,7 @@ struct UICalendarView : UIViewRepresentable{
     
     func makeUIView(context: Context) -> FSCalendar {
         let calendar = FSCalendar()
+        
         //  한국어 변경
         calendar.locale = Locale(identifier: "ko_KR")
         
@@ -125,11 +125,14 @@ struct UICalendarView : UIViewRepresentable{
         calendar.headerHeight = 0
         
         //  상단 표시 폰트 크기
-        calendar.appearance.weekdayFont = .systemFont(ofSize: 18)
+        calendar.appearance.weekdayFont = .boldSystemFont(ofSize: 18)
+        calendar.appearance.weekdayTextColor = .Color_02
         
         //  날짜 폰트 크기
         calendar.appearance.titleFont = .systemFont(ofSize: 20)
         
+        calendar.appearance.todayColor = .Color_21
+        calendar.appearance.selectionColor = .Color_19
         
         //  상단 일 크기
         calendar.weekdayHeight = 32
@@ -171,7 +174,23 @@ struct UICalendarView : UIViewRepresentable{
         func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
             return [.black]
         }
-        
+        func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+            let cal = Calendar.current
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E"
+            let str = dateFormatter.string(from: date)
+            if cal.component(.month, from: Date()) == Calendar.current.component(.month, from: date){
+                if str == "일"{
+                    return .Color_32
+                }else{
+                    return .Color_02
+                }
+            }
+            else{
+                return .Color_04
+            }
+        }
         //  데이트 페이지, 현재 페이지 공유
         func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
             self.calendar.pageCurrent = calendar.currentPage

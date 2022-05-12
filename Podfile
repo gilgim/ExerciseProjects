@@ -7,5 +7,6 @@ target 'RecordingExcerCise' do
 
   # Pods for RecordingExcerCise
 pod 'FSCalendar'
+pod 'RealmSwift'
 
 end

@@ -96,6 +96,13 @@
     return self.weekdayPointers.allObjects;
 }
 
++(UIColor *)colorWithRGBHex:(NSUInteger)RGBHex alpha:(CGFloat)alpha {
+    CGFloat red = ((CGFloat)((RGBHex & 0xFF0000) >> 16)) / 255.0f;
+    CGFloat green = ((CGFloat)((RGBHex & 0xFF00) >> 8)) / 255.0f;
+    CGFloat blue = ((CGFloat)((RGBHex & 0xFF))) / 255.0f;
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
+
 - (void)configureAppearance
 {
     BOOL useVeryShortWeekdaySymbols = (self.calendar.appearance.caseOptions & (15<<4) ) == FSCalendarCaseOptionsWeekdayUsesSingleUpperCase;
@@ -106,7 +113,13 @@
         NSInteger index = (i + self.calendar.firstWeekday-1) % 7;
         UILabel *label = [self.weekdayPointers pointerAtIndex:i];
         label.font = self.calendar.appearance.weekdayFont;
-        label.textColor = self.calendar.appearance.weekdayTextColor;
+        if ([label.text  isEqual: @"일"]) {
+            UIColor* color = [FSCalendarWeekdayView colorWithRGBHex:0xE11223 alpha:0.85];
+            label.textColor = color;
+        }
+        else{
+            label.textColor = self.calendar.appearance.weekdayTextColor;
+        }
         label.text = useDefaultWeekdayCase ? weekdaySymbols[index] : [weekdaySymbols[index] uppercaseString];
     }
 

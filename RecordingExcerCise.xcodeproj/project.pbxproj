@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C320ED22282CB6EE007E006E /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C320ED21282CB6EE007E006E /* Exercise.swift */; };
 		C3239FB127E4815C0076BE3F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3239FB027E4815C0076BE3F /* Launch Screen.storyboard */; };
 		C3239FB727E486BB0076BE3F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3239FB627E486BB0076BE3F /* CalendarView.swift */; };
 		C346AC20281FC88800B9B4E3 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346AC1F281FC88800B9B4E3 /* RoutineView.swift */; };
@@ -25,12 +26,14 @@
 		34EE279BF4AC7E47F74C7878 /* Pods-RecordingExcerCise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordingExcerCise.debug.xcconfig"; path = "Target Support Files/Pods-RecordingExcerCise/Pods-RecordingExcerCise.debug.xcconfig"; sourceTree = "<group>"; };
 		6FB392BCD9308C03C3EE2248 /* Pods_RecordingExcerCise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecordingExcerCise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A81559F3E9A6FBC3A3ECECF /* Pods-RecordingExcerCise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordingExcerCise.release.xcconfig"; path = "Target Support Files/Pods-RecordingExcerCise/Pods-RecordingExcerCise.release.xcconfig"; sourceTree = "<group>"; };
+		C320ED21282CB6EE007E006E /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		C3239FB027E4815C0076BE3F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C3239FB627E486BB0076BE3F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		C346AC1F281FC88800B9B4E3 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
 		C346AC21281FD0FF00B9B4E3 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		C346AC26281FD1D800B9B4E3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		C398C8D0281A1EE30099A000 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		C39E7B19282CE05700316968 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C3BC7EF827E1710100882B46 /* RecordingExcerCise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecordingExcerCise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BC7EFB27E1710100882B46 /* RecordingExcerCiseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingExcerCiseApp.swift; sourceTree = "<group>"; };
 		C3BC7EFD27E1710100882B46 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +109,14 @@
 			path = SettingView;
 			sourceTree = "<group>";
 		};
+		C378190F282A106C0096CB2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C320ED21282CB6EE007E006E /* Exercise.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C398C8D2281A1EEB0099A000 /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,9 +147,11 @@
 		C3BC7EFA27E1710100882B46 /* RecordingExcerCise */ = {
 			isa = PBXGroup;
 			children = (
+				C39E7B19282CE05700316968 /* Info.plist */,
 				C3BC7F0127E1710300882B46 /* Preview Content */,
 				C3239FAD27E481270076BE3F /* Application */,
 				C3239FAA27E47DCB0076BE3F /* View */,
+				C378190F282A106C0096CB2D /* Model */,
 			);
 			path = RecordingExcerCise;
 			sourceTree = "<group>";
@@ -283,6 +296,7 @@
 				C346AC20281FC88800B9B4E3 /* RoutineView.swift in Sources */,
 				C3BC7EFC27E1710100882B46 /* RecordingExcerCiseApp.swift in Sources */,
 				C3E2870627F675DC00C78988 /* Color.swift in Sources */,
+				C320ED22282CB6EE007E006E /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,8 +428,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RecordingExcerCise/Preview Content\"";
+				DEVELOPMENT_TEAM = 3RPG64SDVF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecordingExcerCise/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -443,8 +460,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RecordingExcerCise/Preview Content\"";
+				DEVELOPMENT_TEAM = 3RPG64SDVF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecordingExcerCise/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

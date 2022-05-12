@@ -14,14 +14,18 @@ NS_ASSUME_NONNULL_BEGIN
 @class FSCalendar;
 
 @interface FSCalendarWeekdayView : UIView
-
 /**
  An array of UILabel objects displaying the weekday symbols.
  */
 @property (readonly, nonatomic) NSArray<UILabel *> *weekdayLabels;
 
 - (void)configureAppearance;
-
 @end
 
+@interface UIColor(HexString)
+
++ (UIColor *) colorWithHexString: (NSString *) hexString;
++ (CGFloat) colorComponentFrom: (NSString *) string start: (NSUInteger) start length: (NSUInteger) length;
+
+@end
 NS_ASSUME_NONNULL_END

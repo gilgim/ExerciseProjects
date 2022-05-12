@@ -124,6 +124,7 @@ struct ExpandableButtonView: View {
                         }) {
                             ZStack{
                                 Circle()
+                                    .foregroundColor(.red)
                                 ZStack{
                                     Image(systemName: "calendar.badge.plus")
                                         .resizable()
