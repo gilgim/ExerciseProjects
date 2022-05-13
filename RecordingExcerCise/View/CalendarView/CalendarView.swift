@@ -130,7 +130,8 @@ struct UICalendarView : UIViewRepresentable{
         
         //  날짜 폰트 크기
         calendar.appearance.titleFont = .systemFont(ofSize: 20)
-        
+        calendar.appearance.titlePlaceholderColor = .Color_04
+        calendar.appearance.titleDefaultColor = .Color_02
         calendar.appearance.todayColor = .Color_21
         calendar.appearance.selectionColor = .Color_19
         
@@ -170,25 +171,15 @@ struct UICalendarView : UIViewRepresentable{
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
             return 1
         }
-        
-        func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
-            return [.black]
-        }
         func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-            let cal = Calendar.current
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "E"
-            let str = dateFormatter.string(from: date)
-            if cal.component(.month, from: Date()) == Calendar.current.component(.month, from: date){
-                if str == "일"{
-                    return .Color_32
-                }else{
-                    return .Color_02
-                }
+            let dateFormat = DateFormatter()
+            dateFormat.dateFormat = "E"
+            let str = dateFormat.string(from: date)
+            if str == "일"{
+                return .Color_32
             }
             else{
-                return .Color_04
+                return nil
             }
         }
         //  데이트 페이지, 현재 페이지 공유

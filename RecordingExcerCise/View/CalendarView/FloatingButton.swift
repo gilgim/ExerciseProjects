@@ -41,6 +41,7 @@ struct ExpandableButtonView: View {
                             } label: {
                                 ZStack{
                                     Circle()
+                                        .foregroundColor(.Color_20)
                                     ZStack{
                                         Image(systemName: secondaryItems[0].image)
                                             .resizable()
@@ -67,6 +68,7 @@ struct ExpandableButtonView: View {
                             } label: {
                                 ZStack{
                                     Circle()
+                                        .foregroundColor(.Color_21)
                                     ZStack{
                                         Image(systemName: secondaryItems[1].image)
                                             .resizable()
@@ -93,6 +95,7 @@ struct ExpandableButtonView: View {
                             } label: {
                                 ZStack{
                                     Circle()
+                                        .foregroundColor(.Color_23)
                                     ZStack{
                                         Image(systemName: secondaryItems[2].image)
                                             .resizable()
@@ -124,7 +127,7 @@ struct ExpandableButtonView: View {
                         }) {
                             ZStack{
                                 Circle()
-                                    .foregroundColor(.red)
+                                    .foregroundColor(.Color_19)
                                 ZStack{
                                     Image(systemName: "calendar.badge.plus")
                                         .resizable()

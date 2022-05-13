@@ -189,6 +189,7 @@
 {
     NSNumber *key = @(section);
     NSDate *week = self.weeks[key];
+    
     if (!week) {
         week = [self.gregorian dateByAddingUnit:NSCalendarUnitWeekOfYear value:section toDate:[self.gregorian fs_firstDayOfWeek:self.minimumDate] options:0];
         self.weeks[key] = week;
