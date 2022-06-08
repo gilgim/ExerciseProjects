@@ -9,13 +9,19 @@ import SwiftUI
 
 struct ExerciseView: View {
     @State var searchText = ""
+    @State var searchTouch = true
+    var test = [0,1,2,3,4,5]
     var body: some View {
         ZStack{
-            Color.Color_13
-            Color.Color_13
-                .edgesIgnoringSafeArea(.bottom)
+            ZStack{
+                Color.black
+            }
+            .ignoresSafeArea()
+            ZStack{
+                Color.Color_13
+            }
             VStack{
-                SearchBar(text: $searchText)
+                SearchBar(text: $searchText,isTouch: $searchTouch)
                     .padding(.top,10)
                 ScrollView(.horizontal, showsIndicators: false){
                     BodyScrollView()
@@ -23,8 +29,45 @@ struct ExerciseView: View {
                         .padding(.leading,16)
                 }
                 .frame(width: 390, height: 40, alignment: .center)
-                
-                Spacer()
+                ScrollView{
+                    if searchTouch{
+                        Group{
+                            ForEach(test,id:\.self){ i in
+                                PersnalExerciseView()
+                                    .padding(.horizontal,16)
+                                    .padding(.top,10)
+                            }
+                        }
+                    }
+                    Button{
+                        
+                    }label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 13)
+                                .foregroundColor(.Color_12)
+                                .frame(height: 46)
+                            Image(systemName: "plus")
+                        }
+                        
+                            
+                    }
+                    .padding(.horizontal,16)
+                    .padding(.vertical,10)
+                }
+                ZStack{
+                    Color.white
+                    Button{
+                        
+                    }label: {
+                        ZStack{
+                            
+                            RoundedRectangle(cornerRadius: 13)
+                                .padding(.top,3)
+                        }
+                    }
+                    .padding(.horizontal,16)
+                }
+                .frame(height: 49)
             }
         }
     }
@@ -33,35 +76,6 @@ struct ExerciseView: View {
 struct ExerciseView_Previews: PreviewProvider {
     static var previews: some View {
         ExerciseView()
-    }
-}
-
-struct SearchBar: View {
-    @Binding var text: String
-    var body: some View {
-        HStack {
-            HStack {
-                Image(systemName: "magnifyingglass")
- 
-                TextField("Search", text: $text)
-                    .foregroundColor(.primary)
- 
-                if !text.isEmpty {
-                    Button(action: {
-                        self.text = ""
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                    }
-                } else {
-                    EmptyView()
-                }
-            }
-            .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
-            .foregroundColor(.secondary)
-            .background(.gray.opacity(0.2))
-            .cornerRadius(10.0)
-        }
-        .padding(.horizontal)
     }
 }
 /**
@@ -90,7 +104,6 @@ struct BodyPartView : View{
         self.width = width
         self.height = height
     }
-    
     var body: some View {
         ZStack{
             Button{
@@ -104,5 +117,35 @@ struct BodyPartView : View{
         .frame(width: width, height: height, alignment: .center)
         .padding(.trailing,8)
         
+    }
+}
+
+struct PersnalExerciseView : View {
+    var body : some View {
+        ZStack{
+            RoundedRectangle(cornerRadius: 15)
+                .foregroundColor(.Color_12)
+            ZStack{
+                RoundedRectangle(cornerRadius: 13)
+                    .foregroundColor(Color.Color_10)
+                Text("가슴")
+                    .foregroundColor(Color.Color_27)
+            }
+            .padding(EdgeInsets(top: 17.5, leading: 10, bottom: 17.5, trailing: 278))
+            HStack{
+                Text("벤치프레스")
+                    .padding(.leading,90)
+                Spacer()
+            }
+            Button{
+                
+            }label: {
+                Image(systemName: "ellipsis")
+                    .resizable()
+                    .scaledToFit()
+            }
+            .padding(EdgeInsets(top: 28, leading: 316, bottom: 28, trailing: 10))
+        }
+        .frame(height: 80)
     }
 }
