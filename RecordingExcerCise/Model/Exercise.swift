@@ -28,23 +28,23 @@ class Exercise : Object{
     /**
      운동명
      */
-    @Persisted(primaryKey: true) var name : String?
+    @objc dynamic var name : String?
     /**
      동작설명
      */
-    @Persisted var explainExcercise : String?
+    @objc dynamic var explainExcercise : String?
     /**
      운동부위
      */
-    @Persisted var exercisePart : String?
+    @objc dynamic var exercisePart : String?
     /**
      장비
      */
-    @Persisted var equipment : String?
+    @objc dynamic var equipment : String?
     /**
      운동 유튜브 링크
      */
-    @Persisted var exerciseLink : String?
+    @objc dynamic var exerciseLink : String?
 }
 /**
     운동만드는 함수 예) 벤치프레스, 부위, 설명 등등

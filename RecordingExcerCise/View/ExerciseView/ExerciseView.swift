@@ -6,15 +6,19 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ExerciseView: View {
     @State var searchText = ""
     @State var searchTouch = true
+    @State var objectCount : Int = 0
     var test = [0,1,2,3,4,5]
     var body: some View {
+        let realm = try! Realm()
+        let result = realm.objects(Exercise.self)//.filter("exercisePart == \(searchText)")
         ZStack{
             ZStack{
-                Color.black
+                Color.white
             }
             .ignoresSafeArea()
             ZStack{
@@ -32,7 +36,7 @@ struct ExerciseView: View {
                 ScrollView{
                     if searchTouch{
                         Group{
-                            ForEach(test,id:\.self){ i in
+                            ForEach(0..<objectCount,id:\.self){ i in
                                 PersnalExerciseView()
                                     .padding(.horizontal,16)
                                     .padding(.top,10)
@@ -40,7 +44,8 @@ struct ExerciseView: View {
                         }
                     }
                     Button{
-                        
+                        createExercisePart()
+                        objectCount = result.count
                     }label: {
                         ZStack{
                             RoundedRectangle(cornerRadius: 13)
@@ -48,8 +53,6 @@ struct ExerciseView: View {
                                 .frame(height: 46)
                             Image(systemName: "plus")
                         }
-                        
-                            
                     }
                     .padding(.horizontal,16)
                     .padding(.vertical,10)
@@ -57,12 +60,16 @@ struct ExerciseView: View {
                 ZStack{
                     Color.white
                     Button{
-                        
+                        try! realm.write {
+                            if result.count > 0{
+                                realm.delete(result[0])
+                            }
+                        }
+                        objectCount = result.count
                     }label: {
                         ZStack{
-                            
                             RoundedRectangle(cornerRadius: 13)
-                                .padding(.top,3)
+                                .padding(.vertical,3)
                         }
                     }
                     .padding(.horizontal,16)
@@ -149,3 +156,4 @@ struct PersnalExerciseView : View {
         .frame(height: 80)
     }
 }
+
