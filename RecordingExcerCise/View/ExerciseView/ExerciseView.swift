@@ -12,6 +12,7 @@ struct ExerciseView: View {
     @State var searchText = ""
     @State var searchTouch = true
     @State var objectCount : Int = 0
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     var test = [0,1,2,3,4,5]
     var body: some View {
         let realm = try! Realm()
@@ -43,9 +44,8 @@ struct ExerciseView: View {
                             }
                         }
                     }
-                    Button{
-                        createExercisePart()
-                        objectCount = result.count
+                    NavigationLink{
+                        CreatExercise()
                     }label: {
                         ZStack{
                             RoundedRectangle(cornerRadius: 13)
@@ -77,6 +77,22 @@ struct ExerciseView: View {
                 .frame(height: 49)
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button{
+                }label: {
+                    Text("선택")
+                }
+            }
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button{
+                    self.mode.wrappedValue.dismiss()
+                }label: {
+                    Text("< 날짜 선택")
+                }
+            }
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -103,13 +119,15 @@ struct BodyScrollView : View{
     몸 부위 하나를 구성하는 뷰 
  */
 struct BodyPartView : View{
+    @Binding var part : BodyPart
     var title : String
     var width : CGFloat
     var height : CGFloat
-    init(title:String,width:CGFloat = 55,height:CGFloat = 40){
+    init(title:String,width:CGFloat = 55,height:CGFloat = 40,part:Binding<BodyPart> = .constant(.chest)){
         self.title = title
         self.width = width
         self.height = height
+        self._part = part
     }
     var body: some View {
         ZStack{

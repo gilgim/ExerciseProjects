@@ -7,7 +7,7 @@
 
 import Foundation
 import RealmSwift
-enum Equipment : String {
+enum Equipment : String, CaseIterable{
     case babel = "바벨"
     case dumbbell = "덤벨"
     case machine = "머신"
@@ -49,14 +49,14 @@ class Exercise : Object{
 /**
     운동만드는 함수 예) 벤치프레스, 부위, 설명 등등
  */
-func createExercisePart(){
+func createExercisePart(name:String = "", explain:String = "", equipment:Equipment = .babel, part:BodyPart = .chest, link:String = ""){
     let realm = try! Realm()
     let exercise = Exercise()
-    exercise.name = "벤치프레스"
-    exercise.explainExcercise = "중앙 가슴고립, 어깨 최대한 벌리듯이"
-    exercise.equipment = "바벨"
-    exercise.exercisePart = "중앙 가슴"
-    exercise.exerciseLink = "http://~~~~~"
+    exercise.name = name
+    exercise.explainExcercise = explain
+    exercise.equipment = equipment.rawValue
+    exercise.exercisePart = part.rawValue
+    exercise.exerciseLink = link
     try! realm.write{
         realm.add(exercise)
     }
