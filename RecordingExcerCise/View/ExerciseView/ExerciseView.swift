@@ -34,11 +34,14 @@ struct ExerciseView: View {
                         .padding(.leading,16)
                 }
                 .frame(width: 390, height: 40, alignment: .center)
+                
                 ScrollView{
                     if searchTouch{
                         Group{
                             ForEach(0..<objectCount,id:\.self){ i in
-                                PersnalExerciseView()
+                                PersnalExerciseView(count:i){
+                                    objectCount = result.count
+                                }
                                     .padding(.horizontal,16)
                                     .padding(.top,10)
                             }
@@ -57,6 +60,7 @@ struct ExerciseView: View {
                     .padding(.horizontal,16)
                     .padding(.vertical,10)
                 }
+                
                 ZStack{
                     Color.white
                     Button{
@@ -93,6 +97,11 @@ struct ExerciseView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear(){
+            let realm = try! Realm()
+            let result = realm.objects(Exercise.self)//.filter("exercisePart == \(searchText)")
+            objectCount = result.count
+        }
     }
 }
 
@@ -119,20 +128,20 @@ struct BodyScrollView : View{
     몸 부위 하나를 구성하는 뷰 
  */
 struct BodyPartView : View{
-    @Binding var part : BodyPart
     var title : String
     var width : CGFloat
     var height : CGFloat
-    init(title:String,width:CGFloat = 55,height:CGFloat = 40,part:Binding<BodyPart> = .constant(.chest)){
+    var action : ((String)->())?
+    init(title:String,width:CGFloat = 55,height:CGFloat = 40,action:((String)->())? = nil){
         self.title = title
         self.width = width
         self.height = height
-        self._part = part
+        self.action = action
     }
     var body: some View {
         ZStack{
             Button{
-                
+                action?(title)
             }label: {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(.white)
@@ -146,32 +155,70 @@ struct BodyPartView : View{
 }
 
 struct PersnalExerciseView : View {
+    var count : Int
+    var action : (()->())?
+    @State var isShowingPopover = false
+    init(count:Int = 0,action:(()->())? = nil){
+        self.count = count
+        self.action = action
+    }
     var body : some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 15)
-                .foregroundColor(.Color_12)
+        let realm = try! Realm()
+        let result = realm.objects(Exercise.self)//.filter("exercisePart == \(searchText)")
+        if result.count >= count {
             ZStack{
-                RoundedRectangle(cornerRadius: 13)
-                    .foregroundColor(Color.Color_10)
-                Text("가슴")
-                    .foregroundColor(Color.Color_27)
+                RoundedRectangle(cornerRadius: 15)
+                    .foregroundColor(.Color_12)
+                ZStack{
+                    RoundedRectangle(cornerRadius: 13)
+                        .foregroundColor(Color.Color_10)
+                    Text(result[count].exercisePart!)
+                        .foregroundColor(Color.Color_27)
+                }
+                .padding(EdgeInsets(top: 17.5, leading: 10, bottom: 17.5, trailing: 278))
+                HStack{
+                    Text(result[count].name!)
+                        .padding(.leading,90)
+                    Spacer()
+                }
+                Button{
+//                    let realm = try! Realm()
+//                    let result = realm.objects(Exercise.self)
+//                    try! realm.write {
+//                        if result.count >= count && result.count > 0{
+//                            realm.delete(result[count])
+//                            action?()
+//                        }
+//                    }
+                    isShowingPopover = true
+                }label: {
+                    Image(systemName: "ellipsis")
+                        .resizable()
+                        .scaledToFit()
+                        .contextMenu(){
+                                Button {
+                                    print("Change country setting")
+                                } label: {
+                                    Label("Choose Country", systemImage: "globe")
+                                }
+
+                                Button {
+                                    print("Enable geolocation")
+                                } label: {
+                                    Label("Detect Location", systemImage: "location.circle")
+                                }
+                        }
+                }
+                .padding(EdgeInsets(top: 28, leading: 316, bottom: 28, trailing: 10))
             }
-            .padding(EdgeInsets(top: 17.5, leading: 10, bottom: 17.5, trailing: 278))
-            HStack{
-                Text("벤치프레스")
-                    .padding(.leading,90)
-                Spacer()
-            }
-            Button{
-                
-            }label: {
-                Image(systemName: "ellipsis")
-                    .resizable()
-                    .scaledToFit()
-            }
-            .padding(EdgeInsets(top: 28, leading: 316, bottom: 28, trailing: 10))
+            .frame(height: 80)
+
         }
-        .frame(height: 80)
+        else {
+            ZStack{
+                
+            }
+        }
     }
 }
 

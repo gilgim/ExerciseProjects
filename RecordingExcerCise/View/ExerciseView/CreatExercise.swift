@@ -6,13 +6,20 @@
 //
 
 import SwiftUI
+func temp(temp:String){
+    
+}
 /**
     운동 생성 뷰
  */
 struct CreatExercise: View {
+    
     @State var exName : String = ""
     @State var exExplain : String = ""
-    @State var part : BodyPart = .chest
+    @State var link : String = ""
+    @State var part : String = ""
+    @State var equipment : String = ""
+    @State private var valueNilAlert = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     var body: some View {
         ZStack{
@@ -29,9 +36,14 @@ struct CreatExercise: View {
                     EmptyRecView(name: Binding<String>.constant("운동명"), explain: $exName,inputType: .constant(.TextField))
                     EmptyRecView(name: Binding<String>.constant("동작 설명"), explain: $exExplain, height: Binding<CGFloat?>.constant(358),inputType: .constant(.TextEditor))
                     EmptyRecView(inputType: .constant(.Link))
-                    EmptyRecView(name:Binding<String>.constant("운동 부위"),inputType:.constant(.Part))
-                    EmptyRecView(name:Binding<String>.constant("장비"),inputType:.constant(.Equipment))
-                    Text("\(part.rawValue)")
+                    EmptyRecView(name:Binding<String>.constant("운동 부위"),inputType:.constant(.Part)){ title in
+                        part = title
+                    }
+                    EmptyRecView(name:Binding<String>.constant("장비"),inputType:.constant(.Equipment)){ title in
+                        equipment = title
+                    }
+                    Text(part)
+                    Text(equipment)
                     Spacer()
                 }
             }
@@ -39,8 +51,13 @@ struct CreatExercise: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{
-                    createExercisePart(name: exName, explain: exExplain, equipment: .babel, part: part)
-                    self.mode.wrappedValue.dismiss()
+                    if exName == "" || exExplain == "" || equipment == "" || part == "" {
+                        valueNilAlert = true
+                    }
+                    else{
+                        createExercisePart(name: exName, explain: exExplain, equipment: .init(rawValue: equipment)!, part: .init(rawValue: part)!)
+                        self.mode.wrappedValue.dismiss()
+                    }
                 }label: {
                     Text("완료")
                 }
@@ -53,6 +70,9 @@ struct CreatExercise: View {
                 }
             }
         }
+        .alert(isPresented: $valueNilAlert) {
+                    Alert(title: Text("오류"), message: Text("선택하지 않은 항목이 있습니다."), dismissButton: .default(Text("확인")))
+                }
         .navigationBarBackButtonHidden(true)
     }
 }
@@ -68,19 +88,21 @@ struct EmptyRecView: View {
         case Equipment
         case null
     }
+    
     @Binding var name : String
     @Binding var explain : String
     @Binding var height : CGFloat?
     @Binding var link : String
     @Binding var inputType : InputType
-    @Binding var part : BodyPart
-    init(name: Binding<String> = .constant(""), explain: Binding<String> = .constant(""), height: Binding<CGFloat?> = .constant(50),inputType: Binding<InputType>,link : Binding<String> = .constant("링크 생성"), part:Binding<BodyPart> = .constant(.chest)){
+    var action : ((String)->())?
+    
+    init(name: Binding<String> = .constant(""), explain: Binding<String> = .constant(""), height: Binding<CGFloat?> = .constant(50),inputType: Binding<InputType>,link : Binding<String> = .constant("링크 생성"),action: ((String)->())? = nil){
         self._name = name
         self._explain = explain
         self._height = height
         self._inputType = inputType
         self._link = link
-        self._part = part
+        self.action = action
     }
     
     var body: some View {
@@ -108,7 +130,9 @@ struct EmptyRecView: View {
                             ScrollView(.horizontal,showsIndicators: false){
                                 HStack{
                                     ForEach(BodyPart.allCases, id:\.self){ i in
-                                        BodyPartView(title: i.rawValue,part: .constant(part.rawValue))
+                                        BodyPartView(title: i.rawValue){ title in
+                                            action?(title)
+                                        }
                                     }
                                 }
                             }
@@ -116,7 +140,9 @@ struct EmptyRecView: View {
                         else if inputType == .Equipment{
                             HStack{
                                 ForEach(Equipment.allCases, id:\.self){ i in
-                                    BodyPartView(title: i.rawValue)
+                                    BodyPartView(title: i.rawValue){ title in
+                                        action?(title)
+                                    }
                                 }
                             }
                         }
