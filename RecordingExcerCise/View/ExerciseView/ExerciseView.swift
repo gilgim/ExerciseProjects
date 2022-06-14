@@ -110,6 +110,7 @@ struct ExerciseView_Previews: PreviewProvider {
         ExerciseView()
     }
 }
+
 /**
     검색바 밑 상단 몸 부위 스크롤 할려고 하는 뷰
  */
@@ -124,6 +125,7 @@ struct BodyScrollView : View{
         }
     }
 }
+
 /**
     몸 부위 하나를 구성하는 뷰 
  */
@@ -154,14 +156,19 @@ struct BodyPartView : View{
     }
 }
 
+/**
+ 운동 뷰에서 뷰를 구성하는 요소로 부위, 운동명이 나와있다.
+ */
 struct PersnalExerciseView : View {
     var count : Int
     var action : (()->())?
     @State var isShowingPopover = false
+    
     init(count:Int = 0,action:(()->())? = nil){
         self.count = count
         self.action = action
     }
+    
     var body : some View {
         let realm = try! Realm()
         let result = realm.objects(Exercise.self)//.filter("exercisePart == \(searchText)")
@@ -181,38 +188,48 @@ struct PersnalExerciseView : View {
                         .padding(.leading,90)
                     Spacer()
                 }
-                Button{
-//                    let realm = try! Realm()
-//                    let result = realm.objects(Exercise.self)
-//                    try! realm.write {
-//                        if result.count >= count && result.count > 0{
-//                            realm.delete(result[count])
-//                            action?()
-//                        }
-//                    }
-                    isShowingPopover = true
+                
+                Menu{
+                    Button(role:.destructive){
+                        let realm = try! Realm()
+                        let result = realm.objects(Exercise.self)
+                        try! realm.write {
+                            if result.count >= count && result.count > 0{
+                                realm.delete(result[count])
+                                action?()
+                            }
+                        }
+                    }label: {
+                        Text("제거")
+                        Image(systemName: "trash")
+                    }
+                    Button{
+                        isShowingPopover = true
+                    }label: {
+                        Text("운동 정보")
+                        Image(systemName: "info.circle")
+                    }
+                    Button{
+                    }label: {
+                        Text("운동 복제")
+                        Image(systemName: "doc.on.doc")
+                    }
+                    Button{
+                    }label: {
+                        Text("즐겨찾기")
+                        Image(systemName: "heart")
+                    }
                 }label: {
                     Image(systemName: "ellipsis")
                         .resizable()
                         .scaledToFit()
-                        .contextMenu(){
-                                Button {
-                                    print("Change country setting")
-                                } label: {
-                                    Label("Choose Country", systemImage: "globe")
-                                }
-
-                                Button {
-                                    print("Enable geolocation")
-                                } label: {
-                                    Label("Detect Location", systemImage: "location.circle")
-                                }
-                        }
                 }
                 .padding(EdgeInsets(top: 28, leading: 316, bottom: 28, trailing: 10))
             }
             .frame(height: 80)
-
+            .popover(isPresented: self.$isShowingPopover) {
+                ExercisePopOverView(count: .constant(count))
+            }
         }
         else {
             ZStack{

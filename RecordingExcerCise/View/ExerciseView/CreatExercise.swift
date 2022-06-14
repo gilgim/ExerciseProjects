@@ -21,6 +21,7 @@ struct CreatExercise: View {
     @State var equipment : String = ""
     @State private var valueNilAlert = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
     var body: some View {
         ZStack{
             ZStack{
@@ -76,6 +77,7 @@ struct CreatExercise: View {
         .navigationBarBackButtonHidden(true)
     }
 }
+
 /**
     계속 사용할 텍스트와 그 밑 상자 표현한 뷰
  */
