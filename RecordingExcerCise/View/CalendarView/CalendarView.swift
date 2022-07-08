@@ -14,15 +14,16 @@ struct CalendarView: View {
     @StateObject var viewModel = CalendarViewModel()
     @State var showblind = false
     
-    //  타이틀 형식
+    //  MARK: -타이틀 형식
     var TitleString : String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy년 M월"
         return dateFormatter.string(from: viewModel.currentPage)
     }
+    
     var body: some View {
-        //  뷰의 움직임을 위한 Navigation
         NavigationView{
+            //  MARK: 전체
             GeometryReader{ geo in
                 let height = geo.size.height
                 ZStack{
@@ -33,7 +34,7 @@ struct CalendarView: View {
                         Color.Color_13
                             .edgesIgnoringSafeArea(.bottom)
                     }
-                    //  캘린더
+                    //  MARK: -캘린더
                     VStack{
                         Spacer().frame(height: 10)
                         ZStack{
@@ -45,7 +46,7 @@ struct CalendarView: View {
                         }
                         Spacer().frame(height: height*0.545201668984701)
                     }
-
+                    //  MARK: -회색 배경
                     if showblind{
                         Color.black.opacity(0.4).ignoresSafeArea().transition(AnyTransition.opacity.animation(.linear(duration: 0.15)))
                             .onTapGesture {
@@ -58,9 +59,10 @@ struct CalendarView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(Text(TitleString))
-                //  상단 툴바
+                
+                //  MARK: -상단툴바
                 .toolbar {
-                    
+
                     //  네비게이션 왼쪽
                     ToolbarItem(placement: .navigationBarLeading) {
                         
@@ -68,14 +70,10 @@ struct CalendarView: View {
                         Button{
                             viewModel.currentPage = Calendar.current.date(byAdding: .month, value: -1, to: viewModel.currentPage)!
                         }label: {
-                            ZStack{
-                                HStack{
-                                    Image(systemName: "chevron.backward")
-                                        .foregroundColor(showblind ? .black.opacity(0.4) : .Color_27)
-                                    Text("이전 달")
-                                        .foregroundColor(showblind ? .black.opacity(0.4) : .Color_27)
-                                }
-                            }
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(showblind ? .black.opacity(0.4) : .Color_27)
+                            Text("이전 달")
+                                .foregroundColor(showblind ? .black.opacity(0.4) : .Color_27)
                         }
                         .disabled(showblind)
                     }
@@ -108,7 +106,7 @@ struct CalendarView_Previews: PreviewProvider {
     }
 }
 
-//  캘린더 뷰
+//  MARK: -캘린더 UIView
 struct UICalendarView : UIViewRepresentable{
     
     //  CalendarViewModel에 양도될 Binding 변수

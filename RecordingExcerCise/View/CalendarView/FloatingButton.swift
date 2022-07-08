@@ -29,13 +29,12 @@ struct ExpandableButtonView: View {
             ZStack {
                 let width = geo.size.width
                 let height = geo.size.height
-                
                 if isShowGray {
                     VStack{
                         Spacer().frame(height: isShowGray ? height*0.624478442280946 : height*0.829619921363)
                         HStack{
                             Spacer().frame(width: width*0.8051292)
-                            
+                            //  MARK: -루틴
                             NavigationLink {
                                 RoutineView()
                             } label: {
@@ -47,9 +46,13 @@ struct ExpandableButtonView: View {
                                             .resizable()
                                             .scaledToFit()
                                             .foregroundColor(.white)
+                                            .offset(x:0,y:-5)
+                                        Text("\(secondaryItems[0].label)")
+                                            .foregroundColor(.white)
+                                            .font(Font.system(size: 12, weight: .regular, design: .rounded))
+                                            .offset(x: 0, y: 16)
                                     }
                                     .padding(18)
-                                    .overlay(Text("\(secondaryItems[0].label)").foregroundColor(.white).offset(x: -width*0.144358974358974, y: 0))
                                 }
                             }
                             Spacer().frame(width: 16)
@@ -62,8 +65,15 @@ struct ExpandableButtonView: View {
                         Spacer().frame(height: height*0.721835883171071)
                         HStack{
                             Spacer().frame(width: width*0.8051292)
-                            
+                            //  MARK: -운동
                             NavigationLink {
+//                                let string = """
+//                                            허리를 중립으로 만들고,가슴을 살짝 업시킨다.
+//                                            무릎을 살짝만 굽히고 몸을 수직으로 숙이며, 손을 외회전시킨다.
+//                                            어깨가 뜨지 않도록 주의하며, 바벨을 무릎에서 떨어지지 않게 다리를 타고 배꼽으로 향하게 당겨준다.
+//                                            """
+//                                let temp : CtgryViewContent = CtgryViewContent(name: "바벨로우", explain: string, bodyPart: ["가슴","등"], detailPart: ["상부","중간"], equipment: ["바벨","덤벨"],link: "링크는 아직 없음", linkTitle: "바벨로우 하는 법")
+//                                CtgryViewStyle(content: temp)
                                 ExerciseView()
                             } label: {
                                 ZStack{
@@ -74,9 +84,13 @@ struct ExpandableButtonView: View {
                                             .resizable()
                                             .scaledToFit()
                                             .foregroundColor(.white)
+                                            .offset(x:0,y:-5)
+                                        Text("\(secondaryItems[1].label)")
+                                            .foregroundColor(.white)
+                                            .font(Font.system(size: 12, weight: .regular, design: .rounded))
+                                            .offset(x: 0, y: 16)
                                     }
                                     .padding(18)
-                                    .overlay(Text("\(secondaryItems[1].label)").foregroundColor(.white).offset(x: -width*0.144358974358974, y: 0))
                                 }
                             }
                             Spacer().frame(width: 16)
@@ -89,6 +103,7 @@ struct ExpandableButtonView: View {
                         Spacer().frame(height: height*0.916550764951321)
                         HStack{
                             Spacer().frame(width: width*0.8051292)
+                            //  MARK: -세팅
                             NavigationLink {
                                 SettingView()
                                     .navigationTitle(Text("??"))
@@ -101,10 +116,13 @@ struct ExpandableButtonView: View {
                                             .resizable()
                                             .scaledToFit()
                                             .foregroundColor(.white)
-                                            
+                                            .offset(x:0,y:-5)
+                                        Text("\(secondaryItems[2].label)")
+                                            .foregroundColor(.white)
+                                            .font(Font.system(size: 12, weight: .regular, design: .rounded))
+                                            .offset(x: 0, y: 16)
                                     }
                                     .padding(18)
-                                    .overlay(Text("\(secondaryItems[2].label)").foregroundColor(.white).offset(x: -width*0.144358974358974, y: 0))
                                 }
                             }
                             Spacer().frame(width: 16)
@@ -113,7 +131,7 @@ struct ExpandableButtonView: View {
                     .transition(.offset(x: 0, y: -height*0.097357440890125))
                 }
                 
-                //  클릭하는 뷰
+                //  MARK: -클릭해서 원 상태로 되돌리는 뷰
                 VStack{
                     Spacer().frame(height: height*0.819193324061196)
                     HStack{
@@ -134,6 +152,11 @@ struct ExpandableButtonView: View {
                                         .scaledToFit()
                                         .foregroundColor(.white)
                                         .offset(x:2,y: 2)
+                                        .offset(x:0,y:-5)
+                                    Text("시작")
+                                        .foregroundColor(.white)
+                                        .font(Font.system(size: 12, weight: .regular, design: .rounded))
+                                        .offset(x: 0, y: 16)
                                 }
                                 .padding(18)
                             }
@@ -148,7 +171,7 @@ struct ExpandableButtonView: View {
     }
 }
 
-//  액션
+//  MARK: -Actions
 struct AnimatedExpandableButton: View {
     @Binding var isShowGray : Bool
     var body: some View {
@@ -156,14 +179,14 @@ struct AnimatedExpandableButton: View {
             ExpandableButtonView(
                 primaryItem: ExpandableButtonItem(image: "plus", label:""),
                 secondaryItems: [
-                    ExpandableButtonItem(image: "lock.rotation.open", label: "루틴"),
-                    ExpandableButtonItem(image: "xmark.bin", label: "운동") ,
-                    ExpandableButtonItem(image: "archivebox", label: "설정")], isShowGray: self.$isShowGray )
+                    ExpandableButtonItem(image: "r.circle.fill", label: "루틴"),
+                    ExpandableButtonItem(image: "e.circle.fill", label: "운동") ,
+                    ExpandableButtonItem(image: "gearshape.fill", label: "설정")], isShowGray: self.$isShowGray )
             
         }
     }
 }
-
+//  MARK: -Preview
 struct AnimatedExpandableButton_Previews: PreviewProvider {
     static var previews: some View {
         AnimatedExpandableButton(isShowGray: .constant(false))

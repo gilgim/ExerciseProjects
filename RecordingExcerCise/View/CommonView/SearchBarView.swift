@@ -15,8 +15,8 @@ struct SearchBar: View {
         HStack {
             HStack {
                 Image(systemName: "magnifyingglass")
- 
-                TextField("Search", text: $text,onEditingChanged: { bool in
+                    .foregroundColor(.black.opacity(0.7))
+                TextField("검색", text: $text,onEditingChanged: { bool in
                     if bool {
                         isTouch = false
                     }
@@ -24,7 +24,7 @@ struct SearchBar: View {
                         isTouch = true
                     }
                 })
-                    .foregroundColor(.primary)
+                .foregroundColor(.primary)
  
                 if !text.isEmpty {
                     Button(action: {
@@ -36,11 +36,12 @@ struct SearchBar: View {
                     EmptyView()
                 }
             }
-            .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
             .foregroundColor(.secondary)
-            .background(.gray.opacity(0.2))
+            .background(Color.Color_15)
             .cornerRadius(10.0)
         }
         .padding(.horizontal)
+        .frame(height: 36)
     }
 }

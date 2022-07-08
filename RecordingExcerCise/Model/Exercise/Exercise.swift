@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+
 enum Equipment : String, CaseIterable{
     case babel = "바벨"
     case dumbbell = "덤벨"
@@ -24,6 +25,7 @@ enum BodyPart : String , CaseIterable{
     case arm = "팔"
     case abs = "복근"
 }
+
 class Exercise : Object{
     /**
      운동명

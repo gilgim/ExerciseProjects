@@ -4,6 +4,7 @@
 //
 //  Created by KimWooJin on 2022/06/14.
 //
+//   운동 항목에 관한 데이터를 들고 있고 그 데이터를 뷰의 이벤트에 따라 가공하여 제공함.
 
 import Foundation
 import RealmSwift
