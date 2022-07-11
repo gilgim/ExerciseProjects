@@ -1,5 +1,5 @@
 //
-//  CtgryViewStyle.swift
+//  ex_CtgryViewStyle.swift
 //  RecordingExcerCise
 //
 //  Created by KimWooJin on 2022/06/20.
@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 //  카테고리 뷰에 들어갈
-struct CtgryViewContent : Hashable {
+struct ex_CtgryViewContent : Hashable {
     //  운동명
     var name : String?
     //  동작설명
@@ -23,6 +23,10 @@ struct CtgryViewContent : Hashable {
     var equipment : [String]?
     var link : String?
     var linkTitle : String?
+    
+    var setCount = 0
+    var count = 0
+    var RPE : Double = 0
     
     func valueNilCheck()->Bool{
         guard name != nil, explain != nil, bodyPart != nil, detailPart != nil, equipment != nil, link != nil, linkTitle != nil
@@ -40,10 +44,10 @@ struct CtgryViewContent : Hashable {
         return true
     }
 }
-struct CtgryViewStyle : View {
-    @State var content : CtgryViewContent
+struct ex_CtgryViewStyle : View {
+    @State var content : ex_CtgryViewContent
     @State var isEdit : Bool = false
-    init(content:CtgryViewContent){
+    init(content:ex_CtgryViewContent){
         self.content = content
     }
     var body: some View{

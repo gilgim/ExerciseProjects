@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		C3239FB127E4815C0076BE3F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3239FB027E4815C0076BE3F /* Launch Screen.storyboard */; };
 		C3239FB727E486BB0076BE3F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3239FB627E486BB0076BE3F /* CalendarView.swift */; };
-		C33DD4EF28600B66004876D2 /* CtgryViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DD4EE28600B66004876D2 /* CtgryViewStyle.swift */; };
+		C33DD4EF28600B66004876D2 /* ex_CtgryViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DD4EE28600B66004876D2 /* ex_CtgryViewStyle.swift */; };
 		C33DD4F128600BBE004876D2 /* exerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DD4F028600BBE004876D2 /* exerContentView.swift */; };
 		C33DD4F428600E46004876D2 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DD4F328600E46004876D2 /* Util.swift */; };
 		C33DD4F628601EA2004876D2 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DD4F528601EA2004876D2 /* ExerciseModel.swift */; };
 		C33DD4F8286024F0004876D2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DD4F7286024F0004876D2 /* Storage.swift */; };
+		C340BB58287BBA46007813AF /* routine_CtgryViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C340BB57287BBA46007813AF /* routine_CtgryViewStyle.swift */; };
 		C346AC20281FC88800B9B4E3 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346AC1F281FC88800B9B4E3 /* RoutineView.swift */; };
 		C346AC22281FD0FF00B9B4E3 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346AC21281FD0FF00B9B4E3 /* ExerciseView.swift */; };
 		C346AC27281FD1D800B9B4E3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346AC26281FD1D800B9B4E3 /* SettingView.swift */; };
@@ -36,11 +37,12 @@
 		7A81559F3E9A6FBC3A3ECECF /* Pods-RecordingExcerCise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordingExcerCise.release.xcconfig"; path = "Target Support Files/Pods-RecordingExcerCise/Pods-RecordingExcerCise.release.xcconfig"; sourceTree = "<group>"; };
 		C3239FB027E4815C0076BE3F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C3239FB627E486BB0076BE3F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		C33DD4EE28600B66004876D2 /* CtgryViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtgryViewStyle.swift; sourceTree = "<group>"; };
+		C33DD4EE28600B66004876D2 /* ex_CtgryViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ex_CtgryViewStyle.swift; sourceTree = "<group>"; };
 		C33DD4F028600BBE004876D2 /* exerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exerContentView.swift; sourceTree = "<group>"; };
 		C33DD4F328600E46004876D2 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		C33DD4F528601EA2004876D2 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		C33DD4F7286024F0004876D2 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		C340BB57287BBA46007813AF /* routine_CtgryViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = routine_CtgryViewStyle.swift; sourceTree = "<group>"; };
 		C346AC1F281FC88800B9B4E3 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
 		C346AC21281FD0FF00B9B4E3 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		C346AC26281FD1D800B9B4E3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -106,7 +108,6 @@
 			children = (
 				C3BC7EFD27E1710100882B46 /* ContentView.swift */,
 				C3E3726828506BF5001E1BC1 /* SearchBarView.swift */,
-				C33DD4EE28600B66004876D2 /* CtgryViewStyle.swift */,
 				C33DD4F028600BBE004876D2 /* exerContentView.swift */,
 			);
 			path = CommonView;
@@ -125,7 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				C346AC1F281FC88800B9B4E3 /* RoutineView.swift */,
-				C3E372792858448D001E1BC1 /* NewExercise */,
+				C340BB57287BBA46007813AF /* routine_CtgryViewStyle.swift */,
 			);
 			path = RoutineView;
 			sourceTree = "<group>";
@@ -134,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				C346AC21281FD0FF00B9B4E3 /* ExerciseView.swift */,
+				C33DD4EE28600B66004876D2 /* ex_CtgryViewStyle.swift */,
 				C3E3726A2852C351001E1BC1 /* CreatExercise.swift */,
 				C3E3726C28580F1D001E1BC1 /* ExercisePopOverView.swift */,
 			);
@@ -211,13 +213,6 @@
 				C3E3726F285827D1001E1BC1 /* ExerciseViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		C3E372792858448D001E1BC1 /* NewExercise */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NewExercise;
 			sourceTree = "<group>";
 		};
 		DAB5DFE993251B246E93BACE /* Pods */ = {
@@ -345,12 +340,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3E3726928506BF5001E1BC1 /* SearchBarView.swift in Sources */,
+				C340BB58287BBA46007813AF /* routine_CtgryViewStyle.swift in Sources */,
 				C33DD4F428600E46004876D2 /* Util.swift in Sources */,
 				C3E3726B2852C351001E1BC1 /* CreatExercise.swift in Sources */,
 				C346AC22281FD0FF00B9B4E3 /* ExerciseView.swift in Sources */,
 				C398C8D1281A1EE30099A000 /* FloatingButton.swift in Sources */,
 				C346AC27281FD1D800B9B4E3 /* SettingView.swift in Sources */,
-				C33DD4EF28600B66004876D2 /* CtgryViewStyle.swift in Sources */,
+				C33DD4EF28600B66004876D2 /* ex_CtgryViewStyle.swift in Sources */,
 				C3BC7EFE27E1710100882B46 /* ContentView.swift in Sources */,
 				C33DD4F8286024F0004876D2 /* Storage.swift in Sources */,
 				C33DD4F628601EA2004876D2 /* ExerciseModel.swift in Sources */,

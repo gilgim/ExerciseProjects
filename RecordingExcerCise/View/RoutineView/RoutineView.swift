@@ -8,16 +8,8 @@
 import SwiftUI
 
 struct RoutineView: View {
-    @State var text = "b"
-    var body: some View {
-        VStack{
-            Color.black
-        }
-    }
-}
-
-struct RoutineView_Previews: PreviewProvider {
-    static var previews: some View {
-        RoutineView()
+    @State var temp = routine_CtgryViewContent(name: "초급자용", strength: "모름", bodyPart: ["등"])
+    var body : some View{
+        routine_CtgryViewStyle(content: temp)
     }
 }

@@ -12,33 +12,57 @@ import SwiftUI
 struct exerContentView : View{
     @State var text = ""
     @State var isTouch = false
-    @Binding var contents : [CtgryViewContent]?
+    @Binding var contents : [ex_CtgryViewContent]?
+    @Binding var type : IndexView.IndexType 
     var body: some View{
         ZStack{
-            
             Color.Color_13
             Color.Color_13.edgesIgnoringSafeArea(.bottom)
             VStack{
                 SearchBar(text: $text, isTouch: $isTouch)
                     .background(Color.Color_13)
-                    .onChange(of: text) { newValue in
-                        print(newValue)
-                    }
                 ScrollView{
+                    //  FIXME: 여기서 분기쳐서 루틴이랑 운동이랑 구분해주기
                     VStack{
                         if let contents = contents {
-                            ForEach(contents, id:\.self){ content in
+                            ForEach(contents, id: \.name){ content in
                                 if text != "" && content.name!.contains(text){
-                                    IndexView(content: Binding.constant(content))
+                                    IndexView(content: content, type: type)
                                 }
                                 else if text == "" {
-                                    IndexView(content: Binding.constant(content))
+                                    IndexView(content: content, type: type)
                                 }
                             }
+                        }
+                        Button{
+
+                        }label: {
+                            RoundedRectangle(cornerRadius: 13)
+                                .foregroundColor(.white)
+                                .frame(height: 46)
+                                .overlay(Image(systemName: "plus"))
+                                .padding(.horizontal,16)
                         }
                         Spacer()
                     }
                 }
+                ZStack(alignment:.top){
+                    Rectangle()
+                        .foregroundColor(.Color_09)
+                    Button{
+                        
+                    }label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 13)
+                            Label("운동 기록",systemImage: "calendar.badge.plus")
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .frame(height: 46)
+                    .padding(.horizontal,16)
+                }
+                .ignoresSafeArea()
+                .frame(height:83-34)
             }
         }
         .onTapGesture {
@@ -46,7 +70,16 @@ struct exerContentView : View{
         }
     }
     struct IndexView : View {
-        @Binding var content : CtgryViewContent
+        enum IndexType {
+            case exercise
+            case routine
+        }
+        @Binding var content : ex_CtgryViewContent
+        @Binding var type : IndexType
+        init(content : ex_CtgryViewContent = ex_CtgryViewContent(), type : IndexType = .exercise){
+            self._content = Binding.constant(content)
+            self._type = Binding.constant(type)
+        }
         var body: some View{
             ZStack{
                 HStack(spacing:0){
@@ -67,8 +100,30 @@ struct exerContentView : View{
                             .frame(height: 45, alignment: .leading)
                             .padding(.vertical,17.5)
                         Spacer()
-                        Button{
-                            
+                        
+                        Menu{
+                            Button(role:.destructive){
+                                
+                            }label: {
+                                Text("제거")
+                                Image(systemName: "trash")
+                            }
+                            Button{
+                                
+                            }label: {
+                                Text("운동 정보")
+                                Image(systemName: "info.circle")
+                            }
+                            Button{
+                            }label: {
+                                Text("운동 복제")
+                                Image(systemName: "doc.on.doc")
+                            }
+                            Button{
+                            }label: {
+                                Text("즐겨찾기")
+                                Image(systemName: "heart")
+                            }
                         }label: {
                             Image(systemName: "ellipsis")
                                 .resizable()
