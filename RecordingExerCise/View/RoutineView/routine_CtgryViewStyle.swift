@@ -18,7 +18,7 @@ struct routine_CtgryViewContent : Hashable {
     //  운동부위
     var bodyPart : [String]?
     //  운동들
-    var exercise : [ex_CtgryViewContent]?
+    var exercise : [ExerciseModel]?
     
     func valueNilCheck()->Bool{
         guard name != nil, strength != nil, bodyPart != nil
@@ -185,7 +185,7 @@ struct routine_CtgryViewStyle : View {
     }
     //  MARK: -루틴 운동 뷰
     struct IndexView : View{
-        @Binding var contents : ex_CtgryViewContent
+        @Binding var contents : ExerciseModel
         var body: some View{
             ZStack{
                 

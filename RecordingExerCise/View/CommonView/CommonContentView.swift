@@ -8,11 +8,12 @@
 
 import Foundation
 import SwiftUI
+import RealmSwift
 
-struct exerContentView : View{
+struct CommonContentView : View{
     @State var text = ""
     @State var isTouch = false
-    @Binding var contents : [ex_CtgryViewContent]?
+    @Binding var contents : [ExerciseModel]?
     @Binding var type : IndexView.IndexType 
     var body: some View{
         ZStack{
@@ -34,8 +35,9 @@ struct exerContentView : View{
                                 }
                             }
                         }
-                        Button{
-
+                        NavigationLink{
+                            let temp = Binding<ExerciseModel>.constant(ExerciseModel())
+                            exercise_CtgryView(content:temp)
                         }label: {
                             RoundedRectangle(cornerRadius: 13)
                                 .foregroundColor(.white)
@@ -74,9 +76,9 @@ struct exerContentView : View{
             case exercise
             case routine
         }
-        @Binding var content : ex_CtgryViewContent
+        @Binding var content : ExerciseModel
         @Binding var type : IndexType
-        init(content : ex_CtgryViewContent = ex_CtgryViewContent(), type : IndexType = .exercise){
+        init(content : ExerciseModel = ExerciseModel(), type : IndexType = .exercise){
             self._content = Binding.constant(content)
             self._type = Binding.constant(type)
         }
@@ -85,7 +87,8 @@ struct exerContentView : View{
                 HStack(spacing:0){
                     if content.name != nil {
                         ZStack{
-                            Text(content.detailPart![0])
+                            let text = content.detailPart![0] == "" || content.detailPart![0] == "+" ? content.bodyPart![0] : content.detailPart![0]
+                            Text(text)
                                 .lineLimit(1)
                                 .font(Font.system(size: 15))
                                 .padding(10)
@@ -103,7 +106,8 @@ struct exerContentView : View{
                         
                         Menu{
                             Button(role:.destructive){
-                                
+                                let realm = try! Realm()
+                                realm.delete(content.managedObject())
                             }label: {
                                 Text("제거")
                                 Image(systemName: "trash")

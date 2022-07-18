@@ -36,12 +36,6 @@ struct ExpandableButtonView: View {
                             Spacer().frame(width: width*0.8051292)
                             //  MARK: -루틴
                             NavigationLink {
-//                                let string = """
-//                                            허리를 중립으로 만들고,가슴을 살짝 업시킨다.
-//                                            무릎을 살짝만 굽히고 몸을 수직으로 숙이며, 손을 외회전시킨다.
-//                                            어깨가 뜨지 않도록 주의하며, 바벨을 무릎에서 떨어지지 않게 다리를 타고 배꼽으로 향하게 당겨준다.
-//                                            """
-//                                let temp : CtgryViewContent = CtgryViewContent(name: "바벨로우", explain: string, bodyPart: ["가슴","등"], detailPart: ["상부","중간"], equipment: ["바벨","덤벨"],link: "링크는 아직 없음", linkTitle: "바벨로우 하는 법")
                                 RoutineView()
                             } label: {
                                 ZStack{
@@ -73,13 +67,6 @@ struct ExpandableButtonView: View {
                             Spacer().frame(width: width*0.8051292)
                             //  MARK: -운동
                             NavigationLink {
-//                                let string = """
-//                                            허리를 중립으로 만들고,가슴을 살짝 업시킨다.
-//                                            무릎을 살짝만 굽히고 몸을 수직으로 숙이며, 손을 외회전시킨다.
-//                                            어깨가 뜨지 않도록 주의하며, 바벨을 무릎에서 떨어지지 않게 다리를 타고 배꼽으로 향하게 당겨준다.
-//                                            """
-//                                let temp : CtgryViewContent = CtgryViewContent(name: "바벨로우", explain: string, bodyPart: ["가슴","등"], detailPart: ["상부","중간"], equipment: ["바벨","덤벨"],link: "링크는 아직 없음", linkTitle: "바벨로우 하는 법")
-//                                CtgryViewStyle(content: temp)
                                 ExerciseView()
                             } label: {
                                 ZStack{
