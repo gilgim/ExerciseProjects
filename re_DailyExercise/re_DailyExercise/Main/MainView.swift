@@ -10,8 +10,8 @@ import SwiftUI
 struct MainView: View {
     let bgroundColors: [Color] = [.red,.white,.blue]
     var body: some View {
-        SafeVStack(bgroundColors){
-            TabView(selection: .constant(1)){
+        SafeVStack(bgroundColors) {
+            TabView(selection: .constant(1)) {
                 ItemZstack(tag: 0, tagImage: "calendar", tagText: "기록보기") {
                     
                 }
@@ -19,7 +19,7 @@ struct MainView: View {
                     NavigationLink{
                         ChoiceExercise()
                     }label: {
-                        RoundedRecView(.indigo,cornerValue: 20){
+                        RoundedRecView(.indigo,cornerValue: 20) {
                             Text("운동하기").foregroundColor(.black)
                         }
                         .padding()
@@ -34,20 +34,23 @@ struct MainView: View {
 }
 struct ChoiceExercise: View {
     var body: some View {
-        SafeVStack{
-            NavigationLink{
+        SafeVStack {
+            NavigationLink {
                 RoutineView()
             }label: {
-                RoundedRecView(.mint,cornerValue: 20){
+                RoundedRecView(.mint,cornerValue: 20) {
                     Text("루틴으로 하기").foregroundColor(.black)
                 }
                 .padding()
             }
-            NavigationLink{
+            NavigationLink {
                 ExerciseView()
             }label: {
-                RoundedRecView(.green,cornerValue: 20){
+                RoundedRecView(.green,cornerValue: 20) {
                     Text("개별 운동으로 하기").foregroundColor(.black)
+                        .onAppear {
+                            try? Util.realmURL()
+                        }
                 }
                 .padding()
             }

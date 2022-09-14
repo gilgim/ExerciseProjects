@@ -53,11 +53,12 @@ struct RoutineView: View {
                     NavigationLink {
                         RoutineCreatView()
                     }label: {
-                        RoundedRecView(.blue, cornerValue: 13) {
+                        RoundedRecView(selectRoutine.isEmpty ? .gray : .blue, cornerValue: 13) {
                             Text("운동하기").foregroundColor(.white)
                         }
                         .frame(height: AboutSize.deviceSize[1]*0.07)
                     }
+                    .disabled(selectRoutine.isEmpty)
                 }
                 else {
                     Button {
@@ -119,7 +120,7 @@ struct RoutineView: View {
         .alert("오류",isPresented: $isAlert) {
             Button("확인"){}
         }message: {
-            Text("저장된 운동이 없습니다.")
+            Text("저장된 루틴이 없습니다.")
         }
     }
 }
@@ -253,14 +254,18 @@ struct ChoiceIndexView: View {
     var body: some View {
         HStack {
             Text(realExercise.exercise).padding()
-            TextField("",text: $vm.tempInputSet, onEditingChanged: { _ in
-                realExercise.setCount = vm.inputSet
-                print(realExercise.setCount)
-            }).keyboardType(.numberPad).foregroundColor(.black).background(.gray)
-            TextField("",text: $vm.tempInputRestTime, onEditingChanged: { _ in
-                realExercise.restTime = vm.inputRestTime
-                print(realExercise.restTime)
-            }).keyboardType(.numberPad).foregroundColor(.black).background(.gray)
+            TextField("",text: $vm.tempInputSet)
+                .keyboardType(.numberPad).foregroundColor(.black).background(.gray)
+            TextField("",text: $vm.tempInputRestTime)
+                .keyboardType(.numberPad).foregroundColor(.black).background(.gray)
+        }
+        .onChange(of: vm.inputRestTime) { newValue in
+            print(realExercise.restTime)
+            realExercise.restTime = newValue
+        }
+        .onChange(of: vm.inputSet) { newValue in
+            realExercise.setCount = vm.inputSet
+            print(realExercise.setCount)
         }
     }
 }
