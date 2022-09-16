@@ -140,9 +140,6 @@ struct ContentIndexView<Content>: View where Content: View {
                         Circle().stroke(selectObject ? .blue:.black, lineWidth: 1)
                     }
                     .animation(.linear(duration: 0.1), value: selectObject)
-                    .onAppear {
-                        
-                    }
             }
             ZStack {
                 Color.red
@@ -178,6 +175,12 @@ struct ContentIndexView<Content>: View where Content: View {
             .offset(x:wholeX)
             .cornerRadius(corner)
             .transition(.opacity)
+        }
+        .onChange(of: wholeIsSelect, perform: { _ in
+            x = 0
+        })
+        .onAppear {
+            x = 0
         }
     }
 }

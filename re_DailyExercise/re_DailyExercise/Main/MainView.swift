@@ -16,14 +16,7 @@ struct MainView: View {
                     
                 }
                 ItemZstack(tag: 1, tagImage: "hand.thumbsup.fill", tagText: "운동하기") {
-                    NavigationLink{
-                        ChoiceExercise()
-                    }label: {
-                        RoundedRecView(.indigo,cornerValue: 20) {
-                            Text("운동하기").foregroundColor(.black)
-                        }
-                        .padding()
-                    }
+                    ChoiceExercise()
                 }
                 ItemZstack(tag: 2, tagImage: "gearshape.fill", tagText: "설정") {
                     

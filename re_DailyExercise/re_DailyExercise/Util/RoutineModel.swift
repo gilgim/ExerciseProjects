@@ -33,10 +33,10 @@ struct RoutineModel: Model {
 }
 
 extension RoutineModel: RealmCRUD {
-    func addRealm(targetModel: RoutineModel, notify: (ErrorMessage?) -> ()) {
+    func addRealm(targetModel: structObject, notify: (ErrorMessage?) -> ()) {
         //  C
         let saveObject = realmObject().fromModel(model: targetModel)
-        if realm.object(ofType: realmObject.self, forPrimaryKey: saveObject.name) == nil && !targetModel.choiceExercises.isEmpty {
+        if targetModel.name != "" && realm.object(ofType: realmObject.self, forPrimaryKey: saveObject.name) == nil && !targetModel.choiceExercises.isEmpty {
             try! realm.write {
                 realm.add(saveObject)
                 notify(nil)
@@ -66,11 +66,11 @@ extension RoutineModel: RealmCRUD {
         return objects
     }
     //  U
-    func updateRealm(targetModel: RoutineModel, notify: (ErrorMessage?) -> ()) {
+    func updateRealm(targetModel: structObject, notify: (ErrorMessage?) -> ()) {
         
     }
     //  D
-    func deleteRealm(targetModel: RoutineModel, notify: (ErrorMessage?) -> ()) {
+    func deleteRealm(targetModel: structObject, notify: (ErrorMessage?) -> ()) {
         let realm = try! Realm()
         if let object = realm.object(ofType: realmObject.self, forPrimaryKey: targetModel.name) {
             for choiceExercise in object.choiceExercises {

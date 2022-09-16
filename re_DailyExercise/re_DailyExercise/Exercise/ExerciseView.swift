@@ -55,12 +55,13 @@ struct ExerciseView: View {
                     NavigationLink {
                         ExerciseCreateView()
                     }label: {
-                        RoundedRecView(.blue, cornerValue: 13) {
+                        RoundedRecView(selectExercises.isEmpty ? .gray : .blue, cornerValue: 13) {
                             Text("운동하기").foregroundColor(.white)
                         }
                         .frame(height: AboutSize.deviceSize[1]*0.07)
                         .padding(.vertical,10)
                     }
+                    .disabled(selectExercises.isEmpty)
                 }
                 else {
                     Button {
@@ -76,6 +77,11 @@ struct ExerciseView: View {
             }
         }
         .onAppear {
+            isSelect = false
+            selectExercises = []
+            notAniIsSelect = false
+            isAlert = false
+            searchText = ""
             vm.updateExercisesFromRealm()
         }
         .navigationBarBackButtonHidden(true)
@@ -83,7 +89,7 @@ struct ExerciseView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{
                     if !vm.exercises.isEmpty {
-                        if self.isSelect {
+                        if self.notAniIsSelect {
                             self.vm.deleteExercises(targetModels: self.selectExercises)
                             self.vm.updateExercisesFromRealm()
                         }
@@ -104,6 +110,7 @@ struct ExerciseView: View {
                 if !isSheet {
                     if notAniIsSelect {
                         Button{
+                            self.selectExercises = []
                             self.notAniIsSelect.toggle()
                             self.isSelect.toggle()
                         }label: {
@@ -122,6 +129,7 @@ struct ExerciseView: View {
                 else {
                     if notAniIsSelect {
                         Button {
+                            self.selectExercises = []
                             self.notAniIsSelect.toggle()
                             self.isSelect.toggle()
                         }label: {
@@ -180,6 +188,11 @@ struct ExerciseIndexView: View {
             }
         }
         .frame(height: AboutSize.deviceSize[1]*0.1)
+        .onChange(of: exercises.count) { _ in
+            if exercises.isEmpty {
+                selectObject = false
+            }
+        }
         .onTapGesture {
             if isSheet {
                 isSelect = true

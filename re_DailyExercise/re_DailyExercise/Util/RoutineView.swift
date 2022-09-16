@@ -74,6 +74,11 @@ struct RoutineView: View {
             }
         }
         .onAppear {
+            isSelect = false
+            selectRoutine = []
+            notAniIsSelect = false
+            isAlert = false
+            searchText = ""
             vm.updateRoutinesFromRealm()
         }
         .navigationBarBackButtonHidden(true)
@@ -130,6 +135,8 @@ struct RoutineIndexView: View {
     @Binding var routine: RoutineModel
     @Binding var isSelect: Bool
     @State var selectObject: Bool = false
+    @State var isNavigationLink: Bool = false
+    @State var isDoExercise: Bool = false
     let action: ()->()
     init(routines: Binding<Array<RoutineModel>>, routine: Binding<RoutineModel>,
          isSelect: Binding<Bool>,
@@ -148,6 +155,11 @@ struct RoutineIndexView: View {
             HStack {
                 Text(routine.name).foregroundColor(.black)
             }
+            .background {
+                NavigationLink(destination: DoExerciseView(choiceRoutine: $routine), isActive: $isNavigationLink) {
+                    EmptyView()
+                }
+            }
         }
         .frame(height: AboutSize.deviceSize[1]*0.1)
         .onTapGesture {
@@ -165,6 +177,15 @@ struct RoutineIndexView: View {
                                     }
                 }
             }
+            else {
+                isDoExercise.toggle()
+            }
+        }
+        .alert("운동 시작",isPresented: $isDoExercise) {
+            Button("취소"){}
+            Button("확인"){isNavigationLink.toggle()}
+        }message: {
+            Text("\"\(routine.name)\" 루틴을 시작하시겠습니까?")
         }
     }
 }

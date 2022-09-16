@@ -36,3 +36,17 @@ extension UIColor {
         self.init(red: r, green: g, blue: b, alpha: 1)
     }
 }
+
+extension UINavigationController: UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if title == ""{
+            return false
+        }else {
+            return viewControllers.count > 1
+        }
+    }
+}

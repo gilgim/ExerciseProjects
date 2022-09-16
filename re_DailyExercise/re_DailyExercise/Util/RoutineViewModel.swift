@@ -182,9 +182,13 @@ extension RoutineViewModel {
         print("Routine : \(choiceExercises)")
     }
     func removeList(at offsets: IndexSet) {
+        print("Change \(choiceExercises)")
         self.choiceExercises.remove(atOffsets: offsets)
+        print("Current List \(choiceExercises)")
     }
     func moveList(from source: IndexSet, to destination: Int) {
+        print("Move \(choiceExercises)")
         self.choiceExercises.move(fromOffsets: source, toOffset: destination)
+        print("Current List \(choiceExercises)")
     }
 }

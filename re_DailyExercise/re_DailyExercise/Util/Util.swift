@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 import SwiftUI
 import RealmSwift
+//  MARK: -App의 Scene 상태 관리 싱글톤
+class AppStatusManager {
+    var isActive = false
+    static var shared = AppStatusManager()
+}
 //  MARK: -사이즈 관련 함수
 struct AboutSize {
     static let deviceSize: [CGFloat] = [UIScreen.main.bounds.width,UIScreen.main.bounds.height]
@@ -34,12 +39,14 @@ struct Util {
         }
     }
     /**
-     에러 메세지 rawValue를 생략하게 해주는 함수
+     에러 메세지
      */
     static func omiErr(value: ErrorMessage)->String {
         print(value.rawValue)
         return value.rawValue
     }
+    
+    //  rawValue를 생략하게 해주는 함수
     static func omiExercise(value: RealmObjectExercise.VariableName)->String {
        return value.rawValue
     }
@@ -48,5 +55,14 @@ struct Util {
     }
     static func omiRoutineExercise(value: RealmObjectRoutineExerciseModel.VariableName)->String {
        return value.rawValue
+    }
+    static func omiDoExerciseSetDetail(value: RealmObjectDoExerciseSetDetail.VariableName)->String {
+       return value.rawValue
+    }
+    static func omiDoExerciseDetail(value: RealmObjectDoExerciseDetail.VariableName)->String {
+        return value.rawValue
+    }
+    static func omiDoExercise(value: RealmObjectDoExercise.VariableName)->String {
+        return value.rawValue
     }
 }
