@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     let bgroundColors: [Color] = [.red,.white,.blue]
+    @StateObject static var vm: MainViewModel = .init()
     var body: some View {
         SafeVStack(bgroundColors) {
             TabView(selection: .constant(1)) {
@@ -48,6 +49,7 @@ struct ChoiceExercise: View {
                 .padding()
             }
         }
+        .navigationTitle("방식 선택")
     }
 }
 struct MainView_Previews: PreviewProvider {

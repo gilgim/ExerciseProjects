@@ -43,7 +43,7 @@ extension UINavigationController: UIGestureRecognizerDelegate {
         interactivePopGestureRecognizer?.delegate = self
     }
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if title == ""{
+        if  re_DailyExerciseApp.disableScroll {
             return false
         }else {
             return viewControllers.count > 1

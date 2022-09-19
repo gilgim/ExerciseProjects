@@ -16,7 +16,7 @@ class ExerciseViewModel: ObservableObject {
     @Published var model = ExerciseModel()
     @Published var exercises: [ExerciseModel] = []
     @Published var createAlertBool: Bool = false
-    
+    var errorMessage: String = ""
     func createExercise() {
         /**
          새로운 운동을 추가하는 함수
@@ -29,6 +29,22 @@ class ExerciseViewModel: ObservableObject {
             else {
                 createAlertBool = true
                 print("\(String(describing: error?.rawValue)) : Not add Realm about \(self.model)")
+                switch error {
+                case.realmAddFail:
+                    errorMessage = "이미 있는 이름입니다. 변경해주세요."
+                case.realmIdentiferError:
+                    if self.model.name == "" {
+                        errorMessage = "이름이 입력되지 않았습니다."
+                    }
+                    else if self.model.part.count == 0 {
+                        errorMessage = "운동 부위가 선택되지 않았습니다."
+                    }
+                    else if self.model.equiment.count == 0 {
+                        errorMessage = "기구가 선택되지 않았습니다."
+                    }
+                default:
+                    errorMessage = "알 수 없는 에러입니다."
+                }
             }
         }
     }

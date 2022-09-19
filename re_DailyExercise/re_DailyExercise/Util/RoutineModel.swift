@@ -23,6 +23,7 @@ struct RoutineModel: Model {
         guard let name = object.value(forKey: Util.omiRoutine(value: .name)) as? String,
               let choiceExercises = object.value(forKey: Util.omiRoutine(value: .choiceExercises)) as? List<RealmObjectRoutineExerciseModel> else {return structObject()}
         self.name = name
+        self.choiceExercises = []
         for choiceExercise in choiceExercises {
             var temp = RoutineExerciseModel()
             let tempValue = temp.fromRealmObject(object: choiceExercise)
@@ -41,7 +42,7 @@ extension RoutineModel: RealmCRUD {
                 realm.add(saveObject)
                 notify(nil)
             }
-        }else if targetModel.name == "" || !targetModel.choiceExercises.isEmpty {
+        }else if targetModel.name == "" || targetModel.choiceExercises.isEmpty {
             notify(.realmIdentiferError)
         }else {
             notify(.realmAddFail)
@@ -118,7 +119,9 @@ struct RoutineExerciseModel: Model {
     var exercise: String = ""
     var restTime: Int = 0
     var setCount: Int = 0
-
+    var part: String = ""
+    var equiment: String = ""
+    
     mutating func fromRealmObject(object: realmObject) -> structObject {
         guard let name =  object.value(forKey: Util.omiRoutineExercise(value: .name)) as? String,
               let exercise =  object.value(forKey: Util.omiRoutineExercise(value: .exercise)) as? String,

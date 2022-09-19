@@ -20,6 +20,7 @@ class RoutineViewModel: ObservableObject {
     @Published var createAlertBool: Bool = false
     //  유저가 입력하는 운동 세트 수
     @Published var inputSetString: String = ""
+    var errorMessege: String = ""
     var inputSet: Int {
         get {
             return Int(inputSetString) ?? 0
@@ -35,7 +36,7 @@ class RoutineViewModel: ObservableObject {
                 if !self.inputSetString.allSatisfy({$0.isNumber}) {
                     self.inputSetString = ""
                 }
-                if self.inputSetString.count > 3 {
+                if self.inputSetString.count > 2 {
                     self.inputSetString.removeLast()
                 }
             }
@@ -58,7 +59,7 @@ class RoutineViewModel: ObservableObject {
                 if !self.inputRestTimeString.allSatisfy({$0.isNumber}) {
                     self.inputRestTimeString = ""
                 }
-                if self.inputRestTimeString.count > 4 {
+                if self.inputRestTimeString.count > 3 {
                     self.inputRestTimeString.removeLast()
                 }
 
@@ -74,6 +75,7 @@ extension RoutineViewModel {
          */
         for (i, choiceExercise) in choiceExercises.enumerated() {
             guard choiceExercise.exercise != "" && choiceExercise.setCount != 0  && choiceExercise.restTime != 0 else {
+                self.errorMessege = choiceExercise.setCount == 0 ? "세트 값을 입력해주세요.":"휴식 시간을 입력해주세요."
                 self.createAlertBool = true
                 return}
             let nowDate = Date()
@@ -91,6 +93,19 @@ extension RoutineViewModel {
             else {
                 createAlertBool = true
                 print("\(String(describing: error?.rawValue)) : Not add Realm about \(self.model)")
+                switch error {
+                case.realmAddFail:
+                    errorMessege = "이미 있는 이름입니다. 변경해주세요."
+                case.realmIdentiferError:
+                    if model.name == "" {
+                        errorMessege = "이름이 입력되지 않았습니다."
+                    }
+                    else if model.choiceExercises.isEmpty {
+                        errorMessege = "선택된 운동이 없습니다."
+                    }
+                default:
+                    errorMessege = "알 수 없는 에러입니다."
+                }
             }
         }
     }

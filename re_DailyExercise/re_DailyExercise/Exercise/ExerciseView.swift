@@ -84,7 +84,9 @@ struct ExerciseView: View {
             searchText = ""
             vm.updateExercisesFromRealm()
         }
-        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(isSheet ? "선택하기":"운동 목록")
+        .navigationBarBackButtonHidden(notAniIsSelect)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{
@@ -116,14 +118,6 @@ struct ExerciseView: View {
                         }label: {
                             Text("취소")
                         }
-                    }
-                    else {
-                        Button{
-                            mode.wrappedValue.dismiss()
-                        }label: {
-                            Text("뒤로가기")
-                        }
-                        .disabled(self.notAniIsSelect)
                     }
                 }
                 else {
@@ -254,7 +248,8 @@ struct ExerciseCreateView: View {
                 }
             }
         }
-        .navigationBarBackButtonHidden(true)
+        .navigationTitle("운동 생성")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{
@@ -266,19 +261,11 @@ struct ExerciseCreateView: View {
                     Text("저장")
                 }
             }
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button{
-                    mode.wrappedValue.dismiss()
-                }label: {
-                    Text("뒤로가기")
-                }
-            }
         }
         .alert("오류",isPresented: $vm.createAlertBool) {
             Button("확인"){}
         }message: {
-            let text = vm.inputErrorNotify() ?? ""
-            Text(text)
+            Text(vm.errorMessage)
         }
     }
 }

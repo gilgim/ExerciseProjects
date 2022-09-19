@@ -48,30 +48,6 @@ struct RoutineView: View {
                     }
                 }
             }
-            if isSelect {
-                if !isSheet {
-                    NavigationLink {
-                        RoutineCreatView()
-                    }label: {
-                        RoundedRecView(selectRoutine.isEmpty ? .gray : .blue, cornerValue: 13) {
-                            Text("운동하기").foregroundColor(.white)
-                        }
-                        .frame(height: AboutSize.deviceSize[1]*0.07)
-                    }
-                    .disabled(selectRoutine.isEmpty)
-                }
-                else {
-                    Button {
-                        isSheet = false
-                        sheetRoutines = selectRoutine
-                    }label: {
-                        RoundedRecView(.blue, cornerValue: 13) {
-                            Text("추가하기").foregroundColor(.white)
-                        }
-                        .frame(height: AboutSize.deviceSize[1]*0.07)
-                    }
-                }
-            }
         }
         .onAppear {
             isSelect = false
@@ -81,9 +57,24 @@ struct RoutineView: View {
             searchText = ""
             vm.updateRoutinesFromRealm()
         }
-        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("루틴 목록")
+        .navigationBarBackButtonHidden(notAniIsSelect)
         .toolbar {
-
+            ToolbarItem(placement: .navigationBarLeading) {
+                if self.notAniIsSelect {
+                    Button {
+                        withAnimation {
+                            self.isSelect.toggle()
+                        }
+                        self.notAniIsSelect.toggle()
+                        self.selectRoutine = []
+                    }label: {
+                        Text("취소")
+                    }
+                }
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{
                     if !vm.routines.isEmpty {
@@ -99,20 +90,13 @@ struct RoutineView: View {
                         self.isAlert = true
                     }
                 }label: {
-                    Text(self.notAniIsSelect ? selectRoutine.isEmpty ? "취소":"삭제하기":"선택")
-                        .foregroundColor(self.notAniIsSelect ? .red:.blue)
+                    Text(self.notAniIsSelect ? "삭제하기":"선택")
+                        .foregroundColor(self.notAniIsSelect ? self.notAniIsSelect && selectRoutine.isEmpty ? .gray:.red:.blue)
                 }
+                .disabled(notAniIsSelect && selectRoutine.isEmpty)
             }
             ToolbarItem(placement: .navigationBarLeading) {
-                if !isSheet {
-                    Button{
-                        mode.wrappedValue.dismiss()
-                    }label: {
-                        Text("뒤로가기")
-                    }
-                    .disabled(self.notAniIsSelect)
-                }
-                else {
+                if isSheet {
                     Button{
                         self.isSheet = false
                     }label: {
@@ -156,12 +140,20 @@ struct RoutineIndexView: View {
                 Text(routine.name).foregroundColor(.black)
             }
             .background {
-                NavigationLink(destination: DoExerciseView(choiceRoutine: $routine), isActive: $isNavigationLink) {
+                NavigationLink(destination: DoExerciseView(mainVm: MainView.vm, choiceRoutine: $routine), isActive: $isNavigationLink) {
                     EmptyView()
                 }
             }
         }
         .frame(height: AboutSize.deviceSize[1]*0.1)
+        .onAppear {
+            print(routine)
+        }
+        .onChange(of: routines.count) { _ in
+            if routines.isEmpty {
+                selectObject = false
+            }
+        }
         .onTapGesture {
             if isSelect {
                 self.selectObject.toggle()
@@ -223,18 +215,15 @@ struct RoutineCreatView: View {
                 }.frame(height: AboutSize.deviceSize[1]*0.7)
             }
         }
-        .navigationBarBackButtonHidden(true)
+        .navigationTitle("루틴 생성")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement:.navigationBarLeading) {
-                Button {
-                    mode.wrappedValue.dismiss()
-                }label: {
-                    Text("뒤로가기")
-                }
-            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     vm.createRoutine()
+                    if !vm.createAlertBool {
+                        mode.wrappedValue.dismiss()
+                    }
                 }label: {
                     Text("완료")
                 }
@@ -258,9 +247,7 @@ struct RoutineCreatView: View {
         .alert("오류",isPresented: $vm.createAlertBool) {
             Button("확인"){}
         }message: {
-//            let text = vm.inputErrorNotify() ?? ""
-//            Text(text)
-            Text("오류입니다")
+            Text(vm.errorMessege)
         }
     }
 }
