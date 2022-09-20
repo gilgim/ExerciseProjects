@@ -239,7 +239,7 @@ struct SearchBar: View {
     @Binding var backColor: Color
     @Binding var text: String
     let action: ()->()
-    init(_ backColor: Binding<Color> = .constant(.gray.opacity(0.4)),text: Binding<String>, action: @escaping () -> Void) {
+    init(_ backColor: Binding<Color> = .constant(.searchBarColor),text: Binding<String>, action: @escaping () -> Void) {
         self._backColor = backColor
         self._text = text
         self.action = action
@@ -269,8 +269,8 @@ struct SearchBar: View {
             .background(backColor)
             .cornerRadius(10.0)
         }
-        .padding(.horizontal)
-        .frame(height: 36)
+        .padding(.horizontal,16)
+        .frame(height: AboutSize.deviceSize[1]*0.044)
     }
 }
 
@@ -288,3 +288,59 @@ struct CustomListView<Content>: View where Content: View{
         .listStyle(InsetListStyle())
     }
 }
+struct KeywordSearchView: View {
+    var array: [String]
+    @Binding var text: String
+    var action: () -> ()
+    init(array: [String], text: Binding<String>, action: @escaping () -> Void) {
+        self.array = array
+        self._text = text
+        self.action = action
+    }
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 8) {
+                ForEach(array, id: \.self) { i in
+                    Button {
+                        if text == i {
+                            text = ""
+                        }
+                        else {
+                            text = i
+                        }
+                    }label: {
+                        Text(i)
+                    }
+                    .buttonStyle(quickButtonStyle(text: i, selectText: $text))
+                }
+            }
+            .padding(.vertical,1.5)
+            .padding(.horizontal,16)
+        }
+        .frame(height: AboutSize.deviceSize[1]*0.049)
+        .onChange(of: text) { _ in
+            action()
+        }
+    }
+    struct quickButtonStyle: ButtonStyle {
+        var text: String
+        @Binding var selectText: String
+        func makeBody(configuration: Configuration) -> some View {
+            
+            RoundedRecView(compareText() ? .buttonSelectBackColor:.white, cornerValue: 12,
+                           strokeColor: compareText() ? .buttonSelectColor:.clear, strokeLine: 1.5) {
+                configuration.label
+                    .foregroundColor(compareText() ? .buttonSelectColor:.buttonGray)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical,AboutSize.deviceSize[1]*0.012)
+                    .font(compareText() ? .system(size: AboutSize.deviceSize[1]*0.021,weight: .semibold):.system(size: AboutSize.deviceSize[1]*0.021,weight: .regular))
+            }
+            .shadow(color: .almostShadowColor.opacity(0.2), radius: 4,y: 3)
+
+        }
+        func compareText() -> Bool {
+            return text == selectText
+        }
+    }
+}
+

@@ -65,13 +65,13 @@ struct DoExerciseView: View {
         .onAppear {
             print("DoExercise: \(choiceRoutine)")
             vm.choiceRoutine = choiceRoutine
-            re_DailyExerciseApp.disableScroll = true
+            UINavigationController.disableScroll = true
         }
         .onDisappear {
             if isFinish {
                 mainVm.stopTime()
             }
-            re_DailyExerciseApp.disableScroll = false
+            UINavigationController.disableScroll = false
         }
         
         //  MARK: -Toolbar

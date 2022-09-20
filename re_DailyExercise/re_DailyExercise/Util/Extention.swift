@@ -22,6 +22,15 @@ extension Color {
         let b = Double((rgb >> 0) & 0xFF) / 255
         self.init(red: r, green: g, blue: b)
     }
+    static let safeTopBottomColor = Color(hex: "e5e3ee")
+    static let safeMainColor = Color(hex: "efedf4")
+    static let searchBarColor = Color(hex: "dcdbe2")
+    static let fixObjectColor = Color(hex: "eeeefc")
+    static let almostFontColor = Color(hex: "8484c2")
+    static let almostShadowColor = Color(hex: "BCBDE1")
+    static let buttonGray = Color(hex: "898990")
+    static let buttonSelectColor = Color(hex: "7875b9")
+    static let buttonSelectBackColor = Color(hex: "f9f7ff")
 }
 
 extension UIColor {
@@ -42,8 +51,9 @@ extension UINavigationController: UIGestureRecognizerDelegate {
         super.viewDidLoad()
         interactivePopGestureRecognizer?.delegate = self
     }
+    static var disableScroll: Bool = false
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if  re_DailyExerciseApp.disableScroll {
+        if  UINavigationController.disableScroll {
             return false
         }else {
             return viewControllers.count > 1

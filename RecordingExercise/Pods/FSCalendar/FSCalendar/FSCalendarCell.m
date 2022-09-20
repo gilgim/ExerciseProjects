@@ -12,7 +12,6 @@
 #import "FSCalendarDynamicHeader.h"
 #import "FSCalendarConstants.h"
 
-//  다른 클래스에서 사용불가
 @interface FSCalendarCell ()
 
 @property (readonly, nonatomic) UIColor *colorForCellFill;
@@ -286,9 +285,6 @@
 - (UIColor *)colorForTitleLabel
 {
     if (self.selected) {
-        return self.preferredTitleSelectionColor ?: [self colorForCurrentStateInDictionary:_appearance.titleColors];
-    }
-    if (self.placeholder) {
         return self.preferredTitleSelectionColor ?: [self colorForCurrentStateInDictionary:_appearance.titleColors];
     }
     return self.preferredTitleDefaultColor ?: [self colorForCurrentStateInDictionary:_appearance.titleColors];

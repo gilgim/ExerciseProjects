@@ -19,16 +19,26 @@ struct ExerciseView: View {
     @State var searchText = ""
     @Binding var isSheet: Bool
     @Binding var sheetExercises: [ExerciseModel]
+    @State var qickSearch: String = ""
+    let qickArray: [String] = ["즐겨찾기 운동", "가슴", "등", "어깨", "팔", "복근"]
     init(isSheet: Binding<Bool> = .constant(false),
          sheetExercises: Binding<Array<ExerciseModel>> = .constant([])) {
         self._isSheet = isSheet
         self._sheetExercises = sheetExercises
     }
     var body: some View {
-        SearchBar(text: $searchText) {
-            vm.updateExercisesFromRealm(key: searchText)
-        }
-        SafeVStack {
+        //  운동목록
+        SafeVStack([.safeTopBottomColor,.safeMainColor,.safeTopBottomColor]) {
+            //  키보드검색바
+            SearchBar(text: $searchText) {
+                vm.updateExercisesFromRealm(type: .keyboard, key: searchText)
+            }
+            .padding(.vertical,AboutSize.deviceSize[1]*0.012)
+            //  퀵 검색바
+            KeywordSearchView(array: qickArray, text: $qickSearch) {
+                vm.updateExercisesFromRealm(type: .button, key: qickSearch)
+            }
+            .padding(.bottom,AboutSize.deviceSize[1]*0.024)
             ScrollView(showsIndicators: false) {
                 ForEach($vm.exercises,id: \.name) { $exercise in
                     ExerciseIndexView(exercises: $selectExercises,
@@ -37,16 +47,21 @@ struct ExerciseView: View {
                                       isSheet: $isSheet) {
                         vm.updateExercisesFromRealm()
                     }
+                    .shadow(color: .almostShadowColor.opacity(0.2), radius: 4,y: 3)
+                    .padding(.horizontal,16)
+                    .padding(.bottom,AboutSize.deviceSize[1]*0.024)
                 }
                 if !notAniIsSelect {
                     NavigationLink {
                         ExerciseCreateView()
                     }label: {
-                        RoundedRecView(.blue, cornerValue: 13) {
+                        RoundedRecView(.white, cornerValue: 13) {
                             Image(systemName: "plus").foregroundColor(.black)
                                 .padding()
                         }
-                        .frame(height: AboutSize.deviceSize[1]*0.07)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, AboutSize.deviceSize[1]*0.006)
+                        .frame(height: AboutSize.deviceSize[1]*0.057)
                     }
                 }
             }
@@ -104,7 +119,7 @@ struct ExerciseView: View {
                     }
                 }label: {
                     Text(self.notAniIsSelect ? "삭제하기":"선택")
-                        .foregroundColor(self.notAniIsSelect ? self.notAniIsSelect && selectExercises.isEmpty ? .gray:.red:.blue)
+                        .foregroundColor(self.notAniIsSelect ? self.notAniIsSelect && selectExercises.isEmpty ? .gray:.red:.almostFontColor)
                 }
                 .disabled(notAniIsSelect && selectExercises.isEmpty)
             }
@@ -139,7 +154,6 @@ struct ExerciseView: View {
                 }
             }
         }
-        .padding(.horizontal,16)
         .alert("오류",isPresented: $isAlert) {
             Button("확인"){}
         }message: {
@@ -172,14 +186,35 @@ struct ExerciseIndexView: View {
         self.action = action
     }
     var body: some View {
-        ContentIndexView(.purple,corner: 13
+        ContentIndexView(.white,corner: 15
                          ,wholeIsSelect: $isSelect, selectObject: $selectObject){
             vm.deleteExercise(targetModel: exercise)
             action()
         }content: {
             HStack {
-                Text(exercise.name)
+                RoundedRecView(.fixObjectColor, cornerValue: 13) {
+                    Text("\(exercise.part[0])")
+                        .padding(.horizontal, 20)
+                        .padding(.vertical,AboutSize.deviceSize[1]*0.012)
+                }
+                .frame(width: 70, height: AboutSize.deviceSize[1]*0.02)
+                Text("\(exercise.name)")
+                Spacer()
+                Button {
+                    
+                }label: {
+                    ZStack {
+                        Image(systemName: "ellipsis")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(.horizontal, 2)
+                    }
+                    .frame(width: 32)
+                    .padding(.trailing, 10)
+                }
             }
+            .padding(.horizontal, 10)
+            .foregroundColor(.almostFontColor)
         }
         .frame(height: AboutSize.deviceSize[1]*0.1)
         .onChange(of: exercises.count) { _ in
