@@ -65,4 +65,7 @@ struct Util {
     static func omiDoExercise(value: RealmObjectDoExercise.VariableName)->String {
         return value.rawValue
     }
+	static func omiDetailParts(value: RealmObjectDetail.VariableName)->String {
+		return value.rawValue
+	}
 }

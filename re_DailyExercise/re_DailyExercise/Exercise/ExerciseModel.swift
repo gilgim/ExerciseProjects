@@ -18,31 +18,35 @@ struct ExerciseModel: Model {
     var explain: String
     var link: String
     var part: String
+	var favorite: Bool
     var detailPart: Array<String>
     var equiment: Array<String>
     
     //  초기값 할당이 필요하면 사용하기 위한 init
-    init(name: String = "", explain: String = "", link: String = ""
+	init(name: String = "", explain: String = "", link: String = "", favorite: Bool = false
          ,part: String = "", detailPart: Array<String> = [], equiment: Array<String> = []) {
         self.name = name
         self.explain = explain
         self.link = link
+		self.favorite = favorite
         self.part = part
         self.detailPart = detailPart
         self.equiment = equiment
     }
     //  Realm 오브젝트를 Struct로 반환해서 사용하기 위한 함수
-    mutating func fromRealmObject(object: realmObject)->ExerciseModel {
+    mutating func fromRealmObject(object: realmObject)->structObject {
         guard let name = object.value(forKey: Util.omiExercise(value: .name)) as? String,
               let explain = object.value(forKey: Util.omiExercise(value: .explain)) as? String,
               let link = object.value(forKey: Util.omiExercise(value: .link)) as? String,
-              let part = object.value(forKey: Util.omiExercise(value: .part)) as? String
+              let part = object.value(forKey: Util.omiExercise(value: .part)) as? String,
+			  let favorite = object.value(forKey: Util.omiExercise(value: .favorite)) as? Bool
         else {print("Not find Value");return ExerciseModel()}
         
         self.name = name
         self.explain = explain
         self.link = link
         self.part = part
+		self.favorite = favorite
         self.detailPart = Array(object.detailPart)
         self.equiment = Array(object.equiment)
         
@@ -90,6 +94,7 @@ extension ExerciseModel: RealmCRUD{
                 object.explain = targetModel.explain
                 object.link = targetModel.link
                 object.part = targetModel.part
+				object.favorite = targetModel.favorite
                 object.detailPart.removeAll()
                 object.equiment.removeAll()
                 
@@ -119,13 +124,14 @@ extension ExerciseModel: RealmCRUD{
 
 final class RealmObjectExercise: Object {
     enum VariableName: String {
-        case name, explain, link, part, detailPart, equiment, realSet
+        case name, explain, link, part, detailPart, equiment, realSet, favorite
     }
     
     @objc var name: String = ""
     @objc var explain: String = ""
     @objc var link: String = ""
     @objc var part: String = ""
+	@objc var favorite: Bool = false
     dynamic var detailPart: List<String> = List<String>()
     dynamic var equiment: List<String> = List<String>()
     override class func primaryKey() -> String? {
@@ -137,9 +143,51 @@ final class RealmObjectExercise: Object {
         self.explain = model.explain
         self.link = model.link
         self.part = model.part
+		self.favorite = model.favorite
         self.detailPart.append(objectsIn: model.detailPart)
         self.equiment.append(objectsIn: model.equiment)
         
         return self
     }
+}
+
+
+//	MARK: -각 부위별 세부 부위 Realm
+struct DetailModel: Model {
+	typealias realmObject = RealmObjectDetail
+	typealias structObject = DetailModel
+	var name: String
+	var detailParts: [String]
+	
+	init(name: String = "", detailParts: [String] = []) {
+		self.name = name
+		self.detailParts = detailParts
+	}
+	
+	mutating func fromRealmObject(object: realmObject)->structObject {
+		guard let name = object.value(forKey: Util.omiDetailParts(value: .name)) as? String
+		else {print("Not find Value");return structObject()}
+		
+		self.name = name
+		self.detailParts = Array(object.detailParts)
+		return self
+	}
+}
+class RealmObjectDetail: Object {
+	enum VariableName: String {
+		case name, detailParts
+	}
+	@objc var name: String = ""
+	dynamic var detailParts: List<String> = List<String>()
+	
+	func fromModel(model: DetailModel)->RealmObjectDetail {
+		self.name = model.name
+		self.detailParts.append(objectsIn: model.detailParts)
+		
+		return self
+	}
+	
+	override class func primaryKey() -> String? {
+		return "name"
+	}
 }
