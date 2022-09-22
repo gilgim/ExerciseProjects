@@ -11,7 +11,7 @@ import SwiftUI
 
 struct re_DailyExerciseApp: App {
     @Environment(\.scenePhase) private var scenePhase
-    static var disableScroll: Bool = false
+
     var body: some Scene {
         WindowGroup {
             ContentView()

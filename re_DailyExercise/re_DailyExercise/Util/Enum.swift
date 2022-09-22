@@ -13,3 +13,9 @@ public enum AppStatusMessage: String {
     case background = "앱이 백그라운드 상태입니다."
     case unknown = "앱이 알 수 없는 상태가 되었습니다."
 }
+
+public enum SearchType {
+    case noSearch
+    case keyboard
+    case button
+}

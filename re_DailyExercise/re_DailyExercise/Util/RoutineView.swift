@@ -18,16 +18,18 @@ struct RoutineView: View {
     @State var searchText = ""
     @Binding var isSheet: Bool
     @Binding var sheetRoutines: [RoutineModel]
+    let colors: [Color] = [.safeTopBottomColor,.safeMainColor,.safeTopBottomColor]
     init(isSheet: Binding<Bool> = .constant(false),
          selectRoutine: Binding<Array<RoutineModel>> = .constant([])) {
         self._isSheet = isSheet
         self._sheetRoutines = selectRoutine
     }
     var body: some View {
-        SearchBar(text: $searchText) {
-            vm.updateRoutinesFromRealm(key: searchText)
-        }
-        SafeVStack {
+        SafeVStack(colors) {
+            SearchBar(text: $searchText) {
+                vm.updateRoutinesFromRealm(key: searchText)
+            }
+            .padding(.vertical,AboutSize.deviceSize[1]*0.012)
             ScrollView {
                 ForEach($vm.routines,id: \.name) { $routine in
                     RoutineIndexView(routines: $selectRoutine,
@@ -35,16 +37,21 @@ struct RoutineView: View {
                                       isSelect: $notAniIsSelect) {
                         vm.updateRoutinesFromRealm()
                     }
+                    .shadow(color: .almostShadowColor.opacity(0.2), radius: 4,y: 3)
+                    .padding(.horizontal,16)
+                    .padding(.bottom,AboutSize.deviceSize[1]*0.024)
                 }
                 if !notAniIsSelect {
                     NavigationLink {
                         RoutineCreatView()
                     }label: {
-                        RoundedRecView(.blue, cornerValue: 13) {
-                            Image(systemName: "plus").foregroundColor(.black)
+                        RoundedRecView(.white, cornerValue: 13) {
+                            Image(systemName: "plus").foregroundColor(.almostFontColor)
                                 .padding()
                         }
-                        .frame(height: AboutSize.deviceSize[1]*0.07)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, AboutSize.deviceSize[1]*0.006)
+                        .frame(height: AboutSize.deviceSize[1]*0.057)
                     }
                 }
             }
@@ -91,7 +98,8 @@ struct RoutineView: View {
                     }
                 }label: {
                     Text(self.notAniIsSelect ? "삭제하기":"선택")
-                        .foregroundColor(self.notAniIsSelect ? self.notAniIsSelect && selectRoutine.isEmpty ? .gray:.red:.blue)
+                        .foregroundColor(self.notAniIsSelect ? self.notAniIsSelect && selectRoutine.isEmpty ? .buttonDisableGray:.cancelRed:.almostFontColor)
+                        .fontWeight(self.notAniIsSelect ? .semibold: .regular)
                 }
                 .disabled(notAniIsSelect && selectRoutine.isEmpty)
             }
@@ -105,7 +113,6 @@ struct RoutineView: View {
                 }
             }
         }
-        .padding(.horizontal,16)
         .alert("오류",isPresented: $isAlert) {
             Button("확인"){}
         }message: {
@@ -131,13 +138,30 @@ struct RoutineIndexView: View {
         self.action = action
     }
     var body: some View {
-        ContentIndexView(.purple,corner: 13
-                         ,wholeIsSelect: $isSelect, selectObject: $selectObject){
+        ContentIndexView(selectObject ? .buttonSelectBackColor:.white,corner: 15,
+                         strokeColor: selectObject ? .buttonSelectColor : .clear, strokeLine: selectObject ? 1.5:0
+                         ,wholeIsSelect: $isSelect, selectObject: $selectObject) {
             vm.deleteRoutine(targetModel: routine)
             action()
         }content: {
-            HStack {
-                Text(routine.name).foregroundColor(.black)
+            HStack(spacing:0) {
+                Text("\(routine.name) : \(vm.partText())")
+                    .font(selectObject ? .system(size: AboutSize.deviceSize[1]*0.021, weight: .semibold):.system(size: AboutSize.deviceSize[1]*0.021, weight: .regular))
+                    .foregroundColor(selectObject ? .almostFontColor:.buttonFontBlack)
+                    .padding(.leading, 20)
+                Spacer()
+                Button {
+                    
+                }label: {
+                    ZStack {
+                        Image(systemName: "ellipsis")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(.horizontal, 2)
+                    }
+                    .frame(width: 32)
+                    .padding(.trailing, 10)
+                }
             }
             .background {
                 NavigationLink(destination: DoExerciseView(mainVm: MainView.vm, choiceRoutine: $routine), isActive: $isNavigationLink) {

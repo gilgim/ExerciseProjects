@@ -51,16 +51,28 @@ class ExerciseViewModel: ObservableObject {
     /**
      Realm에서 데이터를 불러와서 뷰에게 제공하는 형태로 바꾸는 함수
      */
-    func readExercise(key:String = "")->[ExerciseModel] {
+    func readExercise(type: SearchType ,key:String = "")->[ExerciseModel] {
         var exercises = self.model.readRealm() { error in
             if error != nil {
                 print("\(String(describing: error?.rawValue))")
             }
         }
-        if key != "" {
+        guard key != "" else {return exercises}
+        switch type {
+        case.noSearch:
+            break
+        case.keyboard:
             var tempExercise: [ExerciseModel] = []
             for exercise in exercises {
                 if exercise.name.contains(key) {
+                    tempExercise.append(exercise)
+                }
+            }
+            exercises = tempExercise
+        case.button:
+            var tempExercise: [ExerciseModel] = []
+            for exercise in exercises {
+                if exercise.part.contains(key) {
                     tempExercise.append(exercise)
                 }
             }
@@ -106,24 +118,7 @@ class ExerciseViewModel: ObservableObject {
     /**
      운동 목차를 생성, 삭제 시 바인딩 된 운동 목차를  업데이트하는 함수
      */
-    func updateExercisesFromRealm(key: String = "") {
-        self.exercises = self.readExercise(key: key)
-    }
-    /**
-     입력 값이 존재하지 않을 때 사용자에게 명확하게 에러메세지를 알려주기 위한 함수
-     */
-    func inputErrorNotify()->String?{
-        if self.model.name == "" {
-            return "이름이 입력되지 않았습니다."
-        }
-        else if self.model.part.count == 0 {
-            return "운동 부위가 선택되지 않았습니다."
-        }
-        else if self.model.equiment.count == 0 {
-            return "기구가 선택되지 않았습니다."
-        }
-        else {
-            return nil
-        }
+    func updateExercisesFromRealm(type: SearchType = .noSearch, key: String = "") {
+        self.exercises = self.readExercise(type: type, key: key)
     }
 }

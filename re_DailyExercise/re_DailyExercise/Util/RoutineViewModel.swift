@@ -174,6 +174,14 @@ extension RoutineViewModel {
 }
 //  MARK: -Function about view
 extension RoutineViewModel {
+    func partText() -> String {
+        var result = ""
+        for exercise in self.choiceExercises {
+            result += exercise.part
+        }
+        print(result)
+        return result
+    }
     func choiceToReal() {
         let names = selectedExercises.map{return $0.name}
         if choiceExercises.isEmpty {

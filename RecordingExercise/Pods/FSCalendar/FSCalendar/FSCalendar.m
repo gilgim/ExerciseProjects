@@ -397,14 +397,6 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     return 7;
 }
 
-+(UIColor *)colorWithRGBHex:(NSUInteger)RGBHex alpha:(CGFloat)alpha {
-    CGFloat red = ((CGFloat)((RGBHex & 0xFF0000) >> 16)) / 255.0f;
-    CGFloat green = ((CGFloat)((RGBHex & 0xFF00) >> 8)) / 255.0f;
-    CGFloat blue = ((CGFloat)((RGBHex & 0xFF))) / 255.0f;
-    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-}
-
-//  셀 생성 부분
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     FSCalendarMonthPosition monthPosition = [self.calculator monthPositionForIndexPath:indexPath];

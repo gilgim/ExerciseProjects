@@ -198,18 +198,10 @@
     return _titleColors[@(FSCalendarCellStateToday)];
 }
 
-+(UIColor *)colorWithRGBHex:(NSUInteger)RGBHex alpha:(CGFloat)alpha {
-    CGFloat red = ((CGFloat)((RGBHex & 0xFF0000) >> 16)) / 255.0f;
-    CGFloat green = ((CGFloat)((RGBHex & 0xFF00) >> 8)) / 255.0f;
-    CGFloat blue = ((CGFloat)((RGBHex & 0xFF))) / 255.0f;
-    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-}
-
 - (void)setTitlePlaceholderColor:(UIColor *)color
 {
-    UIColor* placeHoder = [FSCalendarAppearance colorWithRGBHex:0xBEBEBE alpha:1];
     if (color) {
-        _titleColors[@(FSCalendarCellStatePlaceholder)] = placeHoder;
+        _titleColors[@(FSCalendarCellStatePlaceholder)] = color;
     } else {
         [_titleColors removeObjectForKey:@(FSCalendarCellStatePlaceholder)];
     }
