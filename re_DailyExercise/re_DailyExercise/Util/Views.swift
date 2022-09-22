@@ -98,7 +98,7 @@ struct TitleView<Content>: View where Content: View {
         VStack(spacing: 0) {
             HStack {
                 Text(title)
-                    .font(.system(size: 25, weight: .black, design: .rounded))
+                    .font(.system(size: AboutSize.deviceSize[1]*0.025, weight: .semibold, design: .rounded))
                     .padding(.bottom,5)
                     .padding(.leading,16)
                 Spacer()
@@ -107,7 +107,7 @@ struct TitleView<Content>: View where Content: View {
                 content().padding(.horizontal,16)
             }
         }
-        .padding(.vertical,10)
+        .padding(.vertical,AboutSize.deviceSize[1]*0.012)
     }
 }
 struct ContentIndexView<Content>: View where Content: View {
@@ -115,16 +115,22 @@ struct ContentIndexView<Content>: View where Content: View {
     @Binding var selectObject: Bool
     @State var wholeX: CGFloat = 0
     @State var x: CGFloat = 0
+    @State var buttonState: CGFloat = 0
     let backColor: Color
     let corner: CGFloat
+    let strokeColor: Color
+    let strokeLine: CGFloat
     let content: ()->Content
     let action: ()->()
     init(_ backColor: Color, corner: CGFloat,
+         strokeColor: Color = .clear, strokeLine: CGFloat = 0,
          wholeIsSelect: Binding<Bool>, selectObject: Binding<Bool>,
          action: @escaping()->(),
         @ViewBuilder content: @escaping () -> Content) {
         self.corner = corner
         self.backColor = backColor
+        self.strokeColor = strokeColor
+        self.strokeLine = strokeLine
         self.action = action
         self._wholeIsSelect = wholeIsSelect
         self._selectObject = selectObject
@@ -134,10 +140,14 @@ struct ContentIndexView<Content>: View where Content: View {
         HStack {
             if wholeIsSelect {
                 Image(systemName: "checkmark.circle.fill")
-                    .foregroundColor(.blue)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24)
+                    .foregroundColor(.buttonSelectColor)
                     .opacity(selectObject ? 1:0)
                     .overlay {
-                        Circle().stroke(selectObject ? .blue:.black, lineWidth: 1)
+                        Circle()
+                            .stroke(Color.buttonSelectColor, lineWidth: 1.5)
                     }
                     .animation(.linear(duration: 0.1), value: selectObject)
             }
@@ -155,22 +165,40 @@ struct ContentIndexView<Content>: View where Content: View {
                             x = 0
                         }
                     }
-                RoundedRecView(backColor,cornerValue: corner) {
+                RoundedRecView(backColor,cornerValue: corner,strokeColor: strokeColor, strokeLine: strokeLine) {
                     content()
                 }
                 .offset(x:x)
-                .gesture(DragGesture().onChanged({ value in
-                    withAnimation {
-                        if !wholeIsSelect {
-                            if value.translation.width < -50 {
-                                x = -50
+                .gesture(
+                    DragGesture()
+                        .onChanged({ value in
+                            withAnimation {
+                                if !wholeIsSelect {
+                                    if buttonState == -50 {
+                                        if value.translation.width > 0 && value.translation.width <= 50 {
+                                            x = value.translation.width - 50
+                                        }
+                                    }
+                                    else {
+                                        if value.translation.width < 0 && value.translation.width >= -50 {
+                                            x = value.translation.width
+                                        }
+                                    }
+                                }
                             }
-                            else {
-                                x = 0
+                        })
+                        .onEnded({ value in
+                            withAnimation {
+                                if value.translation.width < 0 {
+                                    x = -50
+                                }
+                                else {
+                                    x = 0
+                                }
+                                self.buttonState = x
                             }
-                        }
-                    }
-                }))
+                        })
+                )
             }
             .offset(x:wholeX)
             .cornerRadius(corner)
@@ -186,11 +214,13 @@ struct ContentIndexView<Content>: View where Content: View {
 }
 struct CustomLazyVGird: View {
     @Binding var userData: Array<String>
+    var type: GridButtonStyle.GridType
     var array: Array<String>
     var gridColumns: Array<GridItem> {
-        Array(repeating: GridItem(spacing: 8), count: 5)
+        Array(repeating: GridItem(spacing: 8,alignment: .leading), count: type == .part ? 4:6)
     }
-    init(_ array: Array<String> = [],userData: Binding<Array<String>>) {
+    init(_ array: Array<String> = [], type: GridButtonStyle.GridType,userData: Binding<Array<String>>) {
+        self.type = type
         self.array = array
         self._userData = userData
     }
@@ -202,36 +232,39 @@ struct CustomLazyVGird: View {
                 }label: {
                     Text(text)
                 }
-                .buttonStyle(GridButtonStyle(.black,.purple,userArray: _userData,text: text))
+                .buttonStyle(GridButtonStyle(type, userArray: _userData,text: text))
             }
         }
     }
 }
 
 struct GridButtonStyle: ButtonStyle{
+    enum GridType {
+        case part, equiment
+    }
     @Binding var userArray: [String]
     var text: String
-    var foreColor: Color
-    var backColor: Color
-    var buttonCorner: CGFloat
-    init(_ foreColor: Color,_ backColor: Color,_ buttonCorner: CGFloat = 0,
-         userArray: Binding<Array<String>>, text: String) {
-        self.foreColor = foreColor
-        self.backColor = backColor
-        self.buttonCorner = buttonCorner
+    var type: GridType
+    init(_ type: GridType = .part, userArray: Binding<Array<String>>, text: String) {
+        self.type = type
         self.text = text
         self._userArray = userArray
     }
+    func compareText() -> Bool {
+        return userArray.contains(text)
+    }
     func makeBody(configuration: Configuration) -> some View {
-        RoundedRecView(backColor, cornerValue: 13, strokeColor: foreColor, strokeLine: 3) {
+        RoundedRecView(compareText() ? .buttonSelectBackColor:.white, cornerValue: 12,
+                       strokeColor: compareText() ? .buttonSelectColor:.clear, strokeLine: 1.5) {
             configuration.label
-                .padding()
-                .foregroundColor(foreColor)
-                
+                .foregroundColor(compareText() ? .buttonSelectColor:.buttonFontBlack)
+                .padding(.horizontal, type == .part ? 20:12)
+                .padding(.vertical,AboutSize.deviceSize[1]*0.012)
+                .font(compareText() ? .system(size: AboutSize.deviceSize[1]*0.021,weight: .semibold):.system(size: AboutSize.deviceSize[1]*0.021,weight: .regular))
         }
-        .opacity(userArray.contains(text) ? 1 : 0.75)
         .animation(.linear(duration: 0.1), value: configuration.isPressed)
-        
+        .frame(width: type == .part ? 80:55, height: AboutSize.deviceSize[1]*0.055)
+        .shadow(color: .almostShadowColor.opacity(0.2), radius: 4,y: 3)
     }
 }
 
@@ -314,7 +347,7 @@ struct KeywordSearchView: View {
                     .buttonStyle(quickButtonStyle(text: i, selectText: $text))
                 }
             }
-            .padding(.vertical,1.5)
+            .padding(.vertical,AboutSize.deviceSize[1]*0.002)
             .padding(.horizontal,16)
         }
         .frame(height: AboutSize.deviceSize[1]*0.049)
@@ -330,7 +363,7 @@ struct KeywordSearchView: View {
             RoundedRecView(compareText() ? .buttonSelectBackColor:.white, cornerValue: 12,
                            strokeColor: compareText() ? .buttonSelectColor:.clear, strokeLine: 1.5) {
                 configuration.label
-                    .foregroundColor(compareText() ? .buttonSelectColor:.buttonGray)
+                    .foregroundColor(compareText() ? .buttonSelectColor:.buttonFontBlack)
                     .padding(.horizontal, 20)
                     .padding(.vertical,AboutSize.deviceSize[1]*0.012)
                     .font(compareText() ? .system(size: AboutSize.deviceSize[1]*0.021,weight: .semibold):.system(size: AboutSize.deviceSize[1]*0.021,weight: .regular))

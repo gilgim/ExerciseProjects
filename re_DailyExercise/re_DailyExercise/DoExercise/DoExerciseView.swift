@@ -55,8 +55,8 @@ struct DoExerciseView: View {
         }
         //  MARK: -Alert
         .alert("운동 종료",isPresented: $isBackAlert) {
-            Button("취소",role: .cancel){}
-            Button("확인",role: .destructive){isFinish = true; mode.wrappedValue.dismiss()}
+            Button("취소",role: .cancel) {}
+            Button("확인",role: .destructive) {isFinish = true; mode.wrappedValue.dismiss()}
         }message: {
             Text("정말 운동을 종료하시겠습니까?")
         }
