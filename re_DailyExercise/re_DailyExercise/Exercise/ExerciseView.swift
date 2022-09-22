@@ -226,7 +226,7 @@ struct ExerciseIndexView: View {
         }content: {
             HStack(spacing: 0) {
                 RoundedRecView(.fixObjectColor, cornerValue: 13) {
-                    Text("\(exercise.part[0])")
+                    Text("\(exercise.part)")
                         .font(selectObject ? .system(size: AboutSize.deviceSize[1]*0.018, weight: .semibold):.system(size: AboutSize.deviceSize[1]*0.018, weight: .regular))
                         .padding(.horizontal, 20)
                         .padding(.vertical,AboutSize.deviceSize[1]*0.012)
@@ -323,7 +323,7 @@ struct ExerciseCreateView: View {
                     }
                 }.padding(.horizontal,16)
                 TitleView(title:"운동 부위") {
-                    CustomLazyVGird(vm.partArray, type: .part, userData: $vm.model.part)
+                    CustomLazyVGird(vm.partArray, type: .part, selectText: $vm.model.part)
                 }
                 TitleView(title:"기구") {
                     CustomLazyVGird(vm.equimentArray, type: .equiment, userData: $vm.model.equiment)

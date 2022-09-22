@@ -36,7 +36,7 @@ class ExerciseViewModel: ObservableObject {
                     if self.model.name == "" {
                         errorMessage = "이름이 입력되지 않았습니다."
                     }
-                    else if self.model.part.count == 0 {
+                    else if self.model.part == "" {
                         errorMessage = "운동 부위가 선택되지 않았습니다."
                     }
                     else if self.model.equiment.count == 0 {

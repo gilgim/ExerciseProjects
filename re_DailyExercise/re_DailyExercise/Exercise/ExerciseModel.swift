@@ -17,13 +17,13 @@ struct ExerciseModel: Model {
     var name: String
     var explain: String
     var link: String
-    var part: Array<String>
+    var part: String
     var detailPart: Array<String>
     var equiment: Array<String>
     
     //  초기값 할당이 필요하면 사용하기 위한 init
     init(name: String = "", explain: String = "", link: String = ""
-         ,part: Array<String> = [], detailPart: Array<String> = [], equiment: Array<String> = []) {
+         ,part: String = "", detailPart: Array<String> = [], equiment: Array<String> = []) {
         self.name = name
         self.explain = explain
         self.link = link
@@ -35,13 +35,14 @@ struct ExerciseModel: Model {
     mutating func fromRealmObject(object: realmObject)->ExerciseModel {
         guard let name = object.value(forKey: Util.omiExercise(value: .name)) as? String,
               let explain = object.value(forKey: Util.omiExercise(value: .explain)) as? String,
-              let link = object.value(forKey: Util.omiExercise(value: .link)) as? String
+              let link = object.value(forKey: Util.omiExercise(value: .link)) as? String,
+              let part = object.value(forKey: Util.omiExercise(value: .part)) as? String
         else {print("Not find Value");return ExerciseModel()}
         
         self.name = name
         self.explain = explain
         self.link = link
-        self.part = Array(object.part)
+        self.part = part
         self.detailPart = Array(object.detailPart)
         self.equiment = Array(object.equiment)
         
@@ -54,12 +55,12 @@ extension ExerciseModel: RealmCRUD{
     func addRealm(targetModel: structObject, notify: (ErrorMessage?)->()) {
         let saveObject = realmObject().fromModel(model: targetModel)
         if realm.object(ofType: realmObject.self, forPrimaryKey: saveObject.name) == nil
-            && targetModel.name != "" && targetModel.part.count != 0 && targetModel.equiment.count != 0{
+            && targetModel.name != "" && targetModel.part != "" && targetModel.equiment.count != 0{
             try! realm.write {
                 realm.add(saveObject)
                 notify(nil)
             }
-        }else if targetModel.name == "" || targetModel.part.count == 0 || targetModel.equiment.count == 0{
+        }else if targetModel.name == "" || targetModel.part == "" || targetModel.equiment.count == 0{
             notify(.realmIdentiferError)
         }else {
             notify(.realmAddFail)
@@ -88,12 +89,10 @@ extension ExerciseModel: RealmCRUD{
             try! realm.write {
                 object.explain = targetModel.explain
                 object.link = targetModel.link
-                
-                object.part.removeAll()
+                object.part = targetModel.part
                 object.detailPart.removeAll()
                 object.equiment.removeAll()
                 
-                object.part.append(objectsIn: targetModel.part)
                 object.detailPart.append(objectsIn: targetModel.detailPart)
                 object.equiment.append(objectsIn: targetModel.equiment)
                 notify(nil)
@@ -126,7 +125,7 @@ final class RealmObjectExercise: Object {
     @objc var name: String = ""
     @objc var explain: String = ""
     @objc var link: String = ""
-    dynamic var part: List<String> = List<String>()
+    @objc var part: String = ""
     dynamic var detailPart: List<String> = List<String>()
     dynamic var equiment: List<String> = List<String>()
     override class func primaryKey() -> String? {
@@ -137,7 +136,7 @@ final class RealmObjectExercise: Object {
         self.name = model.name
         self.explain = model.explain
         self.link = model.link
-        self.part.append(objectsIn: model.part)
+        self.part = model.part
         self.detailPart.append(objectsIn: model.detailPart)
         self.equiment.append(objectsIn: model.equiment)
         

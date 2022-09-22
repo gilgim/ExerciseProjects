@@ -214,25 +214,38 @@ struct ContentIndexView<Content>: View where Content: View {
 }
 struct CustomLazyVGird: View {
     @Binding var userData: Array<String>
+    @Binding var selectText: String
     var type: GridButtonStyle.GridType
     var array: Array<String>
     var gridColumns: Array<GridItem> {
         Array(repeating: GridItem(spacing: 8,alignment: .leading), count: type == .part ? 4:6)
     }
-    init(_ array: Array<String> = [], type: GridButtonStyle.GridType,userData: Binding<Array<String>>) {
+    init(_ array: Array<String> = [], type: GridButtonStyle.GridType,
+         selectText :Binding<String> = .constant(""), userData: Binding<Array<String>> = .constant([])) {
         self.type = type
         self.array = array
         self._userData = userData
+        self._selectText = selectText
     }
     var body: some View {
         LazyVGrid(columns: gridColumns) {
             ForEach(array, id: \.self){ text in
                 Button {
-                    Util.bindingArrayAppend(&userData, value: text)
+                    if type == .part {
+                        if selectText == text {
+                            selectText = ""
+                        }
+                        else {
+                            selectText = text
+                        }
+                    }
+                    else {
+                        Util.bindingArrayAppend(&userData, value: text)
+                    }
                 }label: {
                     Text(text)
                 }
-                .buttonStyle(GridButtonStyle(type, userArray: _userData,text: text))
+                .buttonStyle(GridButtonStyle(type, selectText: $selectText, userArray: _userData,text: text))
             }
         }
     }
@@ -242,16 +255,25 @@ struct GridButtonStyle: ButtonStyle{
     enum GridType {
         case part, equiment
     }
+    @Binding var selectText: String
     @Binding var userArray: [String]
     var text: String
     var type: GridType
-    init(_ type: GridType = .part, userArray: Binding<Array<String>>, text: String) {
+    init(_ type: GridType = .part,
+         selectText: Binding<String> = .constant(""), userArray: Binding<Array<String>> = .constant([]),
+         text: String) {
         self.type = type
+        self._selectText = selectText
         self.text = text
         self._userArray = userArray
     }
     func compareText() -> Bool {
-        return userArray.contains(text)
+        if type == .part {
+            return text == selectText
+        }
+        else {
+            return userArray.contains(text)
+        }
     }
     func makeBody(configuration: Configuration) -> some View {
         RoundedRecView(compareText() ? .buttonSelectBackColor:.white, cornerValue: 12,
