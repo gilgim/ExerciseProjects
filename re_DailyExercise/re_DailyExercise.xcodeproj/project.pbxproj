@@ -13,6 +13,9 @@
 		C33E549428BCB55B002A7BFD /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E549328BCB55B002A7BFD /* RoutineModel.swift */; };
 		C33E549628BCB567002A7BFD /* RoutineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E549528BCB567002A7BFD /* RoutineViewModel.swift */; };
 		C33E549828BCB579002A7BFD /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E549728BCB579002A7BFD /* RoutineView.swift */; };
+		C348BDB128DD5F5A00A110F3 /* DetailPartsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C348BDB028DD5F5A00A110F3 /* DetailPartsModel.swift */; };
+		C348BDB328DD600D00A110F3 /* DetailPartsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C348BDB228DD600D00A110F3 /* DetailPartsViewModel.swift */; };
+		C348BDB528DD657800A110F3 /* DetailPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C348BDB428DD657800A110F3 /* DetailPartsView.swift */; };
 		C374BDDA28D3FBA60099F33A /* DoExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374BDD928D3FBA60099F33A /* DoExerciseView.swift */; };
 		C374BDDC28D3FE5D0099F33A /* DoExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374BDDB28D3FE5D0099F33A /* DoExerciseViewModel.swift */; };
 		C374BDDE28D3FFB80099F33A /* DoExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374BDDD28D3FFB80099F33A /* DoExerciseModel.swift */; };
@@ -66,6 +69,9 @@
 		C33E549328BCB55B002A7BFD /* RoutineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
 		C33E549528BCB567002A7BFD /* RoutineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewModel.swift; sourceTree = "<group>"; };
 		C33E549728BCB579002A7BFD /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
+		C348BDB028DD5F5A00A110F3 /* DetailPartsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPartsModel.swift; sourceTree = "<group>"; };
+		C348BDB228DD600D00A110F3 /* DetailPartsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPartsViewModel.swift; sourceTree = "<group>"; };
+		C348BDB428DD657800A110F3 /* DetailPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPartsView.swift; sourceTree = "<group>"; };
 		C374BDD928D3FBA60099F33A /* DoExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoExerciseView.swift; sourceTree = "<group>"; };
 		C374BDDB28D3FE5D0099F33A /* DoExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoExerciseViewModel.swift; sourceTree = "<group>"; };
 		C374BDDD28D3FFB80099F33A /* DoExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoExerciseModel.swift; sourceTree = "<group>"; };
@@ -166,6 +172,16 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		C348BDAF28DD5F2600A110F3 /* DetailParts */ = {
+			isa = PBXGroup;
+			children = (
+				C348BDB428DD657800A110F3 /* DetailPartsView.swift */,
+				C348BDB228DD600D00A110F3 /* DetailPartsViewModel.swift */,
+				C348BDB028DD5F5A00A110F3 /* DetailPartsModel.swift */,
+			);
+			path = DetailParts;
+			sourceTree = "<group>";
+		};
 		C374BDD828D3FB780099F33A /* DoExercise */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +271,7 @@
 				C3FB0F5A28B74AEB004743B9 /* ExerciseView.swift */,
 				C3FB0F5C28B74AF8004743B9 /* ExerciseViewModel.swift */,
 				C3FB0F5E28B74B07004743B9 /* ExerciseModel.swift */,
+				C348BDAF28DD5F2600A110F3 /* DetailParts */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -504,15 +521,18 @@
 				C33E549628BCB567002A7BFD /* RoutineViewModel.swift in Sources */,
 				C3FB0F5728B74AC9004743B9 /* MainView.swift in Sources */,
 				C374BDDA28D3FBA60099F33A /* DoExerciseView.swift in Sources */,
+				C348BDB128DD5F5A00A110F3 /* DetailPartsModel.swift in Sources */,
 				C374BDDC28D3FE5D0099F33A /* DoExerciseViewModel.swift in Sources */,
 				C3FB0F2928B74A91004743B9 /* re_DailyExerciseApp.swift in Sources */,
 				C3FB0F5928B74AD8004743B9 /* MainModel.swift in Sources */,
+				C348BDB328DD600D00A110F3 /* DetailPartsViewModel.swift in Sources */,
 				C3FB0F5D28B74AF8004743B9 /* ExerciseViewModel.swift in Sources */,
 				C3FB0F6328B84282004743B9 /* RealmData.swift in Sources */,
 				C33E549028BCB114002A7BFD /* Views.swift in Sources */,
 				C33E549428BCB55B002A7BFD /* RoutineModel.swift in Sources */,
 				C3FB0F5528B74AC0004743B9 /* MainViewModel.swift in Sources */,
 				C33E549828BCB579002A7BFD /* RoutineView.swift in Sources */,
+				C348BDB528DD657800A110F3 /* DetailPartsView.swift in Sources */,
 				C3FB0F6528B88D34004743B9 /* Extention.swift in Sources */,
 				C374BDE028D432240099F33A /* Enum.swift in Sources */,
 				C3FB0F5F28B74B07004743B9 /* ExerciseModel.swift in Sources */,

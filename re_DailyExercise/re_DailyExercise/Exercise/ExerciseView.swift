@@ -297,9 +297,9 @@ struct ExerciseCreateView: View {
     var body: some View {
         SafeVStack(colors) {
             ScrollView {
-                TitleView(title: "운동명") {
+                TitleView(title: "운동이름") {
                     RoundedRecView(.white, cornerValue: 13) {
-                        TextField("운동명",text: $vm.model.name)
+                        TextField("이름",text: $vm.model.name)
                             .padding()
                     }
                 }
@@ -325,6 +325,7 @@ struct ExerciseCreateView: View {
                 TitleView(title:"운동 부위") {
                     CustomLazyVGird(vm.partArray, type: .part, selectText: $vm.model.part)
                 }
+                DetailPartsView(detailArray: $vm.model.detailPart, part: $vm.model.part)
                 TitleView(title:"기구") {
                     CustomLazyVGird(vm.equimentArray, type: .equiment, userData: $vm.model.equiment)
                 }

@@ -90,9 +90,11 @@ struct RoundedRecView<Content>: View where Content: View {
 struct TitleView<Content>: View where Content: View {
     let title: String
     let content: ()->Content
-    init(title: String ,@ViewBuilder content: @escaping () -> Content) {
+    let isPadding: Bool
+    init(isPadding: Bool = true, title: String ,@ViewBuilder content: @escaping () -> Content) {
         self.title = title
         self.content = content
+        self.isPadding = isPadding
     }
     var body: some View {
         VStack(spacing: 0) {
@@ -104,7 +106,7 @@ struct TitleView<Content>: View where Content: View {
                 Spacer()
             }
             ZStack {
-                content().padding(.horizontal,16)
+                content().padding(.horizontal, isPadding ? 16:0)
             }
         }
         .padding(.vertical,AboutSize.deviceSize[1]*0.012)

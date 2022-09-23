@@ -30,6 +30,10 @@ public enum ErrorMessage: String {
      알 수 없는 에러
      */
     case idontknow = "알 수 없는 에러"
+    /**
+     사용하지 않는 기능
+     */
+    case notUsingFunction = "사용하지 않는 함수"
 }
 /**
  Realm CRUD를 정리 해놓은 프로토콜
