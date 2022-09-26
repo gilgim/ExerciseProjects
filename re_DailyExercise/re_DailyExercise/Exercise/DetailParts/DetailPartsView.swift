@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct DetailPartsView: View {
-    @StateObject var vm = DetailPartsViewModel()
+	@StateObject var vm: DetailPartsViewModel
     @State var detailText: String = ""
     @State var isAlert: Bool = false
     @State var isErrorAlert: Bool = false
@@ -39,6 +39,9 @@ struct DetailPartsView: View {
                 .padding(.leading, 16)
             }
         }
+		.onAppear {
+			self.vm.creatDetail()
+		}
         .onChange(of: part, perform: { _ in
             vm.setPart(part: part)
             withAnimation {
@@ -49,12 +52,14 @@ struct DetailPartsView: View {
             TextField("부위명",text: $detailText)
             Button("생성") {
                 withAnimation {
-                    if self.vm.detailParts.contains(detailText) {
+                    if self.vm.detailParts.contains(detailText) || detailText == "" {
                         isErrorAlert.toggle()
                     }
                     else {
                         self.vm.detailParts.append(detailText)
                         self.vm.tempDetailParts.append(detailText)
+						self.vm.detailParts = self.vm.detailParts.sorted()
+						self.vm.tempDetailParts = self.vm.tempDetailParts.sorted()
                     }
                 }
                 self.detailText = ""
@@ -69,4 +74,7 @@ struct DetailPartsView: View {
             Text("이미 존재하는 값 입니다. 생성할 수 없습니다.")
         }
     }
+	func viewModelUpdate() {
+		vm.updateDetail()
+	}
 }

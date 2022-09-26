@@ -325,7 +325,7 @@ struct ExerciseCreateView: View {
                 TitleView(title:"운동 부위") {
                     CustomLazyVGird(vm.partArray, type: .part, selectText: $vm.model.part)
                 }
-                DetailPartsView(detailArray: $vm.model.detailPart, part: $vm.model.part)
+				DetailPartsView(vm: vm.detailVm,detailArray: $vm.model.detailPart, part: $vm.model.part)
                 TitleView(title:"기구") {
                     CustomLazyVGird(vm.equimentArray, type: .equiment, userData: $vm.model.equiment)
                 }
@@ -338,6 +338,7 @@ struct ExerciseCreateView: View {
                 Button{
                     vm.createExercise()
                     if !vm.createAlertBool{
+						vm.detailVm.updateDetail()
                         mode.wrappedValue.dismiss()
                     }
                 }label: {

@@ -12,7 +12,7 @@ import RealmSwift
 class ExerciseViewModel: ObservableObject {
     let partArray = ["가슴","등","하체","어깨","팔","복근"]
     let equimentArray = ["바벨","덤벨","머신","맨몸"]
-    
+    @Published var detailVm = DetailPartsViewModel()
     @Published var model = ExerciseModel()
     @Published var exercises: [ExerciseModel] = []
     @Published var createAlertBool: Bool = false

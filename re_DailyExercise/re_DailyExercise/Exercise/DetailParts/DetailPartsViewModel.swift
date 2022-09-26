@@ -16,12 +16,10 @@ class DetailPartsViewModel: ObservableObject{
         self.model.name = part
     }
     func creatDetail() {
-        self.model.addRealm(targetModel: self.model) { error in
+        self.model.addRealm(targetModel: DetailModel()) { error in
             switch error {
-            case.realmIdentiferError:
-                errorMessage = "부위가 선택되지않아 저장될 수 없습니다."
-            case.realmAddFail:
-                errorMessage = "부위가 이미 있어 저장될 수 없습니다."
+			case.realmAlreadyExist:
+                errorMessage = "이미 값이 생성되어있습니다. 생성하지 않습니다."
             default:
                 break
             }
@@ -43,8 +41,12 @@ class DetailPartsViewModel: ObservableObject{
         return result
     }
     func updateDetail() {
+		self.model.detailParts = self.detailParts
         self.model.updateRealm(targetModel: self.model) { error in
-            
+			if let error {
+				_ = Util.omiErr(value: error)
+				print("asdf")
+			}
         }
     }
     func deleteDetail() {

@@ -33,20 +33,19 @@ struct DetailModel: Model {
 extension DetailModel: RealmCRUD {
     //  앱 실행 시 빈 배열이라도 무조건 저장시킨다
     func addRealm(targetModel: DetailModel, notify: (ErrorMessage?) -> ()) {
-        let object = RealmObjectDetail().fromModel(model: targetModel)
-        if realm.object(ofType: RealmObjectDetail.self, forPrimaryKey: object.name) == nil {
-            if targetModel.name != "" {
-                try! realm.write {
-                    realm.add(object)
-                    notify(nil)
-                }
-            }
-            else {
-                notify(.realmIdentiferError)
-            }
+		if realm.objects(RealmObjectDetail.self).isEmpty {
+			try! realm.write {
+				let parts = ["가슴","등","하체","어깨","팔","복근"]
+				for part in parts {
+					let temp = DetailModel(name: part, detailParts: [])
+					let object = RealmObjectDetail().fromModel(model: temp)
+					realm.add(object)
+				}
+				notify(nil)
+			}
         }
         else {
-            notify(.realmAddFail)
+            notify(.realmAlreadyExist)
         }
     }
     
@@ -66,10 +65,8 @@ extension DetailModel: RealmCRUD {
     
     func updateRealm(targetModel: DetailModel, notify: (ErrorMessage?) -> ()) {
         try! realm.write {
-            let object = realm.object(ofType: realmObject.self, forPrimaryKey: targetModel.name)
-            if let object {
+			if let object = realm.object(ofType: realmObject.self, forPrimaryKey: targetModel.name) {
                 let temp = Array(Set(Array(object.detailParts)+targetModel.detailParts))
-                object.detailParts = List<String>()
                 object.detailParts.append(objectsIn: temp)
                 notify(nil)
             }

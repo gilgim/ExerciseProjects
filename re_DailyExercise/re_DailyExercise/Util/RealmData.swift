@@ -30,6 +30,10 @@ public enum ErrorMessage: String {
      알 수 없는 에러
      */
     case idontknow = "알 수 없는 에러"
+	/**
+	 앱 첫 실행 시 한번만 저장되는 값에 대해서 두번째 실행 때부터 저장하지 않는다는 알림
+	 */
+	case realmAlreadyExist = "이미 생성되어있습니다."
     /**
      사용하지 않는 기능
      */

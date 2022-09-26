@@ -9,10 +9,10 @@
          contextName = "ExerciseViewModel.init():ExerciseViewModel.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #2 in ExerciseView.body.getter:ExerciseView.swift">
+         contextName = "closure #1 in closure #1 in closure #1 in CustomListView.body.getter:Views.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in closure #1 in CustomListView.body.getter:Views.swift">
+         contextName = "closure #2 in ExerciseView.body.getter:ExerciseView.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in closure #2 in ExerciseView.SavingExercisePageView.body.getter:ExerciseView.swift">
@@ -40,7 +40,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ExerciseModel.readRealm(keyName:notify:):ExerciseModel.swift">
+         contextName = "ExerciseCreateView.body.getter:ExerciseView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "vm.createAlertBool">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "closure #1 in closure #1 in closure #2 in ExerciseCreateView.body.getter:ExerciseView.swift">
@@ -51,12 +56,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ExerciseCreateView.body.getter:ExerciseView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "vm.createAlertBool">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "ExerciseModel.readRealm(keyName:notify:):ExerciseModel.swift">
       </ContextState>
       <ContextState
          contextName = "closure #3 in ExerciseCreateView.body.getter:ExerciseView.swift">
@@ -78,7 +78,21 @@
          contextName = "closure #1 in closure #1 in closure #2 in ExerciseView.SavingExercisePageView.body.getter:ExerciseView.swift">
       </ContextState>
       <ContextState
+         contextName = "DetailPartsViewModel.updateDetail():DetailPartsViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "detailParts">
+            </PersistentString>
+            <PersistentString
+               value = "model">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #2 in closure #1 in closure #1 in CustomListView.body.getter:Views.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in DetailModel.updateRealm(targetModel:notify:):DetailPartsModel.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -52,5 +52,165 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7DEB058-40B6-4E36-AAE6-47C9701EEBA7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "re_DailyExercise/Exercise/DetailParts/DetailPartsModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "updateRealm(targetModel:notify:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "208F7CC1-CD4E-40B1-9A14-22480B0C56C8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "re_DailyExercise/Exercise/DetailParts/DetailPartsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "updateDetail()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "208F7CC1-CD4E-40B1-9A14-22480B0C56C8 - b52c2d55558a77e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "re_DailyExercise.DetailPartsViewModel.updateDetail() -&gt; ()"
+                  moduleName = "re_DailyExercise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimwoojin/Desktop/ExerciseProjects/re_DailyExercise/re_DailyExercise/Exercise/DetailParts/DetailPartsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "142">
+               </Location>
+               <Location
+                  uuid = "208F7CC1-CD4E-40B1-9A14-22480B0C56C8 - a45bf8fd49c6de37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;re_DailyExercise.ErrorMessage&gt;) -&gt; () in re_DailyExercise.DetailPartsViewModel.updateDetail() -&gt; ()"
+                  moduleName = "re_DailyExercise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimwoojin/Desktop/ExerciseProjects/re_DailyExercise/re_DailyExercise/Exercise/DetailParts/DetailPartsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C4336EE3-AB09-4D76-B29B-A13E3AD1FF59"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "re_DailyExercise/Exercise/DetailParts/DetailPartsModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "addRealm(targetModel:notify:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "109B44EE-D92D-4498-A146-1BD362D93844"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "re_DailyExercise/Exercise/DetailParts/DetailPartsModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "addRealm(targetModel:notify:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "109B44EE-D92D-4498-A146-1BD362D93844 - 73673928921ca19b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "re_DailyExercise.DetailModel.addRealm(targetModel: re_DailyExercise.DetailModel, notify: (Swift.Optional&lt;re_DailyExercise.ErrorMessage&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "re_DailyExercise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimwoojin/Desktop/ExerciseProjects/re_DailyExercise/re_DailyExercise/Exercise/DetailParts/DetailPartsModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "353">
+               </Location>
+               <Location
+                  uuid = "109B44EE-D92D-4498-A146-1BD362D93844 - 8f317783dae56efe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in re_DailyExercise.DetailModel.addRealm(targetModel: re_DailyExercise.DetailModel, notify: (Swift.Optional&lt;re_DailyExercise.ErrorMessage&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "re_DailyExercise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimwoojin/Desktop/ExerciseProjects/re_DailyExercise/re_DailyExercise/Exercise/DetailParts/DetailPartsModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "246">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E78E941-9351-4E68-AD1E-C9D619665DB3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "re_DailyExercise/Exercise/DetailParts/DetailPartsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "updateDetail()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A78CD9F-20DD-4090-88CA-B4F274A926B2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "re_DailyExercise/Exercise/DetailParts/DetailPartsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "updateDetail()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
