@@ -59,6 +59,11 @@ extension DetailModel: RealmCRUD {
                     notify(nil)
                 }
             }
+            else {
+                for object in realm.objects(realmObject.self).reversed(){
+                    objects.append(self.fromRealmObject(object: object))
+                }
+            }
         }
         return objects
     }

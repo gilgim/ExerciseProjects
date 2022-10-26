@@ -55,13 +55,18 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< Updated upstream
             uuid = "E7DEB058-40B6-4E36-AAE6-47C9701EEBA7"
+=======
+            uuid = "AB3582D8-8B1D-4B6E-A741-256F53A99240"
+>>>>>>> Stashed changes
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "re_DailyExercise/Exercise/DetailParts/DetailPartsModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< Updated upstream
             startingLineNumber = "68"
             endingLineNumber = "68"
             landmarkName = "updateRealm(targetModel:notify:)"
@@ -209,6 +214,11 @@
             startingLineNumber = "47"
             endingLineNumber = "47"
             landmarkName = "updateDetail()"
+=======
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "readRealm(keyName:notify:)"
+>>>>>>> Stashed changes
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

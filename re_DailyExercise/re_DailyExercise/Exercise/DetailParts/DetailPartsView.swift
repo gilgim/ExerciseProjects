@@ -73,6 +73,11 @@ struct DetailPartsView: View {
         }message: {
             Text("이미 존재하는 값 입니다. 생성할 수 없습니다.")
         }
+        .onAppear {
+            if vm.model.readRealm(keyName: "", notify: { _ in }).count == 0 {
+                
+            }
+        }
     }
 	func viewModelUpdate() {
 		vm.updateDetail()

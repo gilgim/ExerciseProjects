@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		775C5BAFB9741EB23B69D5DB /* Pods_renewal_ExerciseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5A2EDB0C1C37C62231319 /* Pods_renewal_ExerciseApp.framework */; };
+		C37991D429060CB300CE8F17 /* renewal_ExerciseAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991D329060CB300CE8F17 /* renewal_ExerciseAppApp.swift */; };
+		C37991D629060CB300CE8F17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991D529060CB300CE8F17 /* ContentView.swift */; };
+		C37991D829060CB400CE8F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37991D729060CB400CE8F17 /* Assets.xcassets */; };
+		C37991DB29060CB400CE8F17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37991DA29060CB400CE8F17 /* Preview Assets.xcassets */; };
+		C37991E229060CF700CE8F17 /* ExerciseMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991E129060CF700CE8F17 /* ExerciseMainView.swift */; };
+		C37991E429060E1000CE8F17 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991E329060E1000CE8F17 /* ExerciseFormView.swift */; };
+		C37991E629060E2B00CE8F17 /* RoutineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991E529060E2B00CE8F17 /* RoutineFormView.swift */; };
+		C37991E82906105A00CE8F17 /* CreateExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991E72906105A00CE8F17 /* CreateExerciseFormView.swift */; };
+		C37991EC290624DB00CE8F17 /* CreateExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991EB290624DB00CE8F17 /* CreateExerciseViewModel.swift */; };
+		C37991EE2906558A00CE8F17 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991ED2906558A00CE8F17 /* Common.swift */; };
+		C37991F32906880200CE8F17 /* CreateDetailPartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991F22906880100CE8F17 /* CreateDetailPartViewModel.swift */; };
+		C37991F52906881100CE8F17 /* CreateDetailPartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991F42906881100CE8F17 /* CreateDetailPartModel.swift */; };
+		C37991F72908D0E100CE8F17 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991F62908D0E100CE8F17 /* Protocol.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		27B5A2EDB0C1C37C62231319 /* Pods_renewal_ExerciseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_renewal_ExerciseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A54E8211808388D37955E0C6 /* Pods-renewal_ExerciseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-renewal_ExerciseApp.release.xcconfig"; path = "Target Support Files/Pods-renewal_ExerciseApp/Pods-renewal_ExerciseApp.release.xcconfig"; sourceTree = "<group>"; };
+		C37991D029060CB300CE8F17 /* renewal_ExerciseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = renewal_ExerciseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C37991D329060CB300CE8F17 /* renewal_ExerciseAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = renewal_ExerciseAppApp.swift; sourceTree = "<group>"; };
+		C37991D529060CB300CE8F17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C37991D729060CB400CE8F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C37991DA29060CB400CE8F17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C37991E129060CF700CE8F17 /* ExerciseMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseMainView.swift; sourceTree = "<group>"; };
+		C37991E329060E1000CE8F17 /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
+		C37991E529060E2B00CE8F17 /* RoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFormView.swift; sourceTree = "<group>"; };
+		C37991E72906105A00CE8F17 /* CreateExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseFormView.swift; sourceTree = "<group>"; };
+		C37991EB290624DB00CE8F17 /* CreateExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseViewModel.swift; sourceTree = "<group>"; };
+		C37991ED2906558A00CE8F17 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		C37991F22906880100CE8F17 /* CreateDetailPartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDetailPartViewModel.swift; sourceTree = "<group>"; };
+		C37991F42906881100CE8F17 /* CreateDetailPartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDetailPartModel.swift; sourceTree = "<group>"; };
+		C37991F62908D0E100CE8F17 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		DA18A2171577C4728657805D /* Pods-renewal_ExerciseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-renewal_ExerciseApp.debug.xcconfig"; path = "Target Support Files/Pods-renewal_ExerciseApp/Pods-renewal_ExerciseApp.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C37991CD29060CB300CE8F17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				775C5BAFB9741EB23B69D5DB /* Pods_renewal_ExerciseApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6DE9A62AA1C8C9514CB0AED4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27B5A2EDB0C1C37C62231319 /* Pods_renewal_ExerciseApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7622749783D1F3349FC91969 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA18A2171577C4728657805D /* Pods-renewal_ExerciseApp.debug.xcconfig */,
+				A54E8211808388D37955E0C6 /* Pods-renewal_ExerciseApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C37991C729060CB200CE8F17 = {
+			isa = PBXGroup;
+			children = (
+				C37991D229060CB300CE8F17 /* renewal_ExerciseApp */,
+				C37991D129060CB300CE8F17 /* Products */,
+				7622749783D1F3349FC91969 /* Pods */,
+				6DE9A62AA1C8C9514CB0AED4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C37991D129060CB300CE8F17 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C37991D029060CB300CE8F17 /* renewal_ExerciseApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C37991D229060CB300CE8F17 /* renewal_ExerciseApp */ = {
+			isa = PBXGroup;
+			children = (
+				C37991D929060CB400CE8F17 /* Preview Content */,
+				C37991D329060CB300CE8F17 /* renewal_ExerciseAppApp.swift */,
+				C37991D529060CB300CE8F17 /* ContentView.swift */,
+				C37991F62908D0E100CE8F17 /* Protocol.swift */,
+				C37991ED2906558A00CE8F17 /* Common.swift */,
+				C37991D729060CB400CE8F17 /* Assets.xcassets */,
+				C37991E129060CF700CE8F17 /* ExerciseMainView.swift */,
+				C37991EA290624BF00CE8F17 /* ExerciseForm */,
+				C37991E9290624A700CE8F17 /* CreatExerciseForm */,
+				C37991E529060E2B00CE8F17 /* RoutineFormView.swift */,
+			);
+			path = renewal_ExerciseApp;
+			sourceTree = "<group>";
+		};
+		C37991D929060CB400CE8F17 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C37991DA29060CB400CE8F17 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C37991E9290624A700CE8F17 /* CreatExerciseForm */ = {
+			isa = PBXGroup;
+			children = (
+				C37991F12906865200CE8F17 /* CreateDetailPart */,
+				C37991E72906105A00CE8F17 /* CreateExerciseFormView.swift */,
+				C37991EB290624DB00CE8F17 /* CreateExerciseViewModel.swift */,
+			);
+			path = CreatExerciseForm;
+			sourceTree = "<group>";
+		};
+		C37991EA290624BF00CE8F17 /* ExerciseForm */ = {
+			isa = PBXGroup;
+			children = (
+				C37991E329060E1000CE8F17 /* ExerciseFormView.swift */,
+			);
+			path = ExerciseForm;
+			sourceTree = "<group>";
+		};
+		C37991F12906865200CE8F17 /* CreateDetailPart */ = {
+			isa = PBXGroup;
+			children = (
+				C37991F22906880100CE8F17 /* CreateDetailPartViewModel.swift */,
+				C37991F42906881100CE8F17 /* CreateDetailPartModel.swift */,
+			);
+			path = CreateDetailPart;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C37991CF29060CB300CE8F17 /* renewal_ExerciseApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C37991DE29060CB400CE8F17 /* Build configuration list for PBXNativeTarget "renewal_ExerciseApp" */;
+			buildPhases = (
+				77EC5FADA83AFCB0583EFA85 /* [CP] Check Pods Manifest.lock */,
+				C37991CC29060CB300CE8F17 /* Sources */,
+				C37991CD29060CB300CE8F17 /* Frameworks */,
+				C37991CE29060CB300CE8F17 /* Resources */,
+				A8BA524164B5ED08E8D1F521 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = renewal_ExerciseApp;
+			productName = renewal_ExerciseApp;
+			productReference = C37991D029060CB300CE8F17 /* renewal_ExerciseApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C37991C829060CB200CE8F17 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					C37991CF29060CB300CE8F17 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+				};
+			};
+			buildConfigurationList = C37991CB29060CB200CE8F17 /* Build configuration list for PBXProject "renewal_ExerciseApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C37991C729060CB200CE8F17;
+			productRefGroup = C37991D129060CB300CE8F17 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C37991CF29060CB300CE8F17 /* renewal_ExerciseApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C37991CE29060CB300CE8F17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C37991DB29060CB400CE8F17 /* Preview Assets.xcassets in Resources */,
+				C37991D829060CB400CE8F17 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		77EC5FADA83AFCB0583EFA85 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-renewal_ExerciseApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8BA524164B5ED08E8D1F521 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-renewal_ExerciseApp/Pods-renewal_ExerciseApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-renewal_ExerciseApp/Pods-renewal_ExerciseApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-renewal_ExerciseApp/Pods-renewal_ExerciseApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C37991CC29060CB300CE8F17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C37991F32906880200CE8F17 /* CreateDetailPartViewModel.swift in Sources */,
+				C37991EE2906558A00CE8F17 /* Common.swift in Sources */,
+				C37991E82906105A00CE8F17 /* CreateExerciseFormView.swift in Sources */,
+				C37991E629060E2B00CE8F17 /* RoutineFormView.swift in Sources */,
+				C37991EC290624DB00CE8F17 /* CreateExerciseViewModel.swift in Sources */,
+				C37991E429060E1000CE8F17 /* ExerciseFormView.swift in Sources */,
+				C37991F72908D0E100CE8F17 /* Protocol.swift in Sources */,
+				C37991E229060CF700CE8F17 /* ExerciseMainView.swift in Sources */,
+				C37991F52906881100CE8F17 /* CreateDetailPartModel.swift in Sources */,
+				C37991D629060CB300CE8F17 /* ContentView.swift in Sources */,
+				C37991D429060CB300CE8F17 /* renewal_ExerciseAppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C37991DC29060CB400CE8F17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C37991DD29060CB400CE8F17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C37991DF29060CB400CE8F17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA18A2171577C4728657805D /* Pods-renewal_ExerciseApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"renewal_ExerciseApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.renewal-ExerciseApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C37991E029060CB400CE8F17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A54E8211808388D37955E0C6 /* Pods-renewal_ExerciseApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"renewal_ExerciseApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.renewal-ExerciseApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C37991CB29060CB200CE8F17 /* Build configuration list for PBXProject "renewal_ExerciseApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37991DC29060CB400CE8F17 /* Debug */,
+				C37991DD29060CB400CE8F17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C37991DE29060CB400CE8F17 /* Build configuration list for PBXNativeTarget "renewal_ExerciseApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37991DF29060CB400CE8F17 /* Debug */,
+				C37991E029060CB400CE8F17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C37991C829060CB200CE8F17 /* Project object */;
+}
