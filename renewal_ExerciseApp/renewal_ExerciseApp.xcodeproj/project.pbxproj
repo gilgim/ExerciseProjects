@@ -21,6 +21,7 @@
 		C37991F32906880200CE8F17 /* CreateDetailPartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991F22906880100CE8F17 /* CreateDetailPartViewModel.swift */; };
 		C37991F52906881100CE8F17 /* CreateDetailPartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991F42906881100CE8F17 /* CreateDetailPartModel.swift */; };
 		C37991F72908D0E100CE8F17 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991F62908D0E100CE8F17 /* Protocol.swift */; };
+		C379920C290A1A4E00CE8F17 /* CreateExerciseFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C379920B290A1A4E00CE8F17 /* CreateExerciseFormModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C37991F22906880100CE8F17 /* CreateDetailPartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDetailPartViewModel.swift; sourceTree = "<group>"; };
 		C37991F42906881100CE8F17 /* CreateDetailPartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDetailPartModel.swift; sourceTree = "<group>"; };
 		C37991F62908D0E100CE8F17 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		C379920B290A1A4E00CE8F17 /* CreateExerciseFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseFormModel.swift; sourceTree = "<group>"; };
 		DA18A2171577C4728657805D /* Pods-renewal_ExerciseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-renewal_ExerciseApp.debug.xcconfig"; path = "Target Support Files/Pods-renewal_ExerciseApp/Pods-renewal_ExerciseApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				C37991F12906865200CE8F17 /* CreateDetailPart */,
 				C37991E72906105A00CE8F17 /* CreateExerciseFormView.swift */,
 				C37991EB290624DB00CE8F17 /* CreateExerciseViewModel.swift */,
+				C379920B290A1A4E00CE8F17 /* CreateExerciseFormModel.swift */,
 			);
 			path = CreatExerciseForm;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C37991F32906880200CE8F17 /* CreateDetailPartViewModel.swift in Sources */,
+				C379920C290A1A4E00CE8F17 /* CreateExerciseFormModel.swift in Sources */,
 				C37991EE2906558A00CE8F17 /* Common.swift in Sources */,
 				C37991E82906105A00CE8F17 /* CreateExerciseFormView.swift in Sources */,
 				C37991E629060E2B00CE8F17 /* RoutineFormView.swift in Sources */,

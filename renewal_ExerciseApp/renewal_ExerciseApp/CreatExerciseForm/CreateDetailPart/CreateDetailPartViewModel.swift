@@ -11,8 +11,14 @@ import RealmSwift
 class CreateDetailPartViewModel: ObservableObject {
     @Published var model: DetailPartModel = DetailPartModel()
     
-    /// When user touch affiliated part button, read data from Realm
-    func affiliatedPartButtonAction(part: BodyPart)throws -> [String]{
+    /// This variable isn't runtime error but it was used for alerting user.
+    @Published var isErrorAlert: Bool = false
+    
+    /// This string explain error about isErrorAlert.
+    @Published var errorText: String?
+    
+    /// When user touch affiliated part button, read data from Realm.
+    func affiliatedPartButtonAction(part: BodyPart?)throws -> [String]{
         
         //  $0.name is not "" because it is checked from structChangeObject()
         return try model.readRealmObject().filter({$0.affiliatedPart == part}).map({
@@ -25,11 +31,14 @@ class CreateDetailPartViewModel: ObservableObject {
         })
     }
     ///  When user touch plus button, create append new conponent.
-    func plusButtonAction(array: inout [String], to value: String) {
-        array.append(value)
-    }
-    /// When user touch create button, save data in Realm.
-    func creatButtonAction() {
+    func plusOkButtonAction(part: BodyPart?, append value: String)async {
+        //  Check empty value.
+        guard let part else {isErrorAlert = true;errorText = "운동부위를 선택해주세요.";return}
+        guard value != "" else {isErrorAlert = true;errorText = "값이 비어있습니다.";return}
         
+        var object = DetailPartStruct()
+        object.affiliatedPart = part
+        object.name = value
+        self.model.createRealmObject(target: object)
     }
 }

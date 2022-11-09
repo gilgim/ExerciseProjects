@@ -13,11 +13,6 @@ struct ExerciseFormView: View {
             NavigationLink("Creat Exercise Form") {
                 CreateExerciseFormView()
             }
-            List {
-                VStack {
-                    
-                }
-            }
         }
     }
 }

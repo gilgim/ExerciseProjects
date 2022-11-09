@@ -10,17 +10,20 @@ import SwiftUI
 struct ExerciseMainView: View {
     var body: some View {
         NavigationView {
-            NavigationLink("Go Exercise Form") {
-                ExerciseFormView()
-            }
-            NavigationLink("Creat Routine Form") {
-                RoutineFormView()
-            }
-            NavigationLink("Creat Exercise Real") {
-                
-            }
-            NavigationLink("Creat Routine Real") {
-                
+            VStack {
+                NavigationLink("Go Exercise Form") {
+                    ExerciseFormView()
+                }
+                NavigationLink("Creat Routine Form") {
+                    RoutineFormView()
+                }
+                NavigationLink("Creat Exercise Real") {
+                    
+                }
+                NavigationLink("Creat Routine Real") {
+                    
+                }
+
             }
         }
     }

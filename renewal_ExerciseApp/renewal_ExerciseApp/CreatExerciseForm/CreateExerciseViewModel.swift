@@ -8,28 +8,24 @@
 import Foundation
 
 class CreateExerciseViewModel: ObservableObject {
-    //  ================================ < Variable > ================================
-    /// Creating Exercise Name
-    @Published var name: String = ""
+    @Published var model = ExerciseFormModel()
     
-    /// Creating Exercise Explain
-    @Published var explain: String?
+    /// This variable isn't runtime error but it was used for alerting user.
+    @Published var isErrorAlert: Bool = false
     
-    /// Creating Exercise Youtube link
-    @Published var link: String?
+    /// This string explain error about isErrorAlert.
+    @Published var errorText: String?
     
-    /// Creating Exercise Selected part
-    @Published var parts: String = ""
+    /// If user want to register favorite content, Use this function.
+    func registerFavoriteAction(exerciseObject: ExerciseFormStruct, isFavorite: Bool) async {
+        var target = exerciseObject
+        target.favorite = isFavorite
+        await model.updateRealmObject(from: exerciseObject, to: target)
+    }
     
-    /// Creating Exercise Equiment
-    @Published var equiment: String = ""
-    
-    /// Creating Exercise Equiment
-    @Published var bookmakr: Bool = false
-    /*
-        Detail part is make of Realm data.
-        So, I will make function that change realm data to struct data
-     */
-    /// Creating Exercise Seleted detail part
-    @Published var detailPart: String = ""
+    /// This function create exercise form, but is called alert error, if exercise is contained duplicated components.
+    func createButtonAction(exerciseObject: ExerciseFormStruct) async {
+        guard !model.readRealmObject().contains(where:{$0.name == exerciseObject.name}) else {errorText = "이미 존재하는 운동명입니다."; isErrorAlert = true;return}
+        await model.createRealmObject(target: exerciseObject)
+    }
 }

@@ -12,26 +12,25 @@ class DetailPartModel: Model {
     typealias swiftObject = DetailPartStruct
     typealias realmObject = DetailPartObject
     
-    var swiftStruct = DetailPartStruct()
     let realm = try! Realm()
     
     /// Create one object that is detail part type
     func createRealmObject(target: swiftObject) {
         DispatchQueue.main.async {
-            
             //  Not approve duplicated value
-            guard !self.readRealmObject().contains(where: {$0.name == target.name})
+            guard !self.readRealmObject().contains(where: {
+                $0.name == target.name && $0.affiliatedPart == target.affiliatedPart
+            })
             else{errorMessage(type: .duplicateValue);return}
             
             do {
                 try self.realm.write({
-                    self.swiftStruct = target
-                    let object = try self.swiftStruct.structChangeObject()
+                    let object = try target.structChangeObject()
                     self.realm.add(object)
                 })
             }
             catch {
-                print(error)
+                catchMessage(error)
             }
         }
     }
@@ -42,16 +41,13 @@ class DetailPartModel: Model {
     }
     
     /// Update one object that is detail part type
-    func updateRealmObject(from: swiftObject, to: swiftObject) {
+    func updateRealmObject(from: swiftObject, to: swiftObject) async {
         DispatchQueue.main.async {
             do {
                 try self.realm.write({
-                    self.swiftStruct = from
-                    var object = try self.swiftStruct.structChangeObject()
+                    var object = try from.structChangeObject()
                     self.realm.delete(object)
-                    
-                    self.swiftStruct = to
-                    object = try self.swiftStruct.structChangeObject()
+                    object = try to.structChangeObject()
                     self.realm.add(object)
                 })
             }
@@ -66,8 +62,7 @@ class DetailPartModel: Model {
         DispatchQueue.main.async {
             do {
                 try self.realm.write({
-                    self.swiftStruct = target
-                    var object = try self.swiftStruct.structChangeObject()
+                    let object = try target.structChangeObject()
                     self.realm.delete(object)
                 })
             }
@@ -91,10 +86,10 @@ struct DetailPartStruct: SwiftObject {
         //  Object should not contain emtpy value.
         guard let name, name != "", let affiliatedPart else {throw ErrorType.valueIsEmpty}
     
-        var object = DetailPartObject()
+        let object = DetailPartObject()
         object.name = name
         object.affiliatedPart = affiliatedPart
-        object.id = name + affiliatedPart.rawValue
+        object.id = affiliatedPart.rawValue + "_" + name
         return object
     }
 }
