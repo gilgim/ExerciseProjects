@@ -27,6 +27,8 @@ struct CreateExerciseFormView: View {
     var body: some View {
         VStack {
             //  MARK:  -Name TextField
+            //  FIXME: 여기 문법 이상함
+            //  when focuse off textfield, result is false
             TextField("Exercise name", text: $nameText) { isEdit in
                 print(isEdit)
             }
