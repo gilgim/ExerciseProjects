@@ -15,14 +15,21 @@ class DetailPartModel: Model {
     let realm = try! Realm()
     
     /// Create one object that is detail part type
-    func createRealmObject(target: swiftObject) {
+    func createRealmObject(target: swiftObject) async {
+        guard !self.readRealmObject().contains(where: {
+            $0.name == target.name && $0.affiliatedPart == target.affiliatedPart
+        })
+        else{printErrorMessage(type: .duplicateValue);return}
+        printErrorMessage(type: .none)
         DispatchQueue.main.async {
             //  Not approve duplicated value
-            guard !self.readRealmObject().contains(where: {
-                $0.name == target.name && $0.affiliatedPart == target.affiliatedPart
-            })
-            else{errorMessage(type: .duplicateValue);return}
-            
+            Task {
+                guard !self.readRealmObject().contains(where: {
+                    $0.name == target.name && $0.affiliatedPart == target.affiliatedPart
+                })
+                else{printErrorMessage(type: .duplicateValue);return}
+            }
+
             do {
                 try self.realm.write({
                     let object = try target.structChangeObject()
@@ -37,9 +44,11 @@ class DetailPartModel: Model {
     
     /// Read all objects that is detail part type
     func readRealmObject() -> [swiftObject] {
-        return realm.objects(DetailPartObject.self).map({$0.objectChangeStruct()})
+        /// 동기처리 하지 않으면 데이터를 불러오지 못해 쓰는 곳에서 에러가 발생된다.
+        DispatchQueue.main.sync {
+            return realm.objects(DetailPartObject.self).map({$0.objectChangeStruct()})
+        }
     }
-    
     /// Update one object that is detail part type
     func updateRealmObject(from: swiftObject, to: swiftObject) async {
         DispatchQueue.main.async {

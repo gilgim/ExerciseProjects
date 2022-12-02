@@ -12,7 +12,6 @@ class CreateExerciseViewModel: ObservableObject {
     
     /// This variable isn't runtime error but it was used for alerting user.
     @Published var isErrorAlert: Bool = false
-    
     /// This string explain error about isErrorAlert.
     @Published var errorText: String?
     

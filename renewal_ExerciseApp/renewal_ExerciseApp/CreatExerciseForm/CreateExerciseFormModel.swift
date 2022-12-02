@@ -14,12 +14,12 @@ class ExerciseFormModel: Model {
     
     let realm = try! Realm()
     func createRealmObject(target: ExerciseFormStruct) async {
+        //  Not approve duplicated value
+        guard !self.readRealmObject().contains(where: {
+            $0.name == target.name
+        })
+        else{printErrorMessage(type: .duplicateValue);return}
         DispatchQueue.main.async {
-            //  Not approve duplicated value
-            guard !self.readRealmObject().contains(where: {
-                $0.name == target.name
-            })
-            else{errorMessage(type: .duplicateValue);return}
             do {
                 try self.realm.write({
                     let object = try target.structChangeObject()

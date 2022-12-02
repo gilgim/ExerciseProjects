@@ -18,8 +18,7 @@ class CreateDetailPartViewModel: ObservableObject {
     @Published var errorText: String?
     
     /// When user touch affiliated part button, read data from Realm.
-    func affiliatedPartButtonAction(part: BodyPart?)throws -> [String]{
-        
+    func affiliatedPartButtonAction(part: BodyPart?) async throws -> [String]{
         //  $0.name is not "" because it is checked from structChangeObject()
         return try model.readRealmObject().filter({$0.affiliatedPart == part}).map({
             if let name = $0.name{
@@ -39,6 +38,12 @@ class CreateDetailPartViewModel: ObservableObject {
         var object = DetailPartStruct()
         object.affiliatedPart = part
         object.name = value
-        self.model.createRealmObject(target: object)
+        await self.model.createRealmObject(target: object)
+        if ErrorControl.errorMessage != .none {
+            DispatchQueue.main.async {
+                self.isErrorAlert = true
+                self.errorText = ErrorControl.errorMessage.rawValue
+            }
+        }
     }
 }

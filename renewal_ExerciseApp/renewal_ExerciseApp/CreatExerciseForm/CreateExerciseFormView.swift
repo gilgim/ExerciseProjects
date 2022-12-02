@@ -10,6 +10,7 @@ import SwiftUI
 struct CreateExerciseFormView: View {
     //  ================================ < About View Variable > ================================
     var bodyArray: [BodyPart] = BodyPart.allCases
+    var equipmentArray: [Equipment] = Equipment.allCases
     @State var detailArray: [String] = []
     @State var isInputView: Bool = false
     //  ================================ < About ViewModel > ================================
@@ -21,6 +22,7 @@ struct CreateExerciseFormView: View {
     @State var linkText: String = ""
     @State var part: BodyPart?
     @State var detailPart: String = ""
+    @State var equipment: String = ""
     
     var body: some View {
         VStack {
@@ -39,22 +41,28 @@ struct CreateExerciseFormView: View {
             //  MARK:  -Select body part
             HStack {
                 ForEach(bodyArray, id: \.rawValue) { part in
+                    //  Body Part Action
                     Button(part.rawValue) {
                         self.part = part
                         //  Calling up detail pard about affiliated part.
-                        do {
-                            self.detailArray = try detailVM.affiliatedPartButtonAction(part: part)
-                        }
-                        catch {
-                            catchMessage(error)
+                        Task {
+                            //  MARK: 여기를 동기처리 하지 않으면 데이터 갱신 보다 뷰 갱신이 빨라 에러가 발생한다.
+                            do {
+                                self.detailArray = try await detailVM.affiliatedPartButtonAction(part: part)
+                            }
+                            catch {
+                                catchMessage(error)
+                            }
                         }
                     }
                 }
             }
+            //  FIXME: 여기 운동 세부 부위 배열로 만들기.
             //  MARK:  -Select detail body part
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(detailArray, id: \.self) { part in
+                        //  Detail Body Part Action
                         Button(part) {
                             self.detailPart = part
                         }
@@ -69,6 +77,14 @@ struct CreateExerciseFormView: View {
                     }
                 }
             }
+            HStack {
+                ForEach(equipmentArray, id: \.rawValue) { equipment in
+                    //  Equipment Action
+                    Button(equipment.rawValue) {
+                        self.equipment = equipment.rawValue
+                    }
+                }
+            }
         }
         
         //  ===== Alert creating view that is used making detail part. =====
@@ -79,7 +95,7 @@ struct CreateExerciseFormView: View {
                 Task {
                     do {
                         await detailVM.plusOkButtonAction(part: part, append: detailPart)
-                        self.detailArray = try detailVM.affiliatedPartButtonAction(part: part)
+                        self.detailArray = try await detailVM.affiliatedPartButtonAction(part: part)
                     }
                     catch {
                         catchMessage(error)
@@ -90,7 +106,6 @@ struct CreateExerciseFormView: View {
         }message: {
             Text("선택할 세부부위를 생성해주세요.")
         }
-        
         //  ===== Notice Error about user input =====
         .alert("에러", isPresented: $detailVM.isErrorAlert) {
             Button("확인", role: .cancel) {}
