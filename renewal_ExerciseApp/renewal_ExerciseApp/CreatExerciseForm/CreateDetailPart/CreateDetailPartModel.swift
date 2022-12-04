@@ -16,20 +16,14 @@ class DetailPartModel: Model {
     
     /// Create one object that is detail part type
     func createRealmObject(target: swiftObject) async {
-        guard !self.readRealmObject().contains(where: {
-            $0.name == target.name && $0.affiliatedPart == target.affiliatedPart
-        })
-        else{printErrorMessage(type: .duplicateValue);return}
+		//  Not approve duplicated value
+		guard !self.readRealmObject().contains(where: {
+			$0.name == target.name && $0.affiliatedPart == target.affiliatedPart
+		})
+		else{printErrorMessage(type: .duplicateValue);return}
+		
         printErrorMessage(type: .none)
         DispatchQueue.main.async {
-            //  Not approve duplicated value
-            Task {
-                guard !self.readRealmObject().contains(where: {
-                    $0.name == target.name && $0.affiliatedPart == target.affiliatedPart
-                })
-                else{printErrorMessage(type: .duplicateValue);return}
-            }
-
             do {
                 try self.realm.write({
                     let object = try target.structChangeObject()
