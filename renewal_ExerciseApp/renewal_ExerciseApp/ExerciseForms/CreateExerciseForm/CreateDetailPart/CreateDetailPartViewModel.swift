@@ -18,11 +18,11 @@ class CreateDetailPartViewModel: ObservableObject {
     @Published var errorText: String?
     
     /// When user touch affiliated part button, read data from Realm.
-    func affiliatedPartButtonAction(part: BodyPart?) async throws -> [String]{
+    func affiliatedPartButtonAction(part: BodyPart?) throws -> [DetailPartStruct]{
         //  $0.name is not "" because it is checked from structChangeObject()
         return try model.readRealmObject().filter({$0.affiliatedPart == part}).map({
-            if let name = $0.name{
-                return name
+            if $0.name != nil {
+                return $0
             }
             else {
                 throw ErrorType.valueIsEmpty
@@ -30,15 +30,14 @@ class CreateDetailPartViewModel: ObservableObject {
         })
     }
     ///  When user touch plus button, create append new conponent.
-    func plusOkButtonAction(part: BodyPart?, append value: String)async {
+    func plusOkButtonAction(part: BodyPart?, append value: String) {
         //  Check empty value.
-        guard let part else {isErrorAlert = true;errorText = "운동부위를 선택해주세요.";return}
-        guard value != "" else {isErrorAlert = true;errorText = "값이 비어있습니다.";return}
-        
+        guard let part else {self.isErrorAlert = true;self.errorText = "운동부위를 선택해주세요.";return}
+        guard value != "" else {self.isErrorAlert = true;self.errorText = "값이 비어있습니다.";return}
         var object = DetailPartStruct()
         object.affiliatedPart = part
         object.name = value
-        await self.model.createRealmObject(target: object)
+        self.model.createRealmObject(target: object)
         if ErrorControl.errorMessage != .none {
             DispatchQueue.main.async {
                 self.isErrorAlert = true

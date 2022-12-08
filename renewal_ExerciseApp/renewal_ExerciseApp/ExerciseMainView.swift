@@ -14,7 +14,7 @@ struct ExerciseMainView: View {
                 NavigationLink("Go Exercise Form") {
                     ExerciseFormView()
                 }
-                NavigationLink("Creat Routine Form") {
+                NavigationLink("Go Routine Form") {
                     RoutineFormView()
                 }
                 NavigationLink("Creat Exercise Real") {

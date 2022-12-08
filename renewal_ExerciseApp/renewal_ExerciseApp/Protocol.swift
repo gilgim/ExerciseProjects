@@ -13,9 +13,9 @@ protocol Model {
     associatedtype swiftObject: SwiftObject
     associatedtype realmObject: CutomRealmObject
     
-    func createRealmObject(target: swiftObject) async
-    func readRealmObject() async -> [swiftObject]
-    func updateRealmObject(from: swiftObject, to: swiftObject) async
+    func createRealmObject(target: swiftObject)
+    func readRealmObject() -> [swiftObject]
+    func updateRealmObject(from: swiftObject, to: swiftObject)
     func deleteRealmObject(target: swiftObject)
 }
 

@@ -52,6 +52,19 @@ enum BodyPart: String, PersistableEnum {
 enum Equipment: String, PersistableEnum {
     case babell = "바벨", dumbbel = "덤벨", machine = "머신", bareBody = "맨몸"
 }
+enum SetType: String, PersistableEnum {
+    case Exercise = "운동", Rest = "휴식"
+}
+func utilPrint(title: String, completion: @escaping () -> ()) {
+    print("========== < \(title) > ==========")
+    completion()
+    print("==========================\(title.map({_ in return "="}).joined())")
+}
+//  Action closure 
+func actionClosure(action:(()->())?) {
+    guard let action else {return}
+    action()
+}
 // FIXME: 여기까지 날짜 바꾸는 함수 생성
 func dateString() -> String {
     let formatter = DateFormatter()

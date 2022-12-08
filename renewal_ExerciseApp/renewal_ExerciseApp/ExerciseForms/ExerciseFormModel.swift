@@ -13,22 +13,30 @@ class ExerciseFormModel: Model {
     typealias realmObject = ExerciseFormObject
     
     let realm = try! Realm()
-    func createRealmObject(target: ExerciseFormStruct) async {
+    
+    func createRealmObject(target: ExerciseFormStruct) {
         //  Not approve duplicated value
         guard !self.readRealmObject().contains(where: {
             $0.name == target.name
         })
         else{printErrorMessage(type: .duplicateValue);return}
-        DispatchQueue.main.async {
-            do {
-                try self.realm.write({
-                    let object = try target.structChangeObject()
-                    self.realm.add(object)
-                })
+        printErrorMessage(type: .none)
+        do {
+            let object = try target.structChangeObject()
+            try self.realm.write({
+                self.realm.add(object)
+            })
+            utilPrint(title: "Create Exercise Form") {
+                print("name : \(object.name!)")
+                print("explain : \(object.explain ?? "Empty")")
+                print("link : \(object.link ?? "Empty")")
+                print("part : \(object.part)")
+                print("detailPart : \(object.detailPart)")
+                print("equipment : \(object.equipment)")
             }
-            catch {
-                catchMessage(error)
-            }
+        }
+        catch {
+            catchMessage(error)
         }
     }
     
@@ -36,29 +44,61 @@ class ExerciseFormModel: Model {
         return realm.objects(ExerciseFormObject.self).map({$0.objectChangeStruct()})
     }
     
-    func updateRealmObject(from: ExerciseFormStruct, to: ExerciseFormStruct) async {
-        DispatchQueue.main.async {
-            do {
-                try self.realm.write({
-                    var object = try from.structChangeObject()
-                    self.realm.delete(object)
-                    object = try to.structChangeObject()
-                    self.realm.add(object)
-                })
-            }
-            catch {
-                catchMessage(error)
-            }
+    func updateRealmObject(from: ExerciseFormStruct, to: ExerciseFormStruct) {
+        do {
+            try self.realm.write({
+                var object = try from.structChangeObject()
+                self.realm.delete(object)
+                object = try to.structChangeObject()
+                self.realm.add(object)
+            })
+        }
+        catch {
+            catchMessage(error)
         }
     }
     
     func deleteRealmObject(target: ExerciseFormStruct) {
-        DispatchQueue.main.async {
+        let id = target.keyValue()
+        guard let object = self.realm.object(ofType: ExerciseFormObject.self, forPrimaryKey: id)
+        else {
+            utilPrint(title: "Delete Exercise Form") {
+                print("Do not delete")
+            }
+            return
+        }
+        do {
+            try self.realm.write({
+                self.realm.delete(object)
+            })
+            utilPrint(title: "Delete Exercise Form") {
+                print("Id : \(id!)")
+            }
+        }
+        catch {
+            catchMessage(error)
+        }
+    }
+    /// This function do to save exercise form image.
+    func saveImageToDocumentDirectory(imageName: String, imageData: Data?) {
+        utilPrint(title: "ImageSave") {
+            guard let data = imageData else {print("Image is empty.");return}
+            guard let documentDirctory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
+            let imageURL = documentDirctory.appendingPathComponent(imageName)
+            //  If this imageName duplicate, this content is deleted
+            if FileManager.default.fileExists(atPath: imageURL.path) {
+                do {
+                    try FileManager.default.removeItem(at: imageURL)
+                    print("This content duplicate. so image is deleted.")
+                }
+                catch {
+                    catchMessage(error)
+                }
+            }
+            // Save content
             do {
-                try self.realm.write({
-                    let object = try target.structChangeObject()
-                    self.realm.delete(object)
-                })
+                try data.write(to: imageURL)
+                print("Writing data success.")
             }
             catch {
                 catchMessage(error)
@@ -89,8 +129,9 @@ struct ExerciseFormStruct: SwiftObject {
     var equipment: [Equipment]?
     
     /// Favorite component is assigned by user.
-    var favorite: Bool?
+    var favorite: Bool = false
     
+    /// Don't chagne detailpart object, because it is Object Class that action error.
     func structChangeObject() throws -> ExerciseFormObject {
         //  Check empty value
         guard let name, name != "",
@@ -102,14 +143,13 @@ struct ExerciseFormStruct: SwiftObject {
         object.name = name
         object.part.append(objectsIn: part)
         object.equipment.append(objectsIn: equipment)
-        
         object.detailPart.append(objectsIn: try detailPart.map({
-            //  Check detail part value
-            guard $0.name != nil || $0.name != "" || $0.affiliatedPart != nil
-            else {throw ErrorType.createError("detailPart")}
-            return try! $0.structChangeObject()
+            var result = ""
+            if let id = try $0.structChangeObject().id {
+                result = id
+            }
+            return result
         }))
-        
         //  If explain value is "" and link value is "", values change to nil
         object.explain = self.explain
         if explain == "" {object.explain = nil}
@@ -119,6 +159,10 @@ struct ExerciseFormStruct: SwiftObject {
         
         object.id = "creat_" + name
         return object
+    }
+    func keyValue() -> String? {
+        guard let name else {return nil}
+        return "creat_" + name
     }
 }
 
@@ -141,9 +185,9 @@ class ExerciseFormObject:Object, CutomRealmObject {
     
     /// Part can contain many component.
     @Persisted var part = List<BodyPart>()
-    @Persisted var detailPart = List<DetailPartObject>()
+    @Persisted var detailPart = List<String>()
     @Persisted var equipment = List<Equipment>()
-    @Persisted var favorite: Bool?
+    @Persisted var favorite: Bool
     
     func objectChangeStruct() -> ExerciseFormStruct {
         var object = ExerciseFormStruct()
@@ -151,7 +195,16 @@ class ExerciseFormObject:Object, CutomRealmObject {
         object.explain = explain
         object.link = link
         object.part = Array(part)
-        object.detailPart = Array(_immutableCocoaArray: detailPart)
+        
+        let realm = try! Realm()
+        let realmObject = Array(detailPart).map({
+            var result = DetailPartObject()
+            if let object = realm.object(ofType: DetailPartObject.self, forPrimaryKey: $0) {
+                result = object
+            }
+            return result.objectChangeStruct()
+        })
+        object.detailPart = realmObject
         object.equipment = Array(equipment)
         object.favorite = favorite
         

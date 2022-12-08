@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct RoutineFormView: View {
+    @State var isOpen = false
+    @State var UIimage: UIImage?
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            NavigationLink("Create RoutineForm") {
+                CreateRoutineFormView()
+            }
+        }
     }
 }
 

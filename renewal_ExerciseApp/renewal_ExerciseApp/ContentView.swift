@@ -12,9 +12,14 @@ struct ContentView: View {
     var body: some View {
         ExerciseMainView()
             .onAppear() {
-                print("========== < URL > ==========")
-                print("RealmFileURL : \(Realm.Configuration.defaultConfiguration.fileURL)")
-                print("=============================")
+                utilPrint(title: "URL") {
+                    if let realmUrl = Realm.Configuration.defaultConfiguration.fileURL {
+                        print("RealmFileURL : \(realmUrl)")
+                    }
+                    else {
+                        print("Can't find realm url.")
+                    }
+                }
             }
     }
 }
