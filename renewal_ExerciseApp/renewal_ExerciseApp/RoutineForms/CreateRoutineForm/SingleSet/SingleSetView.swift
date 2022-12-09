@@ -16,6 +16,7 @@ struct SingleSetView: View {
     //  ================================ < About ViewModel > ================================
     @StateObject var singleVM = SingleSetViewModel()
     //  ================================ < Input Variable > ================================
+    @State var tempname: String? = ""
     @State var selectedContent: ExerciseInRoutineSet?
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -47,6 +48,9 @@ struct SingleSetView: View {
             .onAppear() {
                 singleVM.dummyData()
             }
+        }
+        .sheet(isPresented: $singleVM.isShowExerciseForm) {
+            ExerciseFormView(exerciseName: $tempname, isShow: .constant(true))
         }
     }
 }

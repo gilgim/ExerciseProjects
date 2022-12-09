@@ -10,10 +10,11 @@ import Foundation
 class SingleSetViewModel: ObservableObject {
     /// This array is contain exercise and rest
     @Published var exerciseAndRestArray: [ExerciseInRoutineSet] = []
+    @Published var isShowExerciseForm: Bool = false
     
-    /// This function
+    /// This function do to add component.
     func addComponentButtonAction() {
-        
+        self.isShowExerciseForm = true
     }
     func dummyData() {
         let value1 = ExerciseInRoutineSet(type: .Exercise, image: .init(systemName: "figure.run"), sequence: 0, name: "value1")
