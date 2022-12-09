@@ -39,16 +39,18 @@ struct CustomPHPickerView: UIViewControllerRepresentable {
         @Binding var selectImage: UIImage?
         @Binding var closure: (()->())?
         @Binding var imageData: Data?
-        let asdf = DispatchQueue(label: "asdf")
+        
         init(selectImage: Binding<UIImage?>, imageData: Binding<Data?>, closure: Binding<(()->())?>) {
             self._selectImage = selectImage
             self._imageData = imageData
             self._closure = closure
         }
+        
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             picker.dismiss(animated: true)
             let itemProvider = results.first?.itemProvider
             let semaphore = DispatchSemaphore(value: 0)
+            
             DispatchQueue.global(qos: .userInteractive).async {
                 if let itemProvider = itemProvider,itemProvider.canLoadObject(ofClass: UIImage.self) {
                     itemProvider.loadObject(ofClass: UIImage.self) { image, _ in

@@ -52,7 +52,8 @@ enum BodyPart: String, PersistableEnum {
 enum Equipment: String, PersistableEnum {
     case babell = "바벨", dumbbel = "덤벨", machine = "머신", bareBody = "맨몸"
 }
-enum SetType: String, PersistableEnum {
+///  One set should only two types that are "exercise" and "rest"
+enum SetContentType: String, PersistableEnum {
     case Exercise = "운동", Rest = "휴식"
 }
 func utilPrint(title: String, completion: @escaping () -> ()) {

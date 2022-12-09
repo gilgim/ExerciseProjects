@@ -10,8 +10,10 @@
 		775C5BAFB9741EB23B69D5DB /* Pods_renewal_ExerciseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5A2EDB0C1C37C62231319 /* Pods_renewal_ExerciseApp.framework */; };
 		C301AC6B294062D100D110A3 /* CustomPHPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301AC6A294062D100D110A3 /* CustomPHPickerView.swift */; };
 		C33A40E82941A39500659E87 /* RoutineFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A40E72941A39500659E87 /* RoutineFormModel.swift */; };
-		C33A40EB2941A8A800659E87 /* RealExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A40EA2941A8A800659E87 /* RealExerciseModel.swift */; };
 		C33A40EE2941B70600659E87 /* CreateRoutineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A40ED2941B70600659E87 /* CreateRoutineFormView.swift */; };
+		C33A411C2942AFE900659E87 /* CreateRoutineFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A411B2942AFE900659E87 /* CreateRoutineFormViewModel.swift */; };
+		C33A411F2943246E00659E87 /* SingleSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A411E2943246E00659E87 /* SingleSetView.swift */; };
+		C33A4121294324D900659E87 /* SingleSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A4120294324D900659E87 /* SingleSetViewModel.swift */; };
 		C34ABB95293EFEAD000A4002 /* ExerciseFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34ABB94293EFEAD000A4002 /* ExerciseFormViewModel.swift */; };
 		C37991D429060CB300CE8F17 /* renewal_ExerciseAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991D329060CB300CE8F17 /* renewal_ExerciseAppApp.swift */; };
 		C37991D629060CB300CE8F17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991D529060CB300CE8F17 /* ContentView.swift */; };
@@ -34,8 +36,10 @@
 		A54E8211808388D37955E0C6 /* Pods-renewal_ExerciseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-renewal_ExerciseApp.release.xcconfig"; path = "Target Support Files/Pods-renewal_ExerciseApp/Pods-renewal_ExerciseApp.release.xcconfig"; sourceTree = "<group>"; };
 		C301AC6A294062D100D110A3 /* CustomPHPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPHPickerView.swift; sourceTree = "<group>"; };
 		C33A40E72941A39500659E87 /* RoutineFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFormModel.swift; sourceTree = "<group>"; };
-		C33A40EA2941A8A800659E87 /* RealExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealExerciseModel.swift; sourceTree = "<group>"; };
 		C33A40ED2941B70600659E87 /* CreateRoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormView.swift; sourceTree = "<group>"; };
+		C33A411B2942AFE900659E87 /* CreateRoutineFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormViewModel.swift; sourceTree = "<group>"; };
+		C33A411E2943246E00659E87 /* SingleSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSetView.swift; sourceTree = "<group>"; };
+		C33A4120294324D900659E87 /* SingleSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSetViewModel.swift; sourceTree = "<group>"; };
 		C34ABB94293EFEAD000A4002 /* ExerciseFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormViewModel.swift; sourceTree = "<group>"; };
 		C37991D029060CB300CE8F17 /* renewal_ExerciseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = renewal_ExerciseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37991D329060CB300CE8F17 /* renewal_ExerciseAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = renewal_ExerciseAppApp.swift; sourceTree = "<group>"; };
@@ -96,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				C37991E529060E2B00CE8F17 /* RoutineFormView.swift */,
-				C33A40E72941A39500659E87 /* RoutineFormModel.swift */,
 				C33A40E62941A35A00659E87 /* CreateRoutineForm */,
 			);
 			path = RoutineForms;
@@ -106,25 +109,19 @@
 			isa = PBXGroup;
 			children = (
 				C33A40ED2941B70600659E87 /* CreateRoutineFormView.swift */,
-				C33A40E92941A7C600659E87 /* RealExercise */,
-				C33A40EC2941ACF000659E87 /* RealExerciseComplex */,
+				C33A411B2942AFE900659E87 /* CreateRoutineFormViewModel.swift */,
+				C33A411D2943244E00659E87 /* SingleSet */,
 			);
 			path = CreateRoutineForm;
 			sourceTree = "<group>";
 		};
-		C33A40E92941A7C600659E87 /* RealExercise */ = {
+		C33A411D2943244E00659E87 /* SingleSet */ = {
 			isa = PBXGroup;
 			children = (
-				C33A40EA2941A8A800659E87 /* RealExerciseModel.swift */,
+				C33A411E2943246E00659E87 /* SingleSetView.swift */,
+				C33A4120294324D900659E87 /* SingleSetViewModel.swift */,
 			);
-			path = RealExercise;
-			sourceTree = "<group>";
-		};
-		C33A40EC2941ACF000659E87 /* RealExerciseComplex */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RealExerciseComplex;
+			path = SingleSet;
 			sourceTree = "<group>";
 		};
 		C37991C729060CB200CE8F17 = {
@@ -157,6 +154,7 @@
 				C37991E129060CF700CE8F17 /* ExerciseMainView.swift */,
 				C301AC6C2940882800D110A3 /* UIKitViews */,
 				C33A40E52941A26A00659E87 /* RoutineForms */,
+				C33A40E72941A39500659E87 /* RoutineFormModel.swift */,
 				C37991EA290624BF00CE8F17 /* ExerciseForms */,
 			);
 			path = renewal_ExerciseApp;
@@ -185,8 +183,8 @@
 			children = (
 				C37991E329060E1000CE8F17 /* ExerciseFormView.swift */,
 				C34ABB94293EFEAD000A4002 /* ExerciseFormViewModel.swift */,
-				C379920B290A1A4E00CE8F17 /* ExerciseFormModel.swift */,
 				C37991E9290624A700CE8F17 /* CreateExerciseForm */,
+				C379920B290A1A4E00CE8F17 /* ExerciseFormModel.swift */,
 			);
 			path = ExerciseForms;
 			sourceTree = "<group>";
@@ -319,18 +317,20 @@
 				C33A40E82941A39500659E87 /* RoutineFormModel.swift in Sources */,
 				C37991F32906880200CE8F17 /* CreateDetailPartViewModel.swift in Sources */,
 				C379920C290A1A4E00CE8F17 /* ExerciseFormModel.swift in Sources */,
+				C33A411F2943246E00659E87 /* SingleSetView.swift in Sources */,
 				C37991EE2906558A00CE8F17 /* Common.swift in Sources */,
 				C37991E82906105A00CE8F17 /* CreateExerciseFormView.swift in Sources */,
 				C37991E629060E2B00CE8F17 /* RoutineFormView.swift in Sources */,
 				C37991EC290624DB00CE8F17 /* CreateExerciseViewModel.swift in Sources */,
 				C301AC6B294062D100D110A3 /* CustomPHPickerView.swift in Sources */,
 				C37991E429060E1000CE8F17 /* ExerciseFormView.swift in Sources */,
+				C33A411C2942AFE900659E87 /* CreateRoutineFormViewModel.swift in Sources */,
 				C37991F72908D0E100CE8F17 /* Protocol.swift in Sources */,
 				C37991E229060CF700CE8F17 /* ExerciseMainView.swift in Sources */,
+				C33A4121294324D900659E87 /* SingleSetViewModel.swift in Sources */,
 				C37991F52906881100CE8F17 /* CreateDetailPartModel.swift in Sources */,
 				C37991D629060CB300CE8F17 /* ContentView.swift in Sources */,
 				C37991D429060CB300CE8F17 /* renewal_ExerciseAppApp.swift in Sources */,
-				C33A40EB2941A8A800659E87 /* RealExerciseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
