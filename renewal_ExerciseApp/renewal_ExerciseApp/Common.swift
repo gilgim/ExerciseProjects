@@ -56,6 +56,10 @@ enum Equipment: String, PersistableEnum {
 enum SetContentType: String, PersistableEnum {
     case Exercise = "운동", Rest = "휴식"
 }
+///  One set should only two types that are "exercise" and "rest"
+enum SetType: String, PersistableEnum {
+	case Exercise = "운동", Rest = "휴식"
+}
 func utilPrint(title: String, completion: @escaping () -> ()) {
     print("========== < \(title) > ==========")
     completion()

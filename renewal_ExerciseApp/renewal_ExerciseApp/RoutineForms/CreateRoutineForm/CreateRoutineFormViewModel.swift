@@ -8,6 +8,5 @@
 import Foundation
 
 class CreateRoutineFormViewModel: ObservableObject {
-    /// This array is contain set
-    @Published var setArray: [[ExerciseInRoutineSet]] = []
+    
 }

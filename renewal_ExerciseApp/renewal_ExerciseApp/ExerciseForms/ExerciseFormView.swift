@@ -27,12 +27,20 @@ struct ExerciseFormView: View {
             }
             List {
                 ForEach(formVM.formList, id: \.name) { exercieseForm in
-                    Button(exercieseForm.name ?? "값이 올바르지 않음") {
+                    Button {
                         exerciseName = exercieseForm.name
                         if isShow {
                             mode.wrappedValue.dismiss()
                         }
-                    }
+					}label: {
+						HStack {
+							Image(uiImage: self.formVM.callingUpImage(imageName: "creat_\(exercieseForm.name!)") ?? UIImage())
+								.resizable()
+								.scaledToFit()
+							Text(exercieseForm.name ?? "값이 올바르지 않음")
+						}
+					}
+					.frame(height: 75)
                 }
                 .onDelete(perform: formVM.deleteExerciseForm)
             }

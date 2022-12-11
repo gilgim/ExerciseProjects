@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		775C5BAFB9741EB23B69D5DB /* Pods_renewal_ExerciseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5A2EDB0C1C37C62231319 /* Pods_renewal_ExerciseApp.framework */; };
 		C301AC6B294062D100D110A3 /* CustomPHPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301AC6A294062D100D110A3 /* CustomPHPickerView.swift */; };
+		C322808729448D3C005A7AFC /* SingleSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322808629448D3C005A7AFC /* SingleSetModel.swift */; };
+		C322808A294496B0005A7AFC /* PartialExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3228089294496B0005A7AFC /* PartialExerciseModel.swift */; };
+		C322808C29449B3D005A7AFC /* SingleSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322808B29449B3D005A7AFC /* SingleSetView.swift */; };
 		C33A40E82941A39500659E87 /* RoutineFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A40E72941A39500659E87 /* RoutineFormModel.swift */; };
 		C33A40EE2941B70600659E87 /* CreateRoutineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A40ED2941B70600659E87 /* CreateRoutineFormView.swift */; };
 		C33A411C2942AFE900659E87 /* CreateRoutineFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A411B2942AFE900659E87 /* CreateRoutineFormViewModel.swift */; };
-		C33A411F2943246E00659E87 /* SingleSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A411E2943246E00659E87 /* SingleSetView.swift */; };
-		C33A4121294324D900659E87 /* SingleSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A4120294324D900659E87 /* SingleSetViewModel.swift */; };
+		C33A411F2943246E00659E87 /* PartialExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A411E2943246E00659E87 /* PartialExerciseView.swift */; };
+		C33A4121294324D900659E87 /* PartialExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A4120294324D900659E87 /* PartialExerciseViewModel.swift */; };
 		C34ABB95293EFEAD000A4002 /* ExerciseFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34ABB94293EFEAD000A4002 /* ExerciseFormViewModel.swift */; };
 		C37991D429060CB300CE8F17 /* renewal_ExerciseAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991D329060CB300CE8F17 /* renewal_ExerciseAppApp.swift */; };
 		C37991D629060CB300CE8F17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37991D529060CB300CE8F17 /* ContentView.swift */; };
@@ -35,11 +38,14 @@
 		27B5A2EDB0C1C37C62231319 /* Pods_renewal_ExerciseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_renewal_ExerciseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54E8211808388D37955E0C6 /* Pods-renewal_ExerciseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-renewal_ExerciseApp.release.xcconfig"; path = "Target Support Files/Pods-renewal_ExerciseApp/Pods-renewal_ExerciseApp.release.xcconfig"; sourceTree = "<group>"; };
 		C301AC6A294062D100D110A3 /* CustomPHPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPHPickerView.swift; sourceTree = "<group>"; };
+		C322808629448D3C005A7AFC /* SingleSetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSetModel.swift; sourceTree = "<group>"; };
+		C3228089294496B0005A7AFC /* PartialExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialExerciseModel.swift; sourceTree = "<group>"; };
+		C322808B29449B3D005A7AFC /* SingleSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSetView.swift; sourceTree = "<group>"; };
 		C33A40E72941A39500659E87 /* RoutineFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFormModel.swift; sourceTree = "<group>"; };
 		C33A40ED2941B70600659E87 /* CreateRoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormView.swift; sourceTree = "<group>"; };
 		C33A411B2942AFE900659E87 /* CreateRoutineFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormViewModel.swift; sourceTree = "<group>"; };
-		C33A411E2943246E00659E87 /* SingleSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSetView.swift; sourceTree = "<group>"; };
-		C33A4120294324D900659E87 /* SingleSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSetViewModel.swift; sourceTree = "<group>"; };
+		C33A411E2943246E00659E87 /* PartialExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialExerciseView.swift; sourceTree = "<group>"; };
+		C33A4120294324D900659E87 /* PartialExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialExerciseViewModel.swift; sourceTree = "<group>"; };
 		C34ABB94293EFEAD000A4002 /* ExerciseFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormViewModel.swift; sourceTree = "<group>"; };
 		C37991D029060CB300CE8F17 /* renewal_ExerciseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = renewal_ExerciseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37991D329060CB300CE8F17 /* renewal_ExerciseAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = renewal_ExerciseAppApp.swift; sourceTree = "<group>"; };
@@ -96,6 +102,15 @@
 			path = UIKitViews;
 			sourceTree = "<group>";
 		};
+		C32280882944968A005A7AFC /* SingleSet */ = {
+			isa = PBXGroup;
+			children = (
+				C322808B29449B3D005A7AFC /* SingleSetView.swift */,
+				C322808629448D3C005A7AFC /* SingleSetModel.swift */,
+			);
+			path = SingleSet;
+			sourceTree = "<group>";
+		};
 		C33A40E52941A26A00659E87 /* RoutineForms */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,18 +125,20 @@
 			children = (
 				C33A40ED2941B70600659E87 /* CreateRoutineFormView.swift */,
 				C33A411B2942AFE900659E87 /* CreateRoutineFormViewModel.swift */,
-				C33A411D2943244E00659E87 /* SingleSet */,
+				C33A411D2943244E00659E87 /* PartialExercise */,
 			);
 			path = CreateRoutineForm;
 			sourceTree = "<group>";
 		};
-		C33A411D2943244E00659E87 /* SingleSet */ = {
+		C33A411D2943244E00659E87 /* PartialExercise */ = {
 			isa = PBXGroup;
 			children = (
-				C33A411E2943246E00659E87 /* SingleSetView.swift */,
-				C33A4120294324D900659E87 /* SingleSetViewModel.swift */,
+				C33A411E2943246E00659E87 /* PartialExerciseView.swift */,
+				C33A4120294324D900659E87 /* PartialExerciseViewModel.swift */,
+				C3228089294496B0005A7AFC /* PartialExerciseModel.swift */,
+				C32280882944968A005A7AFC /* SingleSet */,
 			);
-			path = SingleSet;
+			path = PartialExercise;
 			sourceTree = "<group>";
 		};
 		C37991C729060CB200CE8F17 = {
@@ -317,20 +334,23 @@
 				C33A40E82941A39500659E87 /* RoutineFormModel.swift in Sources */,
 				C37991F32906880200CE8F17 /* CreateDetailPartViewModel.swift in Sources */,
 				C379920C290A1A4E00CE8F17 /* ExerciseFormModel.swift in Sources */,
-				C33A411F2943246E00659E87 /* SingleSetView.swift in Sources */,
+				C33A411F2943246E00659E87 /* PartialExerciseView.swift in Sources */,
 				C37991EE2906558A00CE8F17 /* Common.swift in Sources */,
 				C37991E82906105A00CE8F17 /* CreateExerciseFormView.swift in Sources */,
 				C37991E629060E2B00CE8F17 /* RoutineFormView.swift in Sources */,
 				C37991EC290624DB00CE8F17 /* CreateExerciseViewModel.swift in Sources */,
 				C301AC6B294062D100D110A3 /* CustomPHPickerView.swift in Sources */,
 				C37991E429060E1000CE8F17 /* ExerciseFormView.swift in Sources */,
+				C322808A294496B0005A7AFC /* PartialExerciseModel.swift in Sources */,
 				C33A411C2942AFE900659E87 /* CreateRoutineFormViewModel.swift in Sources */,
 				C37991F72908D0E100CE8F17 /* Protocol.swift in Sources */,
+				C322808729448D3C005A7AFC /* SingleSetModel.swift in Sources */,
 				C37991E229060CF700CE8F17 /* ExerciseMainView.swift in Sources */,
-				C33A4121294324D900659E87 /* SingleSetViewModel.swift in Sources */,
+				C33A4121294324D900659E87 /* PartialExerciseViewModel.swift in Sources */,
 				C37991F52906881100CE8F17 /* CreateDetailPartModel.swift in Sources */,
 				C37991D629060CB300CE8F17 /* ContentView.swift in Sources */,
 				C37991D429060CB300CE8F17 /* renewal_ExerciseAppApp.swift in Sources */,
+				C322808C29449B3D005A7AFC /* SingleSetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

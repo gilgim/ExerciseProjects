@@ -11,25 +11,27 @@ import SwiftUI
 struct CreateRoutineFormView: View {
     //  ================================ < About View Variable > ================================
     /// setArray component is Single Set that can be contain only exercise and rest.
-    @State var setArray: [SingleSetView] = []
+    @State var partialExArray: [PartialExerciseStruct] = []
     /// setCount is make of Rountine. In order to this variable is add all sets.
     @State var setCount: Int = 0
     //  ================================ < About ViewModel > ================================
     /// This ViewModel contain set
-    @StateObject var createFormVM: CreateRoutineFormViewModel = CreateRoutineFormViewModel()
+//    @StateObject var createFormVM: CreateRoutineFormViewModel = CreateRoutineFormViewModel()
     //  ================================ < Input Variable > ================================
     var body: some View {
         ScrollView(.vertical) {
             VStack {
-                ForEach(setArray, id: \.setNumber) { singleView in
-                    singleView
+                ForEach(partialExArray, id: \.id) { partialExercise in
+					PartialExerciseView(partialExNumber: partialExercise.sequence)
                 }
                 Button {
-                    setArray.append(SingleSetView(setNumber: setCount))
+					let temp = PartialExerciseStruct(sequence: setCount)
+					partialExArray.append(temp)
                     setCount += 1
                 }label: {
                     RoundedRectangle(cornerRadius: 5)
                         .foregroundColor(.yellow)
+						.frame(height: 30)
                         .overlay {Image(systemName: "plus")}
                 }
             }
