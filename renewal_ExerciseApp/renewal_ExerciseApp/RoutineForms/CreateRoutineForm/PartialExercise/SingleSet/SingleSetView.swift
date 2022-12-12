@@ -18,6 +18,7 @@ struct SingleSetView: View {
 					.resizable()
 					.scaledToFit()
 					.padding(.vertical, 10)
+                    .clipShape(Circle())
 					.frame(maxWidth: .infinity)
 					.foregroundColor(.white)
 			}

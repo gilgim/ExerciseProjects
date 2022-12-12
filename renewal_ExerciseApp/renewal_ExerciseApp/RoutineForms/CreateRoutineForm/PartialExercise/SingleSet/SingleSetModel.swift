@@ -6,16 +6,19 @@
 //
 
 import Foundation
+import UIKit
+
 ///	This struct should contain set type.
 struct SingleSetStruct {
 	///	The reason this variable is exist is because of using drag & drop.
 	var id = UUID()
 	///	this variable explain current partical exercise this set is contained.
-	var particalExercise: Int
+	var particalSequence: Int
 	///	setType express this component in partical Exercise.
 	var setType: SetType
 	var imageName: String?
-	
+    var uiImage: UIImage?
+    
 	//	When setType is exercise.
 	///	When setType is exercise, this variable should be exist.
 	var exerciseName: String?
@@ -27,8 +30,8 @@ struct SingleSetStruct {
 	//	When setType is rest.
 	var restTime: Int?
 	
-	init(particalExercise: Int, setType: SetType, imageName: String? = nil, exerciseName: String? = nil, weight: Int? = nil, count: Int? = nil, restTime: Int? = nil) {
-		self.particalExercise = particalExercise
+	init(particalSequence: Int, setType: SetType, imageName: String? = nil, exerciseName: String? = nil, weight: Int? = nil, count: Int? = nil, restTime: Int? = nil) {
+		self.particalSequence = particalSequence
 		self.setType = setType
 		if setType == .Rest {
 			self.imageName = "cross.vial"

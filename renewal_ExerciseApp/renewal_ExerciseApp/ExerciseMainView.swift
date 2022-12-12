@@ -12,7 +12,7 @@ struct ExerciseMainView: View {
         NavigationView {
             VStack {
                 NavigationLink("Go Exercise Form") {
-                    ExerciseFormView(isShow: .constant(false))
+                    ExerciseFormView()
                 }
                 NavigationLink("Go Routine Form") {
                     RoutineFormView()

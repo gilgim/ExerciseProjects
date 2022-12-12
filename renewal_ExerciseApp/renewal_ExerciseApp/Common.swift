@@ -44,10 +44,40 @@ func printErrorMessage(type: ErrorMessage) {
         print("ERROR : \(type.rawValue)")
     }
 }
+enum IDKeyword: String {
+    case ExerciseForm = "exerciseForm_"
+    case ExerciseFormImage = "exerciseForm_image_"
+    /// if there is uiimage, this case is used by sfSymbolName.
+    case UiImage = "uiImage"
+}
 /// Kind of body part
 enum BodyPart: String, PersistableEnum {
-    case Chest = "가슴", Back = "등", Arms = "팔", lowerBody = "하체", Abs = "복근", wholeBody = "전신", aerobic = "유산소"
+    case Chest = "가슴", Back = "등", Arms = "팔", lowerBody = "하체", Abs = "복근", wholeBody = "전신", Aerobic = "유산소"
 }
+func bodyPartDefaultSymbol(parts: [BodyPart]) -> String{
+    if parts.count == 1 {
+        switch parts[0] {
+        case .Chest:
+            return "1.circle.fill"
+        case .Back:
+            return "2.circle.fill"
+        case .lowerBody:
+            return "3.circle.fill"
+        case .Arms:
+            return "4.circle.fill"
+        case .Abs:
+            return "5.circle.fill"
+        case .Aerobic:
+            return "6.circle.fill"
+        case .wholeBody:
+            return "7.circle.fill"
+        }
+    }
+    else {
+        return "square.stack.3d.up.fill"
+    }
+}
+
 /// Kind of equipment
 enum Equipment: String, PersistableEnum {
     case babell = "바벨", dumbbel = "덤벨", machine = "머신", bareBody = "맨몸"

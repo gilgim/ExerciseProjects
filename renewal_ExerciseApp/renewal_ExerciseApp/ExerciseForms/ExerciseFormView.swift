@@ -14,30 +14,49 @@ struct ExerciseFormView: View {
     @StateObject var formVM = ExerciseFormViewModel()
     @StateObject var detailVM = CreateDetailPartViewModel()
     //  ================================ < Input Variable > ================================
-    @Binding var exerciseName: String?
+    @Binding var exerciseForm: ExerciseFormStruct?
     @Binding var isShow: Bool
-    init(exerciseName: Binding<String?> = .constant(nil), isShow: Binding<Bool>) {
-        self._exerciseName = exerciseName
+    @Binding var clickEvent: Bool
+    init(exerciseForm: Binding<ExerciseFormStruct?> = .constant(nil), isShow: Binding<Bool> = .constant(false), clickEvent: Binding<Bool> = .constant(false)) {
+        self._exerciseForm = exerciseForm
         self._isShow = isShow
+        self._clickEvent = clickEvent
     }
     var body: some View {
         VStack {
-            NavigationLink("Creat Exercise Form") {
-                CreateExerciseFormView()
+            if isShow {
+                Button("Add Rest") {
+                    self.clickEvent = true
+                    self.exerciseForm = nil
+                    self.mode.wrappedValue.dismiss()
+                }
+            }
+            else {
+                NavigationLink("Creat Exercise Form") {
+                    CreateExerciseFormView()
+                }
             }
             List {
-                ForEach(formVM.formList, id: \.name) { exercieseForm in
+                ForEach(formVM.formList, id: \.name) { exerciseForm in
                     Button {
-                        exerciseName = exercieseForm.name
+                        self.clickEvent = true
+                        self.exerciseForm = exerciseForm
                         if isShow {
                             mode.wrappedValue.dismiss()
                         }
 					}label: {
 						HStack {
-							Image(uiImage: self.formVM.callingUpImage(imageName: "creat_\(exercieseForm.name!)") ?? UIImage())
-								.resizable()
-								.scaledToFit()
-							Text(exercieseForm.name ?? "값이 올바르지 않음")
+                            if let image = exerciseForm.image {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                            else {
+                                Image(systemName: exerciseForm.sfSymbolName ?? "dumbbell.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                            Text(exerciseForm.name ?? "값이 올바르지 않음")
 						}
 					}
 					.frame(height: 75)

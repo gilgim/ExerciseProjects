@@ -27,6 +27,9 @@ class ExerciseFormModel: Model {
                 self.realm.add(object)
             })
             utilPrint(title: "Create Exercise Form") {
+                print("Image Type : ",separator: " ")
+                if object.sfSymbolName != IDKeyword.UiImage.rawValue {print("SFSymbol")}
+                else {print("UserImage")}
                 print("name : \(object.name!)")
                 print("explain : \(object.explain ?? "Empty")")
                 print("link : \(object.link ?? "Empty")")
@@ -39,9 +42,30 @@ class ExerciseFormModel: Model {
             catchMessage(error)
         }
     }
-    
+    /// the reason this stage contain calling up image is because if data is saved realm, phone disk can be be short of size
     func readRealmObject() -> [ExerciseFormStruct] {
-        return realm.objects(ExerciseFormObject.self).map({$0.objectChangeStruct()})
+        return realm.objects(ExerciseFormObject.self).map({
+            var structObject = $0.objectChangeStruct()
+            if structObject.sfSymbolName == IDKeyword.UiImage.rawValue {
+                let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+                let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+                let path = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+                
+                if let directoryPath = path.first {
+                    if let name = structObject.name {
+                        let fileName = IDKeyword.ExerciseFormImage.rawValue + name
+                        let imageURL = URL(fileURLWithPath: directoryPath).appendingPathComponent(fileName)
+                        structObject.image = UIImage(contentsOfFile: imageURL.path)
+                    }
+                }
+            }
+            else if structObject.sfSymbolName == nil {
+                if let parts = structObject.part {
+                    structObject.sfSymbolName = bodyPartDefaultSymbol(parts: parts)
+                }
+            }
+            return structObject
+        })
     }
     
     func updateRealmObject(from: ExerciseFormStruct, to: ExerciseFormStruct) {
@@ -78,13 +102,28 @@ class ExerciseFormModel: Model {
         catch {
             catchMessage(error)
         }
+        if target.sfSymbolName == IDKeyword.UiImage.rawValue {
+            guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
+            let imageURL = documentDirectory.appendingPathComponent(IDKeyword.ExerciseFormImage.rawValue + target.name!)
+            utilPrint(title: "Exercise Form Image Delete") {
+                if FileManager.default.fileExists(atPath: imageURL.path) {
+                    do {
+                        try FileManager.default.removeItem(at: imageURL)
+                        print("Image name : \(IDKeyword.ExerciseFormImage.rawValue + target.name!)")
+                    } catch {
+                        catchMessage(error)
+                    }
+                }
+            }
+        }
     }
     /// This function do to save exercise form image.
     func saveImageToDocumentDirectory(imageName: String, imageData: Data?) {
         utilPrint(title: "ImageSave") {
             guard let data = imageData else {print("Image is empty.");return}
             guard let documentDirctory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
-            let imageURL = documentDirctory.appendingPathComponent(imageName)
+            let imageURL = documentDirctory.appendingPathComponent(IDKeyword.ExerciseFormImage.rawValue+imageName)
+            
             //  If this imageName duplicate, this content is deleted
             if FileManager.default.fileExists(atPath: imageURL.path) {
                 do {
@@ -105,25 +144,13 @@ class ExerciseFormModel: Model {
             }
         }
     }
-	//	FIXME: 여기 자세히보기
-	
-	func callingUpImageToDirectory()-> UIImage? {
-		let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-		let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-		let path = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
-		
-		if let directoryPath = path.first {
-		// 2. 이미지 URL 찾기
-			let imageURL = URL(fileURLWithPath: directoryPath).appendingPathComponent(imageName)
-			// 3. UIImage로 불러오기
-			return UIImage(contentsOfFile: imageURL.path)
-		}
-		return nil
-	}
 }
 
 struct ExerciseFormStruct: SwiftObject {
     typealias realmObject = ExerciseFormObject
+    /// This image is only two types that are icon or user photo.
+    var sfSymbolName: String?
+    var image: UIImage?
     
     /// This name is exercise frame for using routine
     var name: String?
@@ -155,6 +182,7 @@ struct ExerciseFormStruct: SwiftObject {
         
         //  Realm Object
         let object = ExerciseFormObject()
+        object.sfSymbolName = sfSymbolName
         object.name = name
         object.part.append(objectsIn: part)
         object.equipment.append(objectsIn: equipment)
@@ -172,15 +200,14 @@ struct ExerciseFormStruct: SwiftObject {
         object.link = self.link
         if link == "" {object.link = nil}
         
-        object.id = "creat_" + name
+        object.id = IDKeyword.ExerciseForm.rawValue + name
         return object
     }
     func keyValue() -> String? {
         guard let name else {return nil}
-        return "creat_" + name
+        return IDKeyword.ExerciseForm.rawValue + name
     }
 }
-
 /// Assume that no empty valuse are stored
 /// This object will be used for Saving user data
 class ExerciseFormObject:Object, CutomRealmObject {
@@ -189,6 +216,7 @@ class ExerciseFormObject:Object, CutomRealmObject {
     /// ID is make of name and date
     @Persisted(primaryKey: true) var id: String?
     
+    @Persisted var sfSymbolName: String?
     /// Exercise name can't be duplicated component.
     @Persisted var name: String?
     
@@ -206,6 +234,7 @@ class ExerciseFormObject:Object, CutomRealmObject {
     
     func objectChangeStruct() -> ExerciseFormStruct {
         var object = ExerciseFormStruct()
+        object.sfSymbolName = sfSymbolName
         object.name = name
         object.explain = explain
         object.link = link

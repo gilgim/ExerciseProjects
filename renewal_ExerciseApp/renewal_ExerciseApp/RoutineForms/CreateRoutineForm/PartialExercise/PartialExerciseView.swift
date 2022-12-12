@@ -12,45 +12,52 @@ import SwiftUI
 struct PartialExerciseView: View {
     //  ================================ < About View Variable > ================================
     /// This variable explain what SingleSetView is contained.
-	var partialExNumber: Int
+	@State var partialExNumber: Int
+    @State var setArray: [SingleSetStruct] = []
     //  ================================ < About ViewModel > ================================
-
+    @StateObject var partialVM = PartialExerciseViewModel()
     //  ================================ < Input Variable > ================================
-	@State var singleSetArray: [SingleSetStruct] = []
+    @State var selectComponentForm: ExerciseFormStruct?
     @State var selectedSet: SingleSetStruct?
 	@State var isShowExerciseForm = false
+    @State var sheetClickEvent = false
+    @State var delegate: SingleSetDropDelegate?
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
 			HStack {
-				ForEach(self.singleSetArray, id: \.id) { singleSet in
-					SingleSetView(image: .init(systemName: singleSet.imageName ?? "questionmark"))
-						.onDrag {
-							self.selectedSet = singleSet
-							return NSItemProvider(item: nil, typeIdentifier: singleSet.id.description)
-						}
-						.onDrop(of: [singleSet.id.description], delegate: SingleSetDropDelegate(selectedComponent: singleSet, targetComponent: $selectedSet, dataList: $singleSetArray))
+                ForEach(self.setArray, id: \.id) { singleSet in
+                    SingleSetView(image: singleSet.uiImage == nil ? Image(systemName: singleSet.imageName!):Image(uiImage: singleSet.uiImage!))
+                        .onDrag {
+                            self.selectedSet = singleSet
+                            return NSItemProvider(item: nil, typeIdentifier: "\(singleSet.particalSequence)")
+                        }
+                        .onDrop(of: [singleSet.id.description], isTargeted: .constant(true)) { providers in
+                            print("asdf")
+                            return true
+                        }
+//                        .onDrop(of: ["\(singleSet.particalSequence)"], delegate: SingleSetDropDelegate(selectedComponent: singleSet, targetComponent: $selectedSet, dataList: $setArray))
 				}
 				Button {
 					self.isShowExerciseForm = true
-					singleSetArray.append(.init(particalExercise: partialExNumber, setType: .Rest))
 				}label: {
 					SingleSetView(image: .init(systemName: "plus"))
 				}
 			}
         }
-		.onAppear() {
-			self.singleSetArray = DummyData()
-		}
-		.sheet(isPresented: $isShowExerciseForm) {
-			ExerciseFormView(isShow: .constant(true))
+        .sheet(isPresented: $isShowExerciseForm, onDismiss: {
+            if sheetClickEvent {
+                partialVM.changeSelectComponentAction(setArray: &self.setArray, particalSequence: self.partialExNumber, selectedObject: self.selectComponentForm)
+            }
+        }) {
+            ExerciseFormView(exerciseForm: $selectComponentForm, isShow: .constant(true), clickEvent: $sheetClickEvent)
 		}
     }
 	func DummyData() -> [SingleSetStruct] {
-		let one = SingleSetStruct(particalExercise: self.partialExNumber, setType: .Exercise, imageName: "figure.walk")
-		let restOne = SingleSetStruct(particalExercise: self.partialExNumber, setType: .Rest)
-		let two = SingleSetStruct(particalExercise: self.partialExNumber, setType: .Exercise, imageName: "figure.walk")
-		let restTwo = SingleSetStruct(particalExercise: self.partialExNumber, setType: .Rest)
-		let three = SingleSetStruct(particalExercise: self.partialExNumber, setType: .Exercise, imageName: "figure.walk")
+		let one = SingleSetStruct(particalSequence: self.partialExNumber, setType: .Exercise, imageName: "figure.walk")
+		let restOne = SingleSetStruct(particalSequence: self.partialExNumber, setType: .Rest)
+		let two = SingleSetStruct(particalSequence: self.partialExNumber, setType: .Exercise, imageName: "figure.walk")
+		let restTwo = SingleSetStruct(particalSequence: self.partialExNumber, setType: .Rest)
+		let three = SingleSetStruct(particalSequence: self.partialExNumber, setType: .Exercise, imageName: "figure.walk")
 		return [one, restOne, two, restTwo, three]
 	}
 }
@@ -66,13 +73,18 @@ struct SingleSetDropDelegate: DropDelegate {
     @Binding var dataList: [SingleSetStruct]
     // End Dragging
     func performDrop(info: DropInfo) -> Bool {
-        return true
+        if targetComponent?.particalSequence == selectedComponent.particalSequence {
+            return true
+        }
+        else {
+            return false
+        }
     }
 	func dropUpdated(info: DropInfo) -> DropProposal? {
 		return DropProposal(operation: .move)
 	}
 	func validateDrop(info: DropInfo) -> Bool {
-		if targetComponent?.particalExercise == selectedComponent.particalExercise {
+		if targetComponent?.particalSequence == selectedComponent.particalSequence {
 			return true
 		}
 		else {

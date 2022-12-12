@@ -20,10 +20,15 @@ class ExerciseFormViewModel: ObservableObject {
     var temp: Int = 0
     /// If user want to register favorite content, Use this function.
     func registerFavoriteAction(exerciseObject: ExerciseFormStruct, isFavorite: Bool) async {
-        var target = exerciseObject
-        target.favorite = isFavorite
-        model.updateRealmObject(from: exerciseObject, to: target)
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                var target = exerciseObject
+                target.favorite = isFavorite
+                self.model.updateRealmObject(from: exerciseObject, to: target)
+            }
+        }
     }
+    //  FIXME: 결합도가 너무 높다. 
     func callingUpExerciseForm() {
         DispatchQueue.global(qos: .userInteractive).async {
             DispatchQueue.main.async {
@@ -31,19 +36,6 @@ class ExerciseFormViewModel: ObservableObject {
             }
         }
     }
-	func callingUpImage(imageName: String) -> UIImage? {
-		let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-		let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-		let path = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
-		
-		if let directoryPath = path.first {
-		// 2. 이미지 URL 찾기
-			let imageURL = URL(fileURLWithPath: directoryPath).appendingPathComponent(imageName)
-			// 3. UIImage로 불러오기
-			return UIImage(contentsOfFile: imageURL.path)
-		}
-		return nil
-	}
     ///  List Delete = model data delete
     func deleteExerciseForm(index: IndexSet) {
         temp = index.first!

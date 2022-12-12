@@ -128,7 +128,7 @@ struct CreateExerciseFormView: View {
 							else {self.detailPart=self.detailPart.filter({$0 != component})}
                         }
                     }
-                    if !(currentPart == .aerobic) {
+                    if !(currentPart == .Aerobic) {
                         Button {
                             self.isInputView = true
                         } label: {
@@ -165,7 +165,10 @@ struct CreateExerciseFormView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("생성") {
                     Task {
-                        let object = ExerciseFormStruct(name: self.nameText, explain: self.explainText, link: self.linkText, part: self.part, detailPart: self.detailPart, equipment: self.equipment)
+                        var object = ExerciseFormStruct(name: self.nameText, explain: self.explainText, link: self.linkText, part: self.part, detailPart: self.detailPart, equipment: self.equipment)
+                        if let imageData = createFormVM.imageData, UIImage(data: imageData) != nil {
+                            object.sfSymbolName = IDKeyword.UiImage.rawValue
+                        }
                         self.createFormVM.createButtonAction(exerciseObject:object)
                     }
                 }

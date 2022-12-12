@@ -6,6 +6,9 @@
 //
 
 import Foundation
+struct PartialExerciseModel {
+    
+}
 struct PartialExerciseStruct {
 	///	The reason this variable is exist is because of using drag & drop.
 	var id: UUID = UUID()
