@@ -12,7 +12,6 @@
 		C322808729448D3C005A7AFC /* SingleSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322808629448D3C005A7AFC /* SingleSetModel.swift */; };
 		C322808A294496B0005A7AFC /* PartialExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3228089294496B0005A7AFC /* PartialExerciseModel.swift */; };
 		C322808C29449B3D005A7AFC /* SingleSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322808B29449B3D005A7AFC /* SingleSetView.swift */; };
-		C33A40E82941A39500659E87 /* RoutineFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A40E72941A39500659E87 /* RoutineFormModel.swift */; };
 		C33A40EE2941B70600659E87 /* CreateRoutineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A40ED2941B70600659E87 /* CreateRoutineFormView.swift */; };
 		C33A411C2942AFE900659E87 /* CreateRoutineFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A411B2942AFE900659E87 /* CreateRoutineFormViewModel.swift */; };
 		C33A411F2943246E00659E87 /* PartialExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A411E2943246E00659E87 /* PartialExerciseView.swift */; };
@@ -41,7 +40,6 @@
 		C322808629448D3C005A7AFC /* SingleSetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSetModel.swift; sourceTree = "<group>"; };
 		C3228089294496B0005A7AFC /* PartialExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialExerciseModel.swift; sourceTree = "<group>"; };
 		C322808B29449B3D005A7AFC /* SingleSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSetView.swift; sourceTree = "<group>"; };
-		C33A40E72941A39500659E87 /* RoutineFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFormModel.swift; sourceTree = "<group>"; };
 		C33A40ED2941B70600659E87 /* CreateRoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormView.swift; sourceTree = "<group>"; };
 		C33A411B2942AFE900659E87 /* CreateRoutineFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormViewModel.swift; sourceTree = "<group>"; };
 		C33A411E2943246E00659E87 /* PartialExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialExerciseView.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				C37991E129060CF700CE8F17 /* ExerciseMainView.swift */,
 				C301AC6C2940882800D110A3 /* UIKitViews */,
 				C33A40E52941A26A00659E87 /* RoutineForms */,
-				C33A40E72941A39500659E87 /* RoutineFormModel.swift */,
 				C37991EA290624BF00CE8F17 /* ExerciseForms */,
 			);
 			path = renewal_ExerciseApp;
@@ -331,7 +328,6 @@
 			files = (
 				C33A40EE2941B70600659E87 /* CreateRoutineFormView.swift in Sources */,
 				C34ABB95293EFEAD000A4002 /* ExerciseFormViewModel.swift in Sources */,
-				C33A40E82941A39500659E87 /* RoutineFormModel.swift in Sources */,
 				C37991F32906880200CE8F17 /* CreateDetailPartViewModel.swift in Sources */,
 				C379920C290A1A4E00CE8F17 /* ExerciseFormModel.swift in Sources */,
 				C33A411F2943246E00659E87 /* PartialExerciseView.swift in Sources */,

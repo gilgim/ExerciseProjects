@@ -13,7 +13,7 @@ struct CreateRoutineFormView: View {
     /// setArray component is Single Set that can be contain only exercise and rest.
     @State var partialExArray: [PartialExerciseStruct] = []
     /// setCount is make of Rountine. In order to this variable is add all sets.
-    @State var setCount: Int = 0
+    @State var partialCount: Int = 0
     //  ================================ < About ViewModel > ================================
     /// This ViewModel contain set
 //    @StateObject var createFormVM: CreateRoutineFormViewModel = CreateRoutineFormViewModel()
@@ -22,17 +22,24 @@ struct CreateRoutineFormView: View {
         ScrollView(.vertical) {
             VStack {
                 ForEach(partialExArray, id: \.id) { partialExercise in
-					PartialExerciseView(partialExNumber: partialExercise.sequence)
+                    PartialExerciseView(partialExNumber: partialExercise.sequence)
                 }
                 Button {
-					let temp = PartialExerciseStruct(sequence: setCount)
+					let temp = PartialExerciseStruct(sequence: partialCount)
+                    partialCount += 1
 					partialExArray.append(temp)
-                    setCount += 1
                 }label: {
                     RoundedRectangle(cornerRadius: 5)
                         .foregroundColor(.yellow)
 						.frame(height: 30)
                         .overlay {Image(systemName: "plus")}
+                }
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("생성") {
+                   
                 }
             }
         }

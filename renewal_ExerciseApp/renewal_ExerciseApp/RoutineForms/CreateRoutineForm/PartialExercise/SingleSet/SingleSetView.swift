@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SingleSetView: View {
 	@State var image: Image
+    @GestureState var ges = false
 	var body: some View {
 		Circle()
 			.frame(width: 100)

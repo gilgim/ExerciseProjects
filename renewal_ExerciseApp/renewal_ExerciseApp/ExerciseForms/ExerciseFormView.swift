@@ -63,10 +63,10 @@ struct ExerciseFormView: View {
                 }
                 .onDelete(perform: formVM.deleteExerciseForm)
             }
+            .onAppear {
+                self.formVM.callingUpExerciseForm()
+            }
             .listStyle(InsetListStyle())
-        }
-        .onAppear {
-            self.formVM.callingUpExerciseForm()
         }
     }
 }

@@ -7,48 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "609B9417-8A44-4C97-A897-87DAA5F038D0"
+            uuid = "41BFB5C3-A40A-47D5-8A9C-17CC70EAF6E4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "renewal_ExerciseApp/RoutineForms/CreateRoutineForm/PartialExercise/PartialExerciseView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "dropEntered(info:)"
-            landmarkType = "7">
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "11E2A981-E70A-46C8-A0A8-18A996734327"
+            uuid = "87438F6F-8EBE-4AF6-9151-31DD99E82D67"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "renewal_ExerciseApp/RoutineForms/CreateRoutineForm/PartialExercise/PartialExerciseView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "validateDrop(info:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E1D7BECD-5C0C-4FC2-A85E-55C31A09DE9E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "renewal_ExerciseApp/RoutineForms/CreateRoutineForm/PartialExercise/PartialExerciseView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "performDrop(info:)"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "init(list:target:selected:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

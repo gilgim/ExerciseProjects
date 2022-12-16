@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 ///	This struct should contain set type.
 struct SingleSetStruct {
@@ -30,8 +31,8 @@ struct SingleSetStruct {
 	//	When setType is rest.
 	var restTime: Int?
 	
-	init(particalSequence: Int, setType: SetType, imageName: String? = nil, exerciseName: String? = nil, weight: Int? = nil, count: Int? = nil, restTime: Int? = nil) {
-		self.particalSequence = particalSequence
+	init(partialSequence: Int, setType: SetType, imageName: String? = nil, exerciseName: String? = nil, weight: Int? = nil, count: Int? = nil, restTime: Int? = nil) {
+		self.particalSequence = partialSequence
 		self.setType = setType
 		if setType == .Rest {
 			self.imageName = "cross.vial"

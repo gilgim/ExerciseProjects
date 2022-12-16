@@ -12,24 +12,35 @@ class PartialExerciseViewModel: ObservableObject {
     //  ========== Binding Variable ==========
 	@Published var model = PartialExerciseModel()
     //  ======================================
-    //  FIXME: 결합도가 너무 높음 : Array, image
-    func changeSelectComponentAction(setArray: inout [SingleSetStruct], particalSequence: Int, selectedObject: ExerciseFormStruct?) {
-        var transform: SingleSetStruct?
-        if let selectedObject = selectedObject {
-            transform = SingleSetStruct(particalSequence: particalSequence, setType: .Exercise, exerciseName: selectedObject.name!)
-            if let uiImage = selectedObject.image {
-                transform?.uiImage = uiImage
+    
+    /// The function action when dismiss exercise fomr view.
+    /// - Parameter array: Adding content from exercise form view
+    func dismissExerciseFormView(array: [SingleSetStruct], sequence partialSequence: Int, object selectedObject: ExerciseFormStruct?) -> [SingleSetStruct] {
+        var resultArray = array
+        var addSingleSetStruct: SingleSetStruct?
+        utilPrint(title: "Add SingleSet") {
+            if let selectedObject {
+                //  selectedObject translate to singleSetStruct.
+                addSingleSetStruct = SingleSetStruct(partialSequence: partialSequence, setType: .Exercise, exerciseName: selectedObject.name!)
+                //  Image Setting
+                if let uiImage = selectedObject.image {
+                    addSingleSetStruct?.uiImage = uiImage
+                }
+                else {
+                    addSingleSetStruct?.imageName = bodyPartDefaultSymbol(parts: selectedObject.part!)
+                }
+                print("Add : \(String(describing: addSingleSetStruct))")
             }
             else {
-                transform?.imageName = bodyPartDefaultSymbol(parts: selectedObject.part!)
+                addSingleSetStruct = SingleSetStruct(partialSequence: partialSequence, setType: .Rest)
+                print("Add : Rest")
             }
-            setArray.append(transform!)
-            print(" add : \(transform!)")
+            //  Action add.
+            if let addSingleSetStruct {
+                resultArray.append(addSingleSetStruct)
+            }
+            else {print("Add Fail")}
         }
-        else {
-            transform = SingleSetStruct(particalSequence: particalSequence, setType: .Rest)
-            print("add : Rest")
-            setArray.append(transform!)
-        }
+        return resultArray
     }
 }

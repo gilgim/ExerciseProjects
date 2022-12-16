@@ -14,29 +14,37 @@ struct PartialExerciseView: View {
     /// This variable explain what SingleSetView is contained.
 	@State var partialExNumber: Int
     @State var setArray: [SingleSetStruct] = []
+    @State var isShowExerciseForm = false
+    @State var sheetClickEvent = false
     //  ================================ < About ViewModel > ================================
     @StateObject var partialVM = PartialExerciseViewModel()
     //  ================================ < Input Variable > ================================
     @State var selectComponentForm: ExerciseFormStruct?
     @State var selectedSet: SingleSetStruct?
-	@State var isShowExerciseForm = false
-    @State var sheetClickEvent = false
-    @State var delegate: SingleSetDropDelegate?
+    static var currentDragingPartial: Int = 0
     var body: some View {
+        //  MARK: Partial Exercise ScrollView
         ScrollView(.horizontal, showsIndicators: false) {
 			HStack {
                 ForEach(self.setArray, id: \.id) { singleSet in
-                    SingleSetView(image: singleSet.uiImage == nil ? Image(systemName: singleSet.imageName!):Image(uiImage: singleSet.uiImage!))
+                    //  MARK: SingleSetView contain image ...
+                    SingleSetView(image: singleSet.uiImage == nil ?
+                                  Image(systemName: singleSet.imageName!):
+                                  Image(uiImage: singleSet.uiImage!))
+                        //  ===== <Drag & Drop> =====
                         .onDrag {
+                            //  Allocating selected Contents.
+                            print("onDrag count \(singleSet.particalSequence)")
                             self.selectedSet = singleSet
-                            return NSItemProvider(item: nil, typeIdentifier: "\(singleSet.particalSequence)")
+                            PartialExerciseView.currentDragingPartial = singleSet.particalSequence
+                            return NSItemProvider(item: nil, typeIdentifier: singleSet.exerciseName ?? "Not Component")
                         }
-                        .onDrop(of: [singleSet.id.description], isTargeted: .constant(true)) { providers in
-                            print("asdf")
-                            return true
-                        }
-//                        .onDrop(of: ["\(singleSet.particalSequence)"], delegate: SingleSetDropDelegate(selectedComponent: singleSet, targetComponent: $selectedSet, dataList: $setArray))
+                        //  If partialSequence of draging content same partialSequence of content
+                        .onDrop(of: [singleSet.exerciseName ?? "Not Component"],
+                                delegate: SingleSetDropDelegate(list: $setArray, target: $selectedSet, selected: singleSet)
+                        )
 				}
+                //  MARK: Add Single Set Button
 				Button {
 					self.isShowExerciseForm = true
 				}label: {
@@ -44,64 +52,49 @@ struct PartialExerciseView: View {
 				}
 			}
         }
+        //  ========== Sheet & Alert ==========
         .sheet(isPresented: $isShowExerciseForm, onDismiss: {
             if sheetClickEvent {
-                partialVM.changeSelectComponentAction(setArray: &self.setArray, particalSequence: self.partialExNumber, selectedObject: self.selectComponentForm)
+                self.setArray = partialVM.dismissExerciseFormView(array: self.setArray, sequence: self.partialExNumber, object: self.selectComponentForm)
             }
+            self.sheetClickEvent = false
         }) {
             ExerciseFormView(exerciseForm: $selectComponentForm, isShow: .constant(true), clickEvent: $sheetClickEvent)
 		}
     }
-	func DummyData() -> [SingleSetStruct] {
-		let one = SingleSetStruct(particalSequence: self.partialExNumber, setType: .Exercise, imageName: "figure.walk")
-		let restOne = SingleSetStruct(particalSequence: self.partialExNumber, setType: .Rest)
-		let two = SingleSetStruct(particalSequence: self.partialExNumber, setType: .Exercise, imageName: "figure.walk")
-		let restTwo = SingleSetStruct(particalSequence: self.partialExNumber, setType: .Rest)
-		let three = SingleSetStruct(particalSequence: self.partialExNumber, setType: .Exercise, imageName: "figure.walk")
-		return [one, restOne, two, restTwo, three]
-	}
 }
 
 //  Drag Delegate about Content in SingleSet
 struct SingleSetDropDelegate: DropDelegate {
-    //  ================================ < About View Variable > ================================
-    /// User seleted item.
-    let selectedComponent: SingleSetStruct
     //  ================================ < Input Variable > ================================
-	/// User will do move targetComponent place.
-	@Binding var targetComponent: SingleSetStruct?
-    @Binding var dataList: [SingleSetStruct]
-    // End Dragging
-    func performDrop(info: DropInfo) -> Bool {
-        if targetComponent?.particalSequence == selectedComponent.particalSequence {
-            return true
-        }
-        else {
-            return false
-        }
+    @Binding var list: [SingleSetStruct]
+    @Binding var target: SingleSetStruct?
+    var selected: SingleSetStruct?
+    init(list: Binding<[SingleSetStruct]> = .constant([]), target: Binding<SingleSetStruct?> = .constant(nil), selected: SingleSetStruct? = nil) {
+        self._list = list
+        self._target = target
+        self.selected = selected
     }
-	func dropUpdated(info: DropInfo) -> DropProposal? {
-		return DropProposal(operation: .move)
-	}
-	func validateDrop(info: DropInfo) -> Bool {
-		if targetComponent?.particalSequence == selectedComponent.particalSequence {
-			return true
-		}
-		else {
-			return false
-		}
-	}
-    //  When selected component come into contact with another component
+    func performDrop(info: DropInfo) -> Bool {
+        true
+    }
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        guard target?.particalSequence == PartialExerciseView.currentDragingPartial else {return DropProposal(operation: .forbidden)}
+        return DropProposal(operation: .move)
+    }
     func dropEntered(info: DropInfo) {
-        guard let targetComponent else {return}
-        if targetComponent != selectedComponent  {
-            //  Component is selected by user
-            let to = dataList.firstIndex(of: selectedComponent)!
-            // A place where user finger pass by
-            let from = dataList.firstIndex(of: targetComponent)!
-            //  Content is moved this logic
-            withAnimation {
-                self.dataList.move(fromOffsets: IndexSet(integer: from), toOffset: to > from ? to + 1 : to)
+        guard let selected else {return}
+        guard let target else {return}
+        guard target.particalSequence == PartialExerciseView.currentDragingPartial else {return}
+        //  Component is selected by user
+        let to = list.firstIndex(of: selected)!
+        // A place where user finger pass by
+        let from = list.firstIndex(of: target)!
+        //  Content is moved this logic
+        withAnimation {
+            self.list.move(fromOffsets: IndexSet(integer: from), toOffset: to > from ? to + 1 : to)
+            utilPrint(title: "Move List") {
+                print(list.map({$0.exerciseName}))
             }
         }
     }
