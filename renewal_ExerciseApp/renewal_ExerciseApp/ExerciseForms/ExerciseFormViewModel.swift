@@ -17,7 +17,7 @@ class ExerciseFormViewModel: ObservableObject {
     @Published var errorText: String?
     /// This component is used only view.
     @Published var formList: [ExerciseFormStruct] = []
-    var temp: Int = 0
+    var deleteTempInt: Int = 0
     /// If user want to register favorite content, Use this function.
     func registerFavoriteAction(exerciseObject: ExerciseFormStruct, isFavorite: Bool) async {
         DispatchQueue.global(qos: .userInitiated).async {
@@ -38,10 +38,10 @@ class ExerciseFormViewModel: ObservableObject {
     }
     ///  List Delete = model data delete
     func deleteExerciseForm(index: IndexSet) {
-        temp = index.first!
+        deleteTempInt = index.first!
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                self.model.deleteRealmObject(target: self.formList[self.temp])
+                self.model.deleteRealmObject(target: self.formList[self.deleteTempInt])
                 self.formList.remove(atOffsets: index)
             }
         }

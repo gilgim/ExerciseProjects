@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import SwiftUI
 
 ///	This struct should contain set type.
 struct SingleSetStruct {
@@ -50,4 +49,11 @@ extension SingleSetStruct: Equatable {
 	static func == (lhs: SingleSetStruct, rhs: SingleSetStruct) -> Bool {
 		return lhs.id == rhs.id
 	}
+}
+
+/**
+ - When this class is initailized,
+ */
+class SingleSetObject {
+    
 }
