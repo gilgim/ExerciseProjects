@@ -47,7 +47,7 @@ struct ExerciseFormView: View {
 					}label: {
 						HStack {
                             if let image = exerciseForm.image {
-                                Image(uiImage: image)
+                                Image(uiImage: image)w
                                     .resizable()
                                     .scaledToFit()
                             }
