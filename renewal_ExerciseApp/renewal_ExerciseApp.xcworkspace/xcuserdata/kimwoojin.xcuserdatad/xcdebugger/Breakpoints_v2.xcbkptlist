@@ -7,95 +7,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "34C2E075-97B8-4D6B-8480-7A0F019B158E"
+            uuid = "41BFB5C3-A40A-47D5-8A9C-17CC70EAF6E4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "renewal_ExerciseApp/ExerciseForms/ExerciseFormModel.swift"
+            filePath = "renewal_ExerciseApp/RoutineForms/CreateRoutineForm/PartialExercise/PartialExerciseView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "readRealmObject()"
-            landmarkType = "7">
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E5B63425-F649-4833-A7DA-F5392719DB80"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "renewal_ExerciseApp/UIKitViews/CustomPHPickerView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "picker(_:didFinishPicking:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8AB3BB24-2BCC-4341-9AA8-EF52DDD4551E"
+            uuid = "87438F6F-8EBE-4AF6-9151-31DD99E82D67"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "renewal_ExerciseApp/ExerciseForms/CreatExerciseForm/CreateDetailPart/CreateDetailPartModel.swift"
+            filePath = "renewal_ExerciseApp/RoutineForms/CreateRoutineForm/PartialExercise/PartialExerciseView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "createRealmObject(target:)"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "init(list:target:selected:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8AB3BB24-2BCC-4341-9AA8-EF52DDD4551E - a148435aa09f5a78"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "renewal_ExerciseApp.DetailPartModel.createRealmObject(target: renewal_ExerciseApp.DetailPartStruct) -&gt; ()"
-                  moduleName = "renewal_ExerciseApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimwoojin/Desktop/ExerciseProjects/renewal_ExerciseApp/renewal_ExerciseApp/ExerciseForms/CreatExerciseForm/CreateDetailPart/CreateDetailPartModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "91">
-               </Location>
-               <Location
-                  uuid = "8AB3BB24-2BCC-4341-9AA8-EF52DDD4551E - 95dd916cfd925026"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (renewal_ExerciseApp.DetailPartStruct) -&gt; Swift.Bool in renewal_ExerciseApp.DetailPartModel.createRealmObject(target: renewal_ExerciseApp.DetailPartStruct) -&gt; ()"
-                  moduleName = "renewal_ExerciseApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimwoojin/Desktop/ExerciseProjects/renewal_ExerciseApp/renewal_ExerciseApp/ExerciseForms/CreatExerciseForm/CreateDetailPart/CreateDetailPartModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "160">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4E85BB37-6D1C-49EB-A5A0-CFC8142E78A2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "renewal_ExerciseApp/ExerciseForms/ExerciseFormViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

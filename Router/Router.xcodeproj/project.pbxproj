@@ -3,33 +3,77 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25FE24CD766CDD9D531A6012 /* Pods_Router.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 667DDA03223262A5F0C38EED /* Pods_Router.framework */; };
 		C32EB4CE294F34970055E2E9 /* RouterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32EB4CD294F34970055E2E9 /* RouterApp.swift */; };
-		C32EB4D0294F34970055E2E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32EB4CF294F34970055E2E9 /* ContentView.swift */; };
 		C32EB4D2294F349A0055E2E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32EB4D1294F349A0055E2E9 /* Assets.xcassets */; };
 		C32EB4D5294F349A0055E2E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32EB4D4294F349A0055E2E9 /* Preview Assets.xcassets */; };
 		C32EB4DF294F35080055E2E9 /* ExerciseFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32EB4DE294F35080055E2E9 /* ExerciseFormModel.swift */; };
 		C32EB4E1294F35D90055E2E9 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32EB4E0294F35D90055E2E9 /* Enums.swift */; };
 		C32EB4E3294F375E0055E2E9 /* DetailPartFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32EB4E2294F375E0055E2E9 /* DetailPartFormModel.swift */; };
 		C32EB4E5294F38810055E2E9 /* CommonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32EB4E4294F38810055E2E9 /* CommonFunction.swift */; };
+		C33E9EBE295178CE00C13841 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E9EBD295178CE00C13841 /* ColorPickerView.swift */; };
+		C33E9EC0295188EC00C13841 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E9EBF295188EC00C13841 /* IconPickerView.swift */; };
+		C33E9EC2295189A400C13841 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E9EC1295189A400C13841 /* Extension.swift */; };
+		C33E9EC52951AD1A00C13841 /* PartsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E9EC42951AD1A00C13841 /* PartsGridView.swift */; };
+		C34D5435294FEC1F00ED129E /* CreateExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D5434294FEC1F00ED129E /* CreateExerciseFormView.swift */; };
+		C34D5437294FECE400ED129E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D5436294FECE400ED129E /* HomeView.swift */; };
+		C34D543A294FF6C700ED129E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D5439294FF6C700ED129E /* MainView.swift */; };
+		C34D543C294FF8F800ED129E /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D543B294FF8F800ED129E /* ExerciseFormView.swift */; };
+		C34D543E294FF98A00ED129E /* RoutineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D543D294FF98A00ED129E /* RoutineFormView.swift */; };
+		C34D5455295003A200ED129E /* Pods_Router.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C34D5454295003A200ED129E /* Pods_Router.framework */; };
+		C34D5456295003A200ED129E /* Pods_Router.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C34D5454295003A200ED129E /* Pods_Router.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C34D5459295012A200ED129E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D5458295012A200ED129E /* SettingView.swift */; };
+		C34D545B2950232900ED129E /* IconSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D545A2950232900ED129E /* IconSelectView.swift */; };
+		C34D545E295052A400ED129E /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D545D295052A400ED129E /* CommonView.swift */; };
+		C34D546029505BF300ED129E /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D545F29505BF300ED129E /* Modifier.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C34D5457295003A200ED129E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C34D5456295003A200ED129E /* Pods_Router.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3E9F4330C424DCC612DF0554 /* Pods-Router.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Router.release.xcconfig"; path = "Target Support Files/Pods-Router/Pods-Router.release.xcconfig"; sourceTree = "<group>"; };
 		667DDA03223262A5F0C38EED /* Pods_Router.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Router.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32EB4CA294F34970055E2E9 /* Router.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Router.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32EB4CD294F34970055E2E9 /* RouterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterApp.swift; sourceTree = "<group>"; };
-		C32EB4CF294F34970055E2E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C32EB4D1294F349A0055E2E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C32EB4D4294F349A0055E2E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C32EB4DE294F35080055E2E9 /* ExerciseFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormModel.swift; sourceTree = "<group>"; };
 		C32EB4E0294F35D90055E2E9 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C32EB4E2294F375E0055E2E9 /* DetailPartFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPartFormModel.swift; sourceTree = "<group>"; };
 		C32EB4E4294F38810055E2E9 /* CommonFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunction.swift; sourceTree = "<group>"; };
+		C33E9EBD295178CE00C13841 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		C33E9EBF295188EC00C13841 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
+		C33E9EC1295189A400C13841 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		C33E9EC42951AD1A00C13841 /* PartsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsGridView.swift; sourceTree = "<group>"; };
+		C34D5434294FEC1F00ED129E /* CreateExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseFormView.swift; sourceTree = "<group>"; };
+		C34D5436294FECE400ED129E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C34D5439294FF6C700ED129E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C34D543B294FF8F800ED129E /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
+		C34D543D294FF98A00ED129E /* RoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFormView.swift; sourceTree = "<group>"; };
+		C34D5442294FFE9C00ED129E /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C34D5446294FFEA000ED129E /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C34D5449294FFEFE00ED129E /* realm-monorepo.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "realm-monorepo.xcframework"; path = "Pods/Realm/core/realm-monorepo.xcframework"; sourceTree = "<group>"; };
+		C34D544D2950024500ED129E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C34D5454295003A200ED129E /* Pods_Router.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Router.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C34D5458295012A200ED129E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		C34D545A2950232900ED129E /* IconSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSelectView.swift; sourceTree = "<group>"; };
+		C34D545D295052A400ED129E /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
+		C34D545F29505BF300ED129E /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		E2FB862E78B6D7288FB5D3D5 /* Pods-Router.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Router.debug.xcconfig"; path = "Target Support Files/Pods-Router/Pods-Router.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -38,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25FE24CD766CDD9D531A6012 /* Pods_Router.framework in Frameworks */,
+				C34D5455295003A200ED129E /* Pods_Router.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +95,6 @@
 				E2FB862E78B6D7288FB5D3D5 /* Pods-Router.debug.xcconfig */,
 				3E9F4330C424DCC612DF0554 /* Pods-Router.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -76,10 +119,14 @@
 		C32EB4CC294F34970055E2E9 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				C34D544D2950024500ED129E /* Info.plist */,
 				C32EB4CD294F34970055E2E9 /* RouterApp.swift */,
-				C32EB4CF294F34970055E2E9 /* ContentView.swift */,
 				C32EB4E0294F35D90055E2E9 /* Enums.swift */,
-				C32EB4E4294F38810055E2E9 /* CommonFunction.swift */,
+				C34D5439294FF6C700ED129E /* MainView.swift */,
+				C34D5436294FECE400ED129E /* HomeView.swift */,
+				C34D5458295012A200ED129E /* SettingView.swift */,
+				C34D545C2950528A00ED129E /* Common */,
+				C34D5438294FF69100ED129E /* RoutineForm */,
 				C32EB4DB294F34AF0055E2E9 /* ExerciseForm */,
 				C32EB4D1294F349A0055E2E9 /* Assets.xcassets */,
 				C32EB4D3294F349A0055E2E9 /* Preview Content */,
@@ -98,8 +145,9 @@
 		C32EB4DB294F34AF0055E2E9 /* ExerciseForm */ = {
 			isa = PBXGroup;
 			children = (
-				C32EB4DC294F34C50055E2E9 /* CreateExerciseForm */,
+				C34D543B294FF8F800ED129E /* ExerciseFormView.swift */,
 				C32EB4DE294F35080055E2E9 /* ExerciseFormModel.swift */,
+				C32EB4DC294F34C50055E2E9 /* CreateExerciseForm */,
 			);
 			path = ExerciseForm;
 			sourceTree = "<group>";
@@ -107,6 +155,8 @@
 		C32EB4DC294F34C50055E2E9 /* CreateExerciseForm */ = {
 			isa = PBXGroup;
 			children = (
+				C34D5434294FEC1F00ED129E /* CreateExerciseFormView.swift */,
+				C33E9EC32951ACF700C13841 /* GridView */,
 				C32EB4DD294F34EB0055E2E9 /* DetailPartForm */,
 			);
 			path = CreateExerciseForm;
@@ -120,9 +170,51 @@
 			path = DetailPartForm;
 			sourceTree = "<group>";
 		};
+		C33E9EC32951ACF700C13841 /* GridView */ = {
+			isa = PBXGroup;
+			children = (
+				C33E9EC42951AD1A00C13841 /* PartsGridView.swift */,
+			);
+			path = GridView;
+			sourceTree = "<group>";
+		};
+		C34D5438294FF69100ED129E /* RoutineForm */ = {
+			isa = PBXGroup;
+			children = (
+				C34D543D294FF98A00ED129E /* RoutineFormView.swift */,
+			);
+			path = RoutineForm;
+			sourceTree = "<group>";
+		};
+		C34D545C2950528A00ED129E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C34D545D295052A400ED129E /* CommonView.swift */,
+				C32EB4E4294F38810055E2E9 /* CommonFunction.swift */,
+				C33E9EC1295189A400C13841 /* Extension.swift */,
+				C34D545F29505BF300ED129E /* Modifier.swift */,
+				C34D54612951675F00ED129E /* Icon */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C34D54612951675F00ED129E /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				C34D545A2950232900ED129E /* IconSelectView.swift */,
+				C33E9EBD295178CE00C13841 /* ColorPickerView.swift */,
+				C33E9EBF295188EC00C13841 /* IconPickerView.swift */,
+			);
+			path = Icon;
+			sourceTree = "<group>";
+		};
 		C862E46ED49BC91697084697 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C34D5454295003A200ED129E /* Pods_Router.framework */,
+				C34D5449294FFEFE00ED129E /* realm-monorepo.xcframework */,
+				C34D5446294FFEA000ED129E /* Realm.framework */,
+				C34D5442294FFE9C00ED129E /* RealmSwift.framework */,
 				667DDA03223262A5F0C38EED /* Pods_Router.framework */,
 			);
 			name = Frameworks;
@@ -140,6 +232,7 @@
 				C32EB4C7294F34970055E2E9 /* Frameworks */,
 				C32EB4C8294F34970055E2E9 /* Resources */,
 				482909E590C4189614E9E63A /* [CP] Embed Pods Frameworks */,
+				C34D5457295003A200ED129E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -243,11 +336,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				C32EB4DF294F35080055E2E9 /* ExerciseFormModel.swift in Sources */,
+				C33E9EC0295188EC00C13841 /* IconPickerView.swift in Sources */,
+				C34D543A294FF6C700ED129E /* MainView.swift in Sources */,
+				C34D543C294FF8F800ED129E /* ExerciseFormView.swift in Sources */,
+				C34D545B2950232900ED129E /* IconSelectView.swift in Sources */,
 				C32EB4E3294F375E0055E2E9 /* DetailPartFormModel.swift in Sources */,
-				C32EB4D0294F34970055E2E9 /* ContentView.swift in Sources */,
 				C32EB4E1294F35D90055E2E9 /* Enums.swift in Sources */,
+				C34D546029505BF300ED129E /* Modifier.swift in Sources */,
+				C33E9EBE295178CE00C13841 /* ColorPickerView.swift in Sources */,
+				C34D543E294FF98A00ED129E /* RoutineFormView.swift in Sources */,
+				C33E9EC2295189A400C13841 /* Extension.swift in Sources */,
 				C32EB4E5294F38810055E2E9 /* CommonFunction.swift in Sources */,
+				C34D5437294FECE400ED129E /* HomeView.swift in Sources */,
 				C32EB4CE294F34970055E2E9 /* RouterApp.swift in Sources */,
+				C34D545E295052A400ED129E /* CommonView.swift in Sources */,
+				C33E9EC52951AD1A00C13841 /* PartsGridView.swift in Sources */,
+				C34D5435294FEC1F00ED129E /* CreateExerciseFormView.swift in Sources */,
+				C34D5459295012A200ED129E /* SettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +409,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -358,7 +462,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -380,9 +483,12 @@
 				DEVELOPMENT_TEAM = 3RPG64SDVF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Router/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -410,9 +516,12 @@
 				DEVELOPMENT_TEAM = 3RPG64SDVF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Router/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -22,7 +22,7 @@ struct ExerciseFormStruct: Codable {
 	var parts: [BodyPart]
 	///	- Korean : 세부 부위는 정해지지 않아도 운동을 저장할 수 있다.
 	///	- English :
-	var detailParts: String?
+	var detailParts: [DetailPartFormStruct]?
 	///	- Korean : 운동 기구는 정해지지 않으면 어떠한 기구로 운동을 진행했는지 정확히 알 수 없기에 nil을 허용하지 않는다.
 	///	- English :
 	var equipments: [Equipment]

@@ -7,5 +7,5 @@ target 'Router' do
 
   # Pods for Router
 	pod 'FSCalendar'
-	pod 'RealmSwift'
+#	pod 'RealmSwift'
 end
