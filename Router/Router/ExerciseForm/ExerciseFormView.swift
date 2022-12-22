@@ -10,7 +10,7 @@ import SwiftUI
 struct ExerciseFormView: View {
     @State var isCreateExercise: Bool = false
     var body: some View {
-        VStack {
+        ScrollView(.vertical) {
             Text("목차들")
                 .font(Font.system(size: 16, weight: .bold, design: .rounded))
         }

@@ -18,6 +18,8 @@
 		C33E9EC0295188EC00C13841 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E9EBF295188EC00C13841 /* IconPickerView.swift */; };
 		C33E9EC2295189A400C13841 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E9EC1295189A400C13841 /* Extension.swift */; };
 		C33E9EC52951AD1A00C13841 /* PartsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E9EC42951AD1A00C13841 /* PartsGridView.swift */; };
+		C33E9EC72952ABC900C13841 /* DetailPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E9EC62952ABC900C13841 /* DetailPartView.swift */; };
+		C33E9ECC2952BFFF00C13841 /* EquipmentsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33E9ECB2952BFFF00C13841 /* EquipmentsGridView.swift */; };
 		C34D5435294FEC1F00ED129E /* CreateExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D5434294FEC1F00ED129E /* CreateExerciseFormView.swift */; };
 		C34D5437294FECE400ED129E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D5436294FECE400ED129E /* HomeView.swift */; };
 		C34D543A294FF6C700ED129E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D5439294FF6C700ED129E /* MainView.swift */; };
@@ -60,6 +62,8 @@
 		C33E9EBF295188EC00C13841 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		C33E9EC1295189A400C13841 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		C33E9EC42951AD1A00C13841 /* PartsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsGridView.swift; sourceTree = "<group>"; };
+		C33E9EC62952ABC900C13841 /* DetailPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPartView.swift; sourceTree = "<group>"; };
+		C33E9ECB2952BFFF00C13841 /* EquipmentsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsGridView.swift; sourceTree = "<group>"; };
 		C34D5434294FEC1F00ED129E /* CreateExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseFormView.swift; sourceTree = "<group>"; };
 		C34D5436294FECE400ED129E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C34D5439294FF6C700ED129E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -126,7 +130,6 @@
 				C34D5436294FECE400ED129E /* HomeView.swift */,
 				C34D5458295012A200ED129E /* SettingView.swift */,
 				C34D545C2950528A00ED129E /* Common */,
-				C34D5438294FF69100ED129E /* RoutineForm */,
 				C32EB4DB294F34AF0055E2E9 /* ExerciseForm */,
 				C32EB4D1294F349A0055E2E9 /* Assets.xcassets */,
 				C32EB4D3294F349A0055E2E9 /* Preview Content */,
@@ -145,6 +148,7 @@
 		C32EB4DB294F34AF0055E2E9 /* ExerciseForm */ = {
 			isa = PBXGroup;
 			children = (
+				C34D5438294FF69100ED129E /* RoutineForm */,
 				C34D543B294FF8F800ED129E /* ExerciseFormView.swift */,
 				C32EB4DE294F35080055E2E9 /* ExerciseFormModel.swift */,
 				C32EB4DC294F34C50055E2E9 /* CreateExerciseForm */,
@@ -165,6 +169,7 @@
 		C32EB4DD294F34EB0055E2E9 /* DetailPartForm */ = {
 			isa = PBXGroup;
 			children = (
+				C33E9EC62952ABC900C13841 /* DetailPartView.swift */,
 				C32EB4E2294F375E0055E2E9 /* DetailPartFormModel.swift */,
 			);
 			path = DetailPartForm;
@@ -174,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				C33E9EC42951AD1A00C13841 /* PartsGridView.swift */,
+				C33E9ECB2952BFFF00C13841 /* EquipmentsGridView.swift */,
 			);
 			path = GridView;
 			sourceTree = "<group>";
@@ -350,7 +356,9 @@
 				C34D5437294FECE400ED129E /* HomeView.swift in Sources */,
 				C32EB4CE294F34970055E2E9 /* RouterApp.swift in Sources */,
 				C34D545E295052A400ED129E /* CommonView.swift in Sources */,
+				C33E9ECC2952BFFF00C13841 /* EquipmentsGridView.swift in Sources */,
 				C33E9EC52951AD1A00C13841 /* PartsGridView.swift in Sources */,
+				C33E9EC72952ABC900C13841 /* DetailPartView.swift in Sources */,
 				C34D5435294FEC1F00ED129E /* CreateExerciseFormView.swift in Sources */,
 				C34D5459295012A200ED129E /* SettingView.swift in Sources */,
 			);

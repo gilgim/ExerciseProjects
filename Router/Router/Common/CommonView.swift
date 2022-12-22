@@ -55,3 +55,15 @@ struct TitleView: View {
         }
     }
 }
+struct RoundedComponentView: View {
+    @State var title: String
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(.lightGray)
+            Text(title)
+                .font(Font.system(size: 18, weight: .semibold, design: .rounded))
+                .padding(10)
+        }
+    }
+}
