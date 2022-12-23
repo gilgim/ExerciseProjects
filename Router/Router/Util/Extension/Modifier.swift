@@ -7,22 +7,49 @@
 
 import Foundation
 import SwiftUI
-
-/// 뒷 배경에 둥근 사각형이 존재하는 뷰 빌더
-struct BackRoundedRecModifier: ViewModifier {
-    @State var cornerValue: CGFloat
+//  MARK: ButtonTitle
+/// -   Korean :    버튼 텍스트를 바꿔주기 위한 모디파이어.
+/// -   English :
+struct ButtonTitle: ViewModifier {
     @Binding var isSelect: Bool
-    init(cornerValue: CGFloat, isSelect: Binding<Bool> = .constant(false)) {
+    func body(content: Content) -> some View {
+        content
+            .font(Font.system(size: 18, weight: isSelect ? .semibold:.regular, design: .rounded))
+    }
+}
+//  MARK: BackRoundedRecModifier
+/// -   Korean :    뒷 배경에 타원을 그려 넣는 모디파이어, 버튼 클릭 시 색상 커스텀하였다.
+/// -   English :
+struct BackRoundedRecModifier: ViewModifier {
+    var cornerValue: CGFloat
+    var color: Color
+    var selectColor: Color
+    var padding: CGFloat
+    var isLine: Bool
+    /// -   컨텐츠 클릭 시 변경되는 Bool 값
+    @Binding var isSelect: Bool
+    init(cornerValue: CGFloat, isSelect: Binding<Bool> = .constant(false), color: Color = CustomColor.lightGray.color, selectColor: Color = .mint,
+         isLine: Bool = true
+         , _ padding: CGFloat = 15) {
         self.cornerValue = cornerValue
         self._isSelect = isSelect
+        self.color = color
+        self.padding = padding
+        self.selectColor = selectColor
+        self.isLine = isLine
     }
     func body(content: Content) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: cornerValue)
-                .foregroundColor(isSelect ? .lightSeaGreen:.lightGray)
+                .foregroundColor(isSelect ? selectColor.opacity(0.35):color)
             content
                 .frame(maxWidth: .infinity)
-                .padding(15)
+                .padding(padding)
+            if isSelect {
+                RoundedRectangle(cornerRadius: cornerValue)
+                    .stroke(lineWidth: isLine ? 3:0)
+                    .foregroundColor(selectColor)
+            }
         }
     }
 }

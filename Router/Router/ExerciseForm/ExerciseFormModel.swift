@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct ExerciseFormStruct: Codable {
 	///	- Korean : 이미지는 아이콘과 사진이 사용된다. 특정 키워드로 구분한다. 이미지 파라미터 값이 변화되기 때문이다.
 	///	- English :
-	var imageName: String?
+	var imageName: String
+    var imageColorName: String
 	///	- Korean : 운동 이름은 중복을 허용하지 않는다.
 	///	- English :
 	var name: String
@@ -26,4 +28,16 @@ struct ExerciseFormStruct: Codable {
 	///	- Korean : 운동 기구는 정해지지 않으면 어떠한 기구로 운동을 진행했는지 정확히 알 수 없기에 nil을 허용하지 않는다.
 	///	- English :
 	var equipments: [Equipment]
+    
+    init(imageName: String? = nil, imageColorName: String? = nil, name: String, exercise: String? = nil, parts: [BodyPart], detailParts: [DetailPartFormStruct]? = nil, equipments: [Equipment]) {
+        //  -   아무 설정 안했으면 덤벨 사진
+        self.imageName = imageName ?? "dumbbell.fill"
+        //  -   아무 설정 안했으면 회색
+        self.imageColorName = imageColorName ?? CustomColor.gray.colorHex
+        self.name = name
+        self.exercise = exercise
+        self.parts = parts
+        self.detailParts = detailParts
+        self.equipments = equipments
+    }
 }

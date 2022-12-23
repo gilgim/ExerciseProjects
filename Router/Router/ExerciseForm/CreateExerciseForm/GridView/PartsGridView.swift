@@ -49,19 +49,11 @@ struct PartsGridView: View {
                         }
                         self.currentPart = part
                     }
-                //  FIXME: Binding을 통해 폰트 및 클릭 후 구현하는 Modifier을 구현하기
                 }label: {
                     ZStack {
                         Text(part.rawValue)
-                            .font(Font.system(size: 18,
-                                              weight: self.parts.contains {$0 == part} ? .semibold:.regular,
-                                              design: .rounded))
+                            .modifier(ButtonTitle(isSelect: .constant(self.parts.contains {$0 == part})))
                             .modifier(BackRoundedRecModifier(cornerValue: 8, isSelect:.constant(self.parts.contains {$0 == part})))
-                        if self.parts.contains {$0 == part} {
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(lineWidth: 5)
-                                .foregroundColor(.middleBluePurple)
-                        }
                     }
                 }
             }

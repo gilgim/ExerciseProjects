@@ -60,10 +60,57 @@ struct RoundedComponentView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(.lightGray)
+                .foregroundColor(CustomColor.lightGray.color)
             Text(title)
                 .font(Font.system(size: 18, weight: .semibold, design: .rounded))
                 .padding(10)
         }
+    }
+}
+struct SearchView<T: Hashable>: View {
+    @Binding var text: String
+    @State var array: [T]
+    @Binding var component: T?
+    var body: some View {
+        VStack {
+            HStack {
+                Image(systemName: "magnifyingglass")
+                TextField("검색", text: $text)
+            }
+            .modifier(BackRoundedRecModifier(cornerValue: 12, color: .gray.opacity(0.2), 5))
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(array, id: \.self) { component in
+                        Button {
+                            if self.component == component {
+                                self.component = nil
+                            }
+                            else {
+                                self.component = component
+                            }
+                        }label: {
+                            if let component = component as? BodyPart {
+                                Text(component.rawValue)
+                                    .foregroundColor(.black)
+                            }
+                        }
+                        .modifier(
+                            BackRoundedRecModifier(cornerValue: 12, isSelect: .constant(self.component == component),
+                                                   color: .gray.opacity(0.2),
+                                                   selectColor: .black,
+                                                   isLine: false,
+                                                   10))
+                    }
+                }
+            }
+        }
+        .frame(maxHeight: 80)
+    }
+}
+
+struct test: PreviewProvider {
+    static var previews: some View {
+        SearchView(text: .constant(""), array: BodyPart.allCases, component: .constant(.Back))
     }
 }

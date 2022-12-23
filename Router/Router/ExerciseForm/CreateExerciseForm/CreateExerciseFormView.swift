@@ -79,7 +79,7 @@ struct CreateExerciseFormView: View {
                         .padding(.bottom, 5)
                     EquipmentsGridView(equipments: $equipments)
                         .padding(.horizontal, 10)
-                    Spacer()
+                    Spacer().frame(height: UIScreen.main.bounds.height*0.1)
                 }
             }
             /// **바텀 그라데이션**

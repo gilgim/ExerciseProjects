@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct RoutineFormView: View {
+    @State var isCreateExercise: Bool = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+        }
+        .navigationTitle("루틴 목록")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    self.isCreateExercise.toggle()
+                }label: {
+                    Image(systemName: "plus")
+                }
+            }
+        }
+        .navigationDestination(isPresented: $isCreateExercise) {
+            CreateRoutineFormView()
+        }
     }
 }
 

@@ -11,8 +11,6 @@ import SwiftUI
 //  MARK: -Exention
 //  MARK: Color
 extension Color {
-    static var colors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple
-                                  , .buttonBlue, .lightSeaGreen, .nickel, .marigold, .princetonOrange, .middleBluePurple]
     ///    - Korean : HexCode를 받기 위한 init
     ///    - English :
     init(hex: String) {
@@ -39,12 +37,4 @@ extension Color {
                 opacity: Double(a) / 255
             )
         }
-    // * 색상 모음 *
-    static var lightGray: Color = .init(hex: "F7F7F7")
-    static var buttonBlue: Color = .init(hex: "2da2e1")
-    static var lightSeaGreen: Color = .init(hex: "18acb6")
-    static var nickel: Color = .init(hex: "79716A")
-    static var marigold: Color = .init(hex: "f1a81a")
-    static var princetonOrange: Color = .init(hex: "f47d2e")
-    static var middleBluePurple: Color = .init(hex: "886cc4")
 }

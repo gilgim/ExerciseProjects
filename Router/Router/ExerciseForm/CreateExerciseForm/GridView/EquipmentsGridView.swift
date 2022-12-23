@@ -26,15 +26,8 @@ struct EquipmentsGridView: View {
                 }label: {
                     ZStack {
                         Text(equipment.rawValue)
-                            .font(Font.system(size: 18,
-                                              weight: equipments.contains(where: {$0 == equipment}) ? .semibold:.regular,
-                                              design: .rounded))
-                            .modifier(BackRoundedRecModifier(cornerValue: 8))
-                        if self.equipments.contains {$0 == equipment} {
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(lineWidth: 5)
-                                .foregroundColor(.middleBluePurple)
-                        }
+                            .modifier(ButtonTitle(isSelect: .constant(self.equipments.contains {$0 == equipment})))
+                            .modifier(BackRoundedRecModifier(cornerValue: 8, isSelect:.constant(self.equipments.contains {$0 == equipment})))
                     }
                 }
             }
