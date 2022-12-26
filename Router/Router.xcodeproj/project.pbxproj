@@ -33,6 +33,9 @@
 		C34D545E295052A400ED129E /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D545D295052A400ED129E /* CommonView.swift */; };
 		C34D546029505BF300ED129E /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34D545F29505BF300ED129E /* Modifier.swift */; };
 		C373D1AD295593F800F562D7 /* CreateRoutineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373D1AC295593F800F562D7 /* CreateRoutineFormView.swift */; };
+		C3C13E9429593C6600AA0A62 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C13E9329593C6600AA0A62 /* Error.swift */; };
+		C3E4C07B29592FB5005D47DD /* CreateRoutineFormComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4C07A29592FB5005D47DD /* CreateRoutineFormComponent.swift */; };
+		C3E4C07D29592FDD005D47DD /* RoutineFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4C07C29592FDD005D47DD /* RoutineFormModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -82,6 +85,9 @@
 		C34D545D295052A400ED129E /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
 		C34D545F29505BF300ED129E /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		C373D1AC295593F800F562D7 /* CreateRoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormView.swift; sourceTree = "<group>"; };
+		C3C13E9329593C6600AA0A62 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		C3E4C07A29592FB5005D47DD /* CreateRoutineFormComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormComponent.swift; sourceTree = "<group>"; };
+		C3E4C07C29592FDD005D47DD /* RoutineFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFormModel.swift; sourceTree = "<group>"; };
 		E2FB862E78B6D7288FB5D3D5 /* Pods-Router.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Router.debug.xcconfig"; path = "Target Support Files/Pods-Router/Pods-Router.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +117,7 @@
 			children = (
 				C34D545D295052A400ED129E /* CommonView.swift */,
 				C32EB4E4294F38810055E2E9 /* CommonFunction.swift */,
+				C3C13E9329593C6600AA0A62 /* Error.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -211,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				C34D543D294FF98A00ED129E /* RoutineFormView.swift */,
+				C3E4C07C29592FDD005D47DD /* RoutineFormModel.swift */,
 				C373D1AB295593DC00F562D7 /* CreateRoutineForm */,
 			);
 			name = RoutineForm;
@@ -241,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				C373D1AC295593F800F562D7 /* CreateRoutineFormView.swift */,
+				C3E4C07A29592FB5005D47DD /* CreateRoutineFormComponent.swift */,
 			);
 			path = CreateRoutineForm;
 			sourceTree = "<group>";
@@ -385,14 +394,17 @@
 				C33E9EC2295189A400C13841 /* Extension.swift in Sources */,
 				C32EB4E5294F38810055E2E9 /* CommonFunction.swift in Sources */,
 				C34D5437294FECE400ED129E /* HomeView.swift in Sources */,
+				C3E4C07B29592FB5005D47DD /* CreateRoutineFormComponent.swift in Sources */,
 				C32EB4CE294F34970055E2E9 /* RouterApp.swift in Sources */,
 				C34D545E295052A400ED129E /* CommonView.swift in Sources */,
 				C373D1AD295593F800F562D7 /* CreateRoutineFormView.swift in Sources */,
 				C33E9ECC2952BFFF00C13841 /* EquipmentsGridView.swift in Sources */,
 				C33E9EC52951AD1A00C13841 /* PartsGridView.swift in Sources */,
 				C33E9EC72952ABC900C13841 /* DetailPartView.swift in Sources */,
+				C3E4C07D29592FDD005D47DD /* RoutineFormModel.swift in Sources */,
 				C31588E9295524A10086829D /* TestDouble.swift in Sources */,
 				C34D5435294FEC1F00ED129E /* CreateExerciseFormView.swift in Sources */,
+				C3C13E9429593C6600AA0A62 /* Error.swift in Sources */,
 				C34D5459295012A200ED129E /* SettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ExerciseFormStruct: Codable {
+struct ExerciseFormStruct: Codable, Equatable {
 	///	- Korean : 이미지는 아이콘과 사진이 사용된다. 특정 키워드로 구분한다. 이미지 파라미터 값이 변화되기 때문이다.
 	///	- English :
 	var imageName: String
@@ -39,5 +39,8 @@ struct ExerciseFormStruct: Codable {
         self.parts = parts
         self.detailParts = detailParts
         self.equipments = equipments
+    }
+    static func == (lhs: ExerciseFormStruct, rhs: ExerciseFormStruct) -> Bool {
+        return lhs.name == rhs.name
     }
 }

@@ -117,3 +117,14 @@ struct CloseKeyboardModifier: ViewModifier {
             }
     }
 }
+
+struct RoutineSetBottom: ViewModifier {
+    @State var bottomText: String
+    func body(content: Content) -> some View {
+        VStack {
+            content
+            Text(bottomText)
+                .font(.system(size: 15, weight: .heavy))
+        }
+    }
+}
