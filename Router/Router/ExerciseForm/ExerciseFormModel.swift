@@ -9,30 +9,56 @@ import Foundation
 import SwiftUI
 
 struct ExerciseFormStruct: Codable, Equatable {
-	///	- Korean : 이미지는 아이콘과 사진이 사용된다. 특정 키워드로 구분한다. 이미지 파라미터 값이 변화되기 때문이다.
-	///	- English :
+    /**
+     주로 SF Symbol name 으로 저장될 String 입니다.
+     
+     사용자가 저장한 사진의 이름이 될 수도 있습니다.
+     */
 	var imageName: String
+    
+    /// 저장된 Hex String 값 입니다.
     var imageColorName: String
-	///	- Korean : 운동 이름은 중복을 허용하지 않는다.
-	///	- English :
+    
+    /**
+     사용자가 지정한 운동 명칭으로 중복 값은 허용하지 않습니다.
+     
+     Exercise 데이터는 name이 키 값이 되어 유일값을 가집니다. 즉 nil을 허용하지 않습니다.
+     */
 	var name: String
-	///	- Korean : 설명은 nil 값을 허용한다.
-	///	- English :
+    
+    /// 사용자가 운동 시 참고할 메모 입니다. nil 값을 허용합니다.
 	var exercise: String?
-	///	- Korean : 운동 부위는 nil 경우 부위를 인지 할 수 없기 때문에 nil은 허용하지 않는다.
-	///	- English :
+    
+	/**
+     사용자가 운동 생성 시 할당하는 운동하는 부위 입니다.
+     
+     같은 운동이라도 부위를 다르게 설정할 수 있게 Array로 작성하였습니다.
+     대근육 마다 세부부위를 가집니다.
+     */
 	var parts: [BodyPart]
-	///	- Korean : 세부 부위는 정해지지 않아도 운동을 저장할 수 있다.
-	///	- English :
+    
+    /**
+     대근육을 제외한 세부 근육 부위는 설정 값이 유저마다 달라 유저가 저장하는 값을 사용합니다.
+     대근육 마다 세부부위를 가집니다.
+     */
 	var detailParts: [DetailPartFormStruct]?
-	///	- Korean : 운동 기구는 정해지지 않으면 어떠한 기구로 운동을 진행했는지 정확히 알 수 없기에 nil을 허용하지 않는다.
-	///	- English :
+    
+	/// 유저마다 사용하는 도구가 다르기 때문에 배열로 작성해 커스텀이 가능합니다.
 	var equipments: [Equipment]
     
-    init(imageName: String? = nil, imageColorName: String? = nil, name: String, exercise: String? = nil, parts: [BodyPart], detailParts: [DetailPartFormStruct]? = nil, equipments: [Equipment]) {
-        //  -   아무 설정 안했으면 덤벨 사진
+    /**
+     Json으로 인코딩하여 저장할려고 할 때 사용되는 Initailize 입니다.
+     -  parameters:
+        -   imageName: 아이콘의 문양으로 사용되는 이미지 이름입니다. 주로 SF symbol 이름이 저장됩니다. 초기값은 덤벨 이미지 입니다.
+        -   imageColorName: 아이콘의 색상의 HexCode 입니다. 초기값은 CustomColor의 회색입니다.
+        -   exercise: 운동을 설명하는 String 값으로 nil를 허용합니다.
+        -   parts: BodyPart 중 여러 값을 가지고 있는 배열입니다.
+        -   detailParts: 대근육에 세부부위 배열을 뜻하며 외래키 값은 parts의 요소입니다.
+        -   equipments: 사용자가 선택한 장비입니다. Equipment의 값 중 여러 값을 포합하고 있습니다.
+     */
+    init(imageName: String? = nil, imageColorName: String? = nil,
+         name: String, exercise: String? = nil, parts: [BodyPart], detailParts: [DetailPartFormStruct]? = nil, equipments: [Equipment]) {
         self.imageName = imageName ?? "dumbbell.fill"
-        //  -   아무 설정 안했으면 회색
         self.imageColorName = imageColorName ?? CustomColor.gray.colorHex
         self.name = name
         self.exercise = exercise
@@ -40,6 +66,7 @@ struct ExerciseFormStruct: Codable, Equatable {
         self.detailParts = detailParts
         self.equipments = equipments
     }
+    //  ExerciseFormStruct를 비교할 수 있게 만들어주는 함수이며 이름으로 서로를 구분합니다.
     static func == (lhs: ExerciseFormStruct, rhs: ExerciseFormStruct) -> Bool {
         return lhs.name == rhs.name
     }

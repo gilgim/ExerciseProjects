@@ -8,25 +8,29 @@
 import SwiftUI
 
 struct EquipmentsGridView: View {
-    //  MARK: - User Inputs
+    //  ===== User Input =====
+    /// 사용자가 선택한 운동 방법 배열 입니다.
     @Binding var equipments: [Equipment]
-    //  MARK: - About Views
+    
+    //  ==== About View =====
+    /// Equipment의 모든 요소를 담은 배열입니다.
     var equipmentArray: [Equipment] = Equipment.allCases
+    
     var body: some View {
         HStack {
             ForEach(equipmentArray, id: \.self) { equipment in
-                //  -   버튼 클릭 시 폰트 변경 및 테두리 변경이 진행된다.
                 Button {
+                    //  현재 요소를 포함하고 있으면 제외시키기 위한 if 입니다.
                     if equipments.contains(where: {$0 == equipment}) {
                         equipments = equipments.filter({$0 != equipment})
                     }
+                    //  현재 요소를 포함하지 않으면 추가합니다.
                     else {
                         equipments.append(equipment)
                     }
                 }label: {
                     ZStack {
                         Text(equipment.rawValue)
-                            .modifier(ButtonTitle(isSelect: .constant(self.equipments.contains {$0 == equipment})))
                             .modifier(BackRoundedRecModifier(cornerValue: 8, isSelect:.constant(self.equipments.contains {$0 == equipment})))
                     }
                 }

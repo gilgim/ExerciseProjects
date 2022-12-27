@@ -11,8 +11,11 @@ import SwiftUI
 //  MARK: -Exention
 //  MARK: Color
 extension Color {
-    ///    - Korean : HexCode를 받기 위한 init
-    ///    - English :
+    /**
+     Hex code를 입력하면 RGB 컬러로 바꿔줍니다.
+     -  parameters:
+        -   hex: 헥사코드를 입력합니다.
+     */
     init(hex: String) {
             let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
             var int: UInt64 = 0
@@ -28,7 +31,6 @@ extension Color {
             default:
                 (a, r, g, b) = (1, 1, 1, 0)
             }
-
             self.init(
                 .sRGB,
                 red: Double(r) / 255,

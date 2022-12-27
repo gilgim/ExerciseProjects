@@ -8,23 +8,19 @@
 import SwiftUI
 
 struct IconPickerView: View {
-    //  MARK: - User Input
-    /// -   Korean :   유저가 선택하는 SF symbol 이름, Realm에 String으로 저장된다.
-    /// -   English :
+    //  ===== User Input =====
     @Binding var systemName: String?
-    //  MARK: - About View
-    /// -   개발자가 등록하는 SFsymbol 이름과 이미지 구조의 배열
+    //  ===== About View =====
     var iconArray: [SFIconImage] = SFIconImage.iconArray
-    /// -   Grid 뷰에서 행, 또는 열 개수의 대한 값이 배열의 개수로 정해진다.
+    /// 행의 값으로 5개의 행을 구현하기 위해서 배열 요소의 개수는 5개 입니다.
     var iconRows: [GridItem] = .init(repeating: GridItem(.adaptive(minimum: UIScreen.main.bounds.height*0.3/6),spacing: 0), count: 5)
     
     var body: some View {
-        //  -   아이콘의 추가 사용을 위한 ScrollView
         ScrollView(.horizontal, showsIndicators: false) {
-            //  -   HGrid로 표현하여 아이콘 추가의 진행 방향을 세로로 정한다.
             LazyHGrid(rows: iconRows, spacing: 10) {
                 ForEach(iconArray, id: \.id) { icon in
                     Button {
+                        //  아이콘 문양을 정할 시 재 클릭하면 nil를 대입하여 상위 뷰에서 nil에 대한 기댓값을 표현합니다.
                         self.systemName = self.systemName == icon.systemName ? nil : icon.systemName
                     }label: {
                         icon.image.foregroundColor(.black)
@@ -34,7 +30,6 @@ struct IconPickerView: View {
             .padding(.horizontal, 10)
         }
         .modifier(BackRoundedRecModifier(cornerValue: 8))
-        //  -   아이콘 픽커의 크기
         .frame(height: UIScreen.main.bounds.height*0.3)
         .padding(.horizontal, 10)
     }
@@ -46,20 +41,21 @@ struct IconPickerView_Previews: PreviewProvider {
     }
 }
 //  MARK: - Structs
-/// -   Korean :    String으로 SFsymbol을 이용하기 위한 이미지와 이름을 가지고 있는 구조체.
-/// -   English :
+/// String으로 Image 와 SF Symbol 이름을 동시에 가지고 있게 하기위한 구조체 입니다.
 class SFIconImage {
-    /// -   ForEach 의 id 로 사용하기 위한 UUID.
+    /// ForEach 의 id 로 사용하기 위한 UUID 값 입니다.
     var id = UUID()
-    /// -   Korean :    뷰와 데이터 모두 사용하기 위한 배열 값
-    /// -   English :
+    /// Image 타입과 String 타입을 한번에 가지는 구조체를 배열로 사용하여 배열이 사용되는 뷰에서 두 값을 같이 쓰게합니다.
     static var iconArray: [SFIconImage] = [.walk, .run, .roll, .coreTraining, .cooldown
                                            , .wrestling, .strengthtraining, .step, .stairs, .stepper
                                            , .rolling, .pilates, .cycle, .flexibility, .functional
                                            , .swim, .climbing]
     var image: Image
     var systemName: String
-    //  -   초기화 시 String 값만으로 image까지 할당한다.
+    /**
+     -  parameters:
+        -   systemName: SF symbol 로써 Image 와 String 둘 다 핢당합니다.
+     */
     init(systemName: String) {
         self.systemName = systemName
         self.image = .init(systemName: systemName)

@@ -65,7 +65,7 @@ struct CreateExerciseFormView: View {
                     /// **운동 부위 선택 버튼**
                     TitleView(title: "부위 선택")
                         .padding(.bottom, 5)
-                    PartsGridView(currentPart: $currentClickPart, parts: $parts)
+                    PartsGridView(stackPart: $currentClickPart, parts: $parts)
                         .padding(.horizontal, 10)
                     
                     /// **세부 부위 선택 버튼**

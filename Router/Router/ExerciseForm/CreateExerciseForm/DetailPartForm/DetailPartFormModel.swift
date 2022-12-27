@@ -7,13 +7,15 @@
 
 import Foundation
 
-///	- Korean : 운동 부위가 포함하는 세부부위로 사용자 마다 칭하는 명칭과 느낌이 다르기 때문에 커스터마이징 가능하게 한다.
-///	- English :
+/**
+ 대 근육에 속해있는 세부 부위에 대한 구조체입니다.
+ 
+ 이름은 고유값으로 사용되고, 대근육 변수 가지고 있어 대근육 조회 시 해당 변수가 조회 근육과 같다면 호출됩니다.
+ */
 struct DetailPartFormStruct: Codable {
-	///	- Korean : 세부부위 이름은 중복 값을 허용하지 않는다.
-	///	- English :
+    /// 대근육에 포함된 세부 부위의 이름이며, 유일 값이기 때문에 고유합니다.
 	var name: String
-	///	- Korean : 세부부위가 포함된 큰 부위를 칭한다.
-	///	- English :
+    
+	/// 세부부위가 할당된 대근육 입니다.
 	var affiliatedPart: BodyPart
 }
