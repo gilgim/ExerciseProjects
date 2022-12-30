@@ -10,7 +10,7 @@ import SwiftUI
 /// 앱 전반에 걸쳐 사용된 아이콘을 만드는 뷰입니다.
 struct IconSelectView: View {
     //  ===== User Input =====
-    @Binding var selectColor: Color?
+    @Binding var selectColor: CustomColor?
     @Binding var sfIconName: String?
     
     //  ===== About View =====
@@ -23,7 +23,7 @@ struct IconSelectView: View {
         - selectColor: 유저가 선택하는 바인딩 컬러 값 입니다.
         - sfIconName: 유저가 선택하는 SF Symbol의 이름 입니다.
      */
-    init(selectColor: Binding<Color?> = .constant(nil), sfIconName: Binding<String?> = .constant(nil)) {
+    init(selectColor: Binding<CustomColor?> = .constant(nil), sfIconName: Binding<String?> = .constant(nil)) {
         self._selectColor = selectColor
         self._sfIconName = sfIconName
     }
@@ -31,7 +31,7 @@ struct IconSelectView: View {
         VStack(spacing: 0) {
             //  아이콘을 표현하는 뷰 입니다.
             Circle()
-                .modifier(CustomCircleModifier(selectColor: $selectColor, sfIconName: $sfIconName))
+                .modifier(CustomCircleModifier(selectColor: .constant(selectColor?.color), sfIconName: $sfIconName))
                 .frame(width: 150)
                 .padding(.vertical, 10)
             //  아이콘의 색상을 선택하는 뷰 입니다.

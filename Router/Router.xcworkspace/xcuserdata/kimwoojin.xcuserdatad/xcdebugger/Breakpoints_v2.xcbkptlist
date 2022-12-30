@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "16EAAEBB-5B75-4E84-B948-993E6D358BC9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Router/ExerciseForm/CreateExerciseForm/GridView/EquipmentsGridView.swift"
@@ -20,36 +20,84 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "16EAAEBB-5B75-4E84-B948-993E6D358BC9 - 2dc84ae8a69bd964"
-                  shouldBeEnabled = "Yes"
+                  uuid = "16EAAEBB-5B75-4E84-B948-993E6D358BC9 - 84188d50737f5530"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (Router.Equipment) -&gt; SwiftUI.Button&lt;SwiftUI.ZStack&lt;SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;SwiftUI.Text, Router.ButtonTitle&gt;, Router.BackRoundedRecModifier&gt;&gt;&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Router.Equipment&gt;, Router.Equipment, SwiftUI.Button&lt;SwiftUI.ZStack&lt;SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;SwiftUI.Text, Router.ButtonTitle&gt;, Router.BackRoundedRecModifier&gt;&gt;&gt;&gt; in Router.EquipmentsGridView.body.getter : some"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Router.Equipment) -&gt; SwiftUI.Button&lt;SwiftUI.ZStack&lt;SwiftUI.ModifiedContent&lt;SwiftUI.Text, Router.BackRoundedRecModifier&gt;&gt;&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Router.Equipment&gt;, Router.Equipment, SwiftUI.Button&lt;SwiftUI.ZStack&lt;SwiftUI.ModifiedContent&lt;SwiftUI.Text, Router.BackRoundedRecModifier&gt;&gt;&gt;&gt; in Router.EquipmentsGridView.body.getter : some"
                   moduleName = "Router"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kimwoojin/Desktop/3.%20%E1%84%80%E1%85%A2%E1%84%8B%E1%85%B5%E1%86%AB/1.%20App/1.%20Exercise/ExerciseProjects/Router/Router/ExerciseForm/CreateExerciseForm/GridView/EquipmentsGridView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
                   offsetFromSymbolStart = "92">
                </Location>
                <Location
-                  uuid = "16EAAEBB-5B75-4E84-B948-993E6D358BC9 - 27fe01b22ee32a06"
-                  shouldBeEnabled = "Yes"
+                  uuid = "16EAAEBB-5B75-4E84-B948-993E6D358BC9 - c334bbc9a3965528"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Router.Equipment) -&gt; Swift.Bool in closure #1 () -&gt; () in closure #1 (Router.Equipment) -&gt; SwiftUI.Button&lt;SwiftUI.ZStack&lt;SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;SwiftUI.Text, Router.ButtonTitle&gt;, Router.BackRoundedRecModifier&gt;&gt;&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Router.Equipment&gt;, Router.Equipment, SwiftUI.Button&lt;SwiftUI.ZStack&lt;SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;SwiftUI.Text, Router.ButtonTitle&gt;, Router.BackRoundedRecModifier&gt;&gt;&gt;&gt; in Router.EquipmentsGridView.body.getter : some"
+                  symbolName = "closure #1 (Router.Equipment) -&gt; Swift.Bool in closure #1 () -&gt; () in closure #1 (Router.Equipment) -&gt; SwiftUI.Button&lt;SwiftUI.ZStack&lt;SwiftUI.ModifiedContent&lt;SwiftUI.Text, Router.BackRoundedRecModifier&gt;&gt;&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Router.Equipment&gt;, Router.Equipment, SwiftUI.Button&lt;SwiftUI.ZStack&lt;SwiftUI.ModifiedContent&lt;SwiftUI.Text, Router.BackRoundedRecModifier&gt;&gt;&gt;&gt; in Router.EquipmentsGridView.body.getter : some"
                   moduleName = "Router"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kimwoojin/Desktop/3.%20%E1%84%80%E1%85%A2%E1%84%8B%E1%85%B5%E1%86%AB/1.%20App/1.%20Exercise/ExerciseProjects/Router/Router/ExerciseForm/CreateExerciseForm/GridView/EquipmentsGridView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
                   offsetFromSymbolStart = "31">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "67F29441-79D6-4347-8590-F1D9F9981A21"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Router/Util/Common/CommonView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC95A804-2ED5-4FE9-89D3-95DC85CB8ED1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Router/ExerciseForm/ExerciseFormModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "readObjects(array:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E210244A-94B2-4188-9944-BDE996800C30"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Router/ExerciseForm/ExerciseFormModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "realm"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

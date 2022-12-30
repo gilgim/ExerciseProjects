@@ -10,7 +10,7 @@ import SwiftUI
 /// 아이콘을 만드는 뷰에서 사용하는 컬러 선택 뷰 입니다.
 struct ColorPickerView: View {
     //  ===== User input =====
-    @Binding var selectColor: Color?
+    @Binding var selectColor: CustomColor?
     
     //  ===== About View =====
     /// 개발자가 추가한 색상 배열 입니다.
@@ -24,7 +24,7 @@ struct ColorPickerView: View {
                 ForEach(colorArray, id: \.id) { color in
                     Button {
                         //  컬러를 정할 시 재 클릭하면 nil를 대입하여 상위 뷰에서 nil에 대한 기댓값을 표현합니다.
-                        self.selectColor = self.selectColor == color.color ? nil : color.color
+                        self.selectColor = self.selectColor == color ? nil : color
                     }label: {
                         Circle()
                             .modifier(CustomCircleModifier(color:color.color, whiteLinePadding: 2.5, lineWidth: 3))
@@ -41,7 +41,7 @@ struct ColorPickerView: View {
 
 struct ColorPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        ColorPickerView(selectColor: .constant(.clear))
+        ColorPickerView(selectColor: .constant(.buttonBlue))
     }
 }
 //  MARK: - Structs
@@ -81,4 +81,9 @@ class CustomColor {
     static var marigold: CustomColor = .init(hex: "f1a81a")
     static var princetonOrange: CustomColor = .init(hex: "f47d2e")
     static var middleBluePurple: CustomColor = .init(hex: "886cc4")
+}
+extension CustomColor: Equatable {
+    static func == (lhs: CustomColor, rhs: CustomColor) -> Bool {
+        return lhs.id == rhs.id
+    }
 }

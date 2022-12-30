@@ -22,6 +22,7 @@ struct ExerciseFormView: View {
     /// 현재 ExerciseFormView가 Pop되었을 시 상태를 나타내는 Bool 값 입니다.
     @Binding var isPop: Bool
     
+    @StateObject var exerciseVm = ExerciseFormViewModel()
     /**
      다른 뷰에 의해서 팝업 되었을 시에만 할당되는 Initailize   입니다.
      
@@ -42,7 +43,7 @@ struct ExerciseFormView: View {
                     .font(.system(size: 15))
                     .padding(.horizontal, 10)
                 List {
-                    ForEach(TestDouble.exercise(), id: \.name) { exercise in
+                    ForEach(self.exerciseVm.exerciseArray, id: \.name) { exercise in
                         //  기존에 이렇게 작성하기 싫었지만 클로져 내에서 if 문이 플로우의 흐름을 바꾸지 못한다는 것 같은데 수정할 수 있으면 하는게 좋을 것 같습니다.
                         //  검색바가 비어 있거나 검색 시 사용자가 입력한 값이 나와 있으면 무조건 호출되는 if 입니다.
                         if self.searchText == "" || (exercise.name).contains(searchText) {
@@ -126,6 +127,10 @@ struct ExerciseFormView: View {
                     .disabled(selectedExercises.count == 0)
                 }
             }
+        }
+        //  MARK: View Appear
+        .onAppear() {
+            self.exerciseVm.viewAppearAction()
         }
         //  MARK: Stack Navigation
         //  navigation stack에 push 되었을 때 할당되는 navigation 특성입니다.

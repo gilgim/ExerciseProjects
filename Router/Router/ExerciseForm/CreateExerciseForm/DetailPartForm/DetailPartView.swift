@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetailPartView: View {
+    /// 상위뷰에서 클릭한 운동 부위입니다.
     @Binding var affiliatedPart: BodyPart?
     @State var detailParts: [DetailPartFormStruct] = []
     var body: some View {
