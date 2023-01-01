@@ -78,11 +78,11 @@ struct ExerciseFormModel: Model {
         return realm.object(ofType: ExerciseFormRealm.self, forPrimaryKey: key)?.realmToStruct()
     }
     
-    func updateObject() throws {
+    func updateObject(value: ExerciseFormStruct) throws {
         
     }
     
-    func deleteObject() {
+    func deleteObject() throws {
         
     }
     

@@ -13,7 +13,8 @@ struct PartsGridView: View {
     @Binding var stackPart: BodyPart?
     /// 유저가 선택한 근육 부위를 뜻 합니다.
     @Binding var parts: [BodyPart]
-    
+	///	부위버튼 클릭 시 해당 세부부위에 초기값을 할당합니다.
+	@Binding var detailPart: DetailPartFormStruct?
     //  ===== About View =====
     /// BodyPart의 모든 요소를 포함한 배열입니다.
     var bodyArray: [BodyPart] = BodyPart.allCases
@@ -49,6 +50,9 @@ struct PartsGridView: View {
                         //  조건과 상관 없이 현재 스택은 교체됩니다.
                         //  (제외시킬 때는 위에서 return 되어지기 때문에 밑으로 흐르지 않습니다.)
                         self.stackPart = part
+						if !(self.detailPart?.affiliatedPart == part) {
+							self.detailPart = .init(affiliatedPart: part, name: [])
+						}
                     }
                 }label: {
                     ZStack {
@@ -63,6 +67,6 @@ struct PartsGridView: View {
 
 struct PartsGridView_Previews: PreviewProvider {
     static var previews: some View {
-        PartsGridView(stackPart: .constant(.Chest), parts: .constant([]))
+		PartsGridView(stackPart: .constant(.Chest), parts: .constant([]), detailPart: .constant(.init(affiliatedPart: .Chest, name: [])))
     }
 }

@@ -13,7 +13,7 @@ struct CreateExerciseFormView: View {
     @State var name: String = ""
     @State var explain: String = ""
     @State var parts: [BodyPart] = []
-    @State var detailParts: [DetailPartFormStruct] = []
+	@State var detailParts: DetailPartFormStruct?
     @State var equipments: [Equipment] = []
     
     //  ===== About View =====
@@ -58,13 +58,13 @@ struct CreateExerciseFormView: View {
                     //  운동 생성 시 해당 운동에 맞는 부위를 사용자가 직접 제작할 수 있습니다.
                     TitleView(title: "부위 선택")
                         .padding(.bottom, 5)
-                    PartsGridView(stackPart: $clickPart, parts: $parts)
+                    PartsGridView(stackPart: $clickPart, parts: $parts, detailPart: $detailParts)
                         .padding(.horizontal, 10)
                     
                     //  사용자가 부위 선택 시 세부부위를 저장 및 생성할 수 있습니다.
                     if let clickPart, !parts.isEmpty {
                         TitleView(title: "\(clickPart.rawValue) 세부 선택")
-                        DetailPartView(affiliatedPart: $clickPart)
+                        DetailPartFormView(affiliatedPart: $clickPart, superDetailPart: $detailParts)
                     }
                     
                     //  운동 생성 시 해당 운동에 맞는 기구 및 방법을 선택할 수 있습니다.

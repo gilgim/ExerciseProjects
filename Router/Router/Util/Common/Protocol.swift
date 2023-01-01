@@ -26,10 +26,10 @@ protocol Model {
     func readObject(key: String) throws -> structObject?
     
     /// 객체 값을 업데이트하여 Realm에 저장하는 함수 입니다.
-    func updateObject() throws
+    func updateObject(value: structObject) throws
     
     /// 객체를 Realm에서 삭제하는 함수입니다.
-    func deleteObject()
+    func deleteObject()	throws
 }
 protocol StructObject {
     associatedtype realmObject: RealmObject
