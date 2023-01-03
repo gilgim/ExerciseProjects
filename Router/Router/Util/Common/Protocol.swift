@@ -29,7 +29,7 @@ protocol Model {
     func updateObject(value: structObject) throws
     
     /// 객체를 Realm에서 삭제하는 함수입니다.
-    func deleteObject()	throws
+    func deleteObject(value: structObject)    throws
 }
 protocol StructObject {
     associatedtype realmObject: RealmObject

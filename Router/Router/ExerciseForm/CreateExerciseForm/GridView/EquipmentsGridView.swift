@@ -19,21 +19,18 @@ struct EquipmentsGridView: View {
     var body: some View {
         HStack {
             ForEach(equipmentArray, id: \.self) { equipment in
-                Button {
-                    //  현재 요소를 포함하고 있으면 제외시키기 위한 if 입니다.
-                    if equipments.contains(where: {$0 == equipment}) {
-                        equipments = equipments.filter({$0 != equipment})
+                Text(equipment.rawValue)
+                    .modifier(BackRoundedRecModifier(cornerValue: 8, isSelect:.constant(self.equipments.contains {$0 == equipment})))
+                    .onTapGesture {
+                        //  현재 요소를 포함하고 있으면 제외시키기 위한 if 입니다.
+                        if equipments.contains(where: {$0 == equipment}) {
+                            equipments = equipments.filter({$0 != equipment})
+                        }
+                        //  현재 요소를 포함하지 않으면 추가합니다.
+                        else {
+                            equipments.append(equipment)
+                        }
                     }
-                    //  현재 요소를 포함하지 않으면 추가합니다.
-                    else {
-                        equipments.append(equipment)
-                    }
-                }label: {
-                    ZStack {
-                        Text(equipment.rawValue)
-                            .modifier(BackRoundedRecModifier(cornerValue: 8, isSelect:.constant(self.equipments.contains {$0 == equipment})))
-                    }
-                }
             }
         }
         .frame(height: 40)

@@ -13,7 +13,7 @@ struct CreateExerciseFormView: View {
     @State var name: String = ""
     @State var explain: String = ""
     @State var parts: [BodyPart] = []
-	@State var detailParts: DetailPartFormStruct?
+    @State var detailParts: [DetailPartFormStruct]?
     @State var equipments: [Equipment] = []
     
     //  ===== About View =====
@@ -58,18 +58,18 @@ struct CreateExerciseFormView: View {
                     //  운동 생성 시 해당 운동에 맞는 부위를 사용자가 직접 제작할 수 있습니다.
                     TitleView(title: "부위 선택")
                         .padding(.bottom, 5)
-                    PartsGridView(stackPart: $clickPart, parts: $parts, detailPart: $detailParts)
+                    PartsGridView(stackPart: $clickPart, parts: $parts)
                         .padding(.horizontal, 10)
                     
                     //  사용자가 부위 선택 시 세부부위를 저장 및 생성할 수 있습니다.
                     if let clickPart, !parts.isEmpty {
                         TitleView(title: "\(clickPart.rawValue) 세부 선택")
-                        DetailPartFormView(affiliatedPart: $clickPart, superDetailPart: $detailParts)
+                        DetailPartFormView(affiliatedPart: .constant(clickPart), superDetailParts: $detailParts)
                     }
                     
                     //  운동 생성 시 해당 운동에 맞는 기구 및 방법을 선택할 수 있습니다.
                     TitleView(title: "운동 방법")
-                        .padding(.bottom, 5)
+                        .padding(.vertical, 5)
                     EquipmentsGridView(equipments: $equipments)
                         .padding(.horizontal, 10)
                     Spacer().frame(height: UIScreen.main.bounds.height*0.1)
@@ -92,7 +92,7 @@ struct CreateExerciseFormView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("생성") {
-                    let object = ExerciseFormStruct(imageName: sfIconName, imageColorName: selectColor?.colorHex, name: self.name, explain: self.explain, parts: self.parts, detailParts: [], equipments: self.equipments)
+                    let object = ExerciseFormStruct(imageName: sfIconName, imageColorName: selectColor?.colorHex, name: self.name, explain: self.explain, parts: self.parts, detailParts: self.detailParts, equipments: self.equipments)
                     createVM.clickCreateButton(object: object)
                     if !createVM.isAlert {
                         mode.callAsFunction()

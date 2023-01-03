@@ -39,7 +39,7 @@ struct ExerciseFormView: View {
             VStack {
                 SearchView(text: $searchText, array: BodyPart.allCases, component: $userSelectPart)
                     .fontWeight(.semibold)
-                    .fontDesign(.rounded)
+//                    .fontDesign(.rounded)
                     .font(.system(size: 15))
                     .padding(.horizontal, 10)
                 List {

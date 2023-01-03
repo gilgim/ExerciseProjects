@@ -28,7 +28,6 @@ class CommonFunction {
         let data = Data(jsonString.utf8)
         let jsonObject = try? JSONDecoder().decode(T.self, from: data)
         guard let jsonObject else {print("Not decode string to \(T.self)");return nil}
-        print("Complete decode \(T.self) json")
         
         return jsonObject
     }

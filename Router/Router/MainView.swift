@@ -2,9 +2,10 @@
 //  MainView.swift
 //  Router
 //
-//  Created by KimWooJin on 2022/12/19.
+//  Created by KimWooJin on 2023/01/03.
 //
 
+import Foundation
 import SwiftUI
 import RealmSwift
 

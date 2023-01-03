@@ -82,7 +82,7 @@ struct ExerciseFormModel: Model {
         
     }
     
-    func deleteObject() throws {
+    func deleteObject(value: ExerciseFormStruct) throws {
         
     }
     
