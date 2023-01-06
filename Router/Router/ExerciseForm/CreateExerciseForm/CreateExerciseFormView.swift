@@ -75,13 +75,7 @@ struct CreateExerciseFormView: View {
                     Spacer().frame(height: UIScreen.main.bounds.height*0.1)
                 }
             }
-            //  스크롤 뷰 하단에 그라데이션을 구현하기 위한 뷰 입니다.
-            VStack {
-                Spacer()
-                Rectangle()
-                    .fill(LinearGradient(colors: [.white.opacity(0.5), .black.opacity(0.15)], startPoint: .top, endPoint: .bottom))
-                    .frame(height: 10)
-            }
+            Spacer()
         }
         .modifier(CloseKeyboardModifier(isShowKeyboard: $isShowKeyboard))
         .navigationTitle("운동 생성")

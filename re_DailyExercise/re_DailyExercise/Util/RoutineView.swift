@@ -227,7 +227,9 @@ struct RoutineCreatView: View {
                             }
                         }
                         .onDelete(perform: vm.removeList)
-                        .onMove(perform: vm.moveList)
+                        .onMove { _, _ in
+                            
+                        }
                         Button {
                             isSheet.toggle()
                         }label: {

@@ -21,7 +21,8 @@ struct ExerciseFormView: View {
     @State var isCreateExercise: Bool = false
     /// 현재 ExerciseFormView가 Pop되었을 시 상태를 나타내는 Bool 값 입니다.
     @Binding var isPop: Bool
-    
+    /// 선택완료 버튼을 눌러 사라짐을 인식하는 것과 그냥 사라지는 것이 같은 인식이기 때문에 버튼을 눌렀을 때만 반응하게 하는 값 입니다.
+    @Binding var isDismiss: Bool
     @StateObject var exerciseVm = ExerciseFormViewModel()
     /**
      다른 뷰에 의해서 팝업 되었을 시에만 할당되는 Initailize   입니다.
@@ -30,16 +31,16 @@ struct ExerciseFormView: View {
         -   selectedExercises: 사용자가 선택할 운동이 추가되는 바인딩 배열입니다. 호출하지 않은 곳에서는 빈 배열이 할당됩니다.
         -   isPop: 다른 뷰에서 호출 시 true 값이 기댓값이며 dismiss 시에는 false 값이 기댓값입니다.
      */
-    init(selectedExercises: Binding<[ExerciseFormStruct]> = .constant([]), isPop: Binding<Bool> = .constant(false)) {
+    init(selectedExercises: Binding<[ExerciseFormStruct]> = .constant([]), isPop: Binding<Bool> = .constant(false), isDismiss: Binding<Bool> = .constant(false)) {
         self._selectedExercises = selectedExercises
         self._isPop = isPop
+        self._isDismiss = isDismiss
     }
     var body: some View {
         NavigationView {
             VStack {
                 SearchView(text: $searchText, array: BodyPart.allCases, component: $userSelectPart)
                     .fontWeight(.semibold)
-//                    .fontDesign(.rounded)
                     .font(.system(size: 15))
                     .padding(.horizontal, 10)
                 List {
@@ -108,8 +109,6 @@ struct ExerciseFormView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        //  X 버튼을 클릭 시 선택했던 모든 값을 지우고 뷰를 dismiss 합니다.
-                        self.selectedExercises = []
                         self.isPop.toggle()
                     }label: {
                         Image(systemName: "xmark")
@@ -119,9 +118,10 @@ struct ExerciseFormView: View {
                     Button {
                         //  완료 버튼을 클릭 시 뷰를 dismiss 합니다. 상위 뷰에 클릭한 요소는 상위뷰에서 처리됩니다.
                         self.isPop.toggle()
+                        self.isDismiss = true
                     }label: {
                         //  개수가 없을 시 "개"의 대한 hidden을 구현합니다.
-                        Text(selectedExercises.count != 0 ? "\(selectedExercises.count)개":"" + "선택완료")
+                        Text((selectedExercises.count != 0 ? "\(selectedExercises.count)개 ":"") + "선택완료")
                     }
                     //  개수가 없을 시 버튼사용을 금지합니다.
                     .disabled(selectedExercises.count == 0)

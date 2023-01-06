@@ -100,7 +100,10 @@ struct DetailPartFormView: View {
                     self.detailPartVM.detailPartsArray = self.detailPartVM.renewSelectPart(part: self.affiliatedPart)
                 }
             }
-            Button("취소", role: .cancel) {}
+            Button("취소", role: .cancel) {
+                //  클릭한 값을 비워줍니다.
+                self.deleteDetailPart = nil
+            }
         }message: {
             if let deleteDetailPart {
                 Text("\(deleteDetailPart.name)을 삭제하시겠습니까?")

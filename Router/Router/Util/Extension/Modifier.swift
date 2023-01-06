@@ -150,3 +150,36 @@ struct RoutineSetBottom: ViewModifier {
         }
     }
 }
+
+//  MARK: - ListDragBlock
+/// 리스트를 드래그 하기 위한 오른쪽 여백을 생성합니다.
+struct ListDragBlock: ViewModifier {
+    var color: Color
+    var imageColor: Color
+    init(color: Color = .gray.opacity(0.5), imageColor: Color = .black) {
+        self.color = color
+        self.imageColor = imageColor
+    }
+    func body(content: Content) -> some View {
+        content
+            .overlay {
+                HStack {
+                    Spacer()
+                    RoundedRectangle(cornerRadius: 12)
+                        .trim(from: 0.25, to: 0.75)
+                        .rotation(.degrees(180))
+                        .foregroundColor(color)
+                        .frame(width: 100)
+                        .overlay {
+                            Image(systemName: "text.justify")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(imageColor)
+                                .frame(width: 25)
+                                .position(.init(x: 75, y: 60))
+                        }
+                    
+                }
+            }
+    }
+}

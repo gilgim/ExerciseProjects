@@ -35,10 +35,13 @@
 		C36ABB9B2963FA1300C1D6D9 /* CreateExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABB9A2963FA1300C1D6D9 /* CreateExerciseFormView.swift */; };
 		C36ABB9D2963FA3900C1D6D9 /* ExerciseFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABB9C2963FA3900C1D6D9 /* ExerciseFormViewModel.swift */; };
 		C36ABB9F2963FA5100C1D6D9 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABB9E2963FA5100C1D6D9 /* ExerciseFormView.swift */; };
-		C36ABBA22963FAB100C1D6D9 /* CreateRoutineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABBA12963FAB100C1D6D9 /* CreateRoutineFormView.swift */; };
-		C36ABBA42963FAD200C1D6D9 /* CreateRoutineFormComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABBA32963FAD200C1D6D9 /* CreateRoutineFormComponent.swift */; };
 		C36ABBA62963FAF000C1D6D9 /* RoutineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABBA52963FAF000C1D6D9 /* RoutineFormView.swift */; };
-		C36ABBA82963FB0E00C1D6D9 /* RoutineFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABBA72963FB0E00C1D6D9 /* RoutineFormModel.swift */; };
+		C36ABBAB29640E1500C1D6D9 /* RoutineFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABBAA29640E1500C1D6D9 /* RoutineFormModel.swift */; };
+		C36ABBAE29641AB300C1D6D9 /* CreateRoutineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABBAD29641AB300C1D6D9 /* CreateRoutineFormView.swift */; };
+		C36ABBB029641AC400C1D6D9 /* CreateRoutineFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABBAF29641AC400C1D6D9 /* CreateRoutineFormViewModel.swift */; };
+		C36ABBB329641C1A00C1D6D9 /* RoutinePartialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABBB229641C1A00C1D6D9 /* RoutinePartialView.swift */; };
+		C36ABBB529641C9F00C1D6D9 /* RoutinePartialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABBB429641C9F00C1D6D9 /* RoutinePartialViewModel.swift */; };
+		C36ABBB729641CBD00C1D6D9 /* RoutinePartialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36ABBB629641CBD00C1D6D9 /* RoutinePartialModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,10 +76,14 @@
 		C36ABB9A2963FA1300C1D6D9 /* CreateExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseFormView.swift; sourceTree = "<group>"; };
 		C36ABB9C2963FA3900C1D6D9 /* ExerciseFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormViewModel.swift; sourceTree = "<group>"; };
 		C36ABB9E2963FA5100C1D6D9 /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
-		C36ABBA12963FAB100C1D6D9 /* CreateRoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormView.swift; sourceTree = "<group>"; };
-		C36ABBA32963FAD200C1D6D9 /* CreateRoutineFormComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormComponent.swift; sourceTree = "<group>"; };
 		C36ABBA52963FAF000C1D6D9 /* RoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFormView.swift; sourceTree = "<group>"; };
-		C36ABBA72963FB0E00C1D6D9 /* RoutineFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFormModel.swift; sourceTree = "<group>"; };
+		C36ABBA92964019200C1D6D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C36ABBAA29640E1500C1D6D9 /* RoutineFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFormModel.swift; sourceTree = "<group>"; };
+		C36ABBAD29641AB300C1D6D9 /* CreateRoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateRoutineFormView.swift; path = ../../../../Router2/Router/RoutineForm/CreateRoutineFormView.swift; sourceTree = "<group>"; };
+		C36ABBAF29641AC400C1D6D9 /* CreateRoutineFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateRoutineFormViewModel.swift; path = ../../../../Router2/Router/RoutineForm/CreateRoutineFormViewModel.swift; sourceTree = "<group>"; };
+		C36ABBB229641C1A00C1D6D9 /* RoutinePartialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutinePartialView.swift; path = ../../../../../Router2/Router/RoutineForm/RoutinePartialView.swift; sourceTree = "<group>"; };
+		C36ABBB429641C9F00C1D6D9 /* RoutinePartialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutinePartialViewModel.swift; path = ../../../../../Router2/Router/RoutineForm/RoutinePartialViewModel.swift; sourceTree = "<group>"; };
+		C36ABBB629641CBD00C1D6D9 /* RoutinePartialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutinePartialModel.swift; path = ../../../../../Router2/Router/RoutineForm/RoutinePartialModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +119,7 @@
 		C36ABB5A2963F4C700C1D6D9 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				C36ABBA92964019200C1D6D9 /* Info.plist */,
 				C36ABB5B2963F4C700C1D6D9 /* RouterApp.swift */,
 				C36ABB5D2963F4C700C1D6D9 /* ContentView.swift */,
 				C36ABB692963F61F00C1D6D9 /* MainView.swift */,
@@ -148,8 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				C36ABBA52963FAF000C1D6D9 /* RoutineFormView.swift */,
-				C36ABBA72963FB0E00C1D6D9 /* RoutineFormModel.swift */,
-				C36ABBA02963FA6000C1D6D9 /* CreateRoutineFormView */,
+				C36ABBAA29640E1500C1D6D9 /* RoutineFormModel.swift */,
+				C36ABBAC29641A4200C1D6D9 /* CreateRoutineForm */,
 			);
 			path = RoutineForm;
 			sourceTree = "<group>";
@@ -188,10 +196,10 @@
 		C36ABB882963F8C900C1D6D9 /* ExerciseForm */ = {
 			isa = PBXGroup;
 			children = (
+				C36ABB9E2963FA5100C1D6D9 /* ExerciseFormView.swift */,
 				C36ABB9C2963FA3900C1D6D9 /* ExerciseFormViewModel.swift */,
 				C36ABB962963F9D600C1D6D9 /* ExerciseFormModel.swift */,
 				C36ABB892963F8EB00C1D6D9 /* CreateExerciseForm */,
-				C36ABB9E2963FA5100C1D6D9 /* ExerciseFormView.swift */,
 			);
 			path = ExerciseForm;
 			sourceTree = "<group>";
@@ -226,13 +234,24 @@
 			path = GridView;
 			sourceTree = "<group>";
 		};
-		C36ABBA02963FA6000C1D6D9 /* CreateRoutineFormView */ = {
+		C36ABBAC29641A4200C1D6D9 /* CreateRoutineForm */ = {
 			isa = PBXGroup;
 			children = (
-				C36ABBA12963FAB100C1D6D9 /* CreateRoutineFormView.swift */,
-				C36ABBA32963FAD200C1D6D9 /* CreateRoutineFormComponent.swift */,
+				C36ABBAD29641AB300C1D6D9 /* CreateRoutineFormView.swift */,
+				C36ABBAF29641AC400C1D6D9 /* CreateRoutineFormViewModel.swift */,
+				C36ABBB129641BFC00C1D6D9 /* RoutinePartial */,
 			);
-			path = CreateRoutineFormView;
+			path = CreateRoutineForm;
+			sourceTree = "<group>";
+		};
+		C36ABBB129641BFC00C1D6D9 /* RoutinePartial */ = {
+			isa = PBXGroup;
+			children = (
+				C36ABBB229641C1A00C1D6D9 /* RoutinePartialView.swift */,
+				C36ABBB429641C9F00C1D6D9 /* RoutinePartialViewModel.swift */,
+				C36ABBB629641CBD00C1D6D9 /* RoutinePartialModel.swift */,
+			);
+			path = RoutinePartial;
 			sourceTree = "<group>";
 		};
 		D75B765F575B11F6714D2D87 /* Pods */ = {
@@ -369,11 +388,11 @@
 				C36ABB9D2963FA3900C1D6D9 /* ExerciseFormViewModel.swift in Sources */,
 				C36ABB792963F77400C1D6D9 /* ColorPickerView.swift in Sources */,
 				C36ABB932963F96300C1D6D9 /* DetailPartFormViewModel.swift in Sources */,
-				C36ABBA22963FAB100C1D6D9 /* CreateRoutineFormView.swift in Sources */,
+				C36ABBB029641AC400C1D6D9 /* CreateRoutineFormViewModel.swift in Sources */,
 				C36ABB7F2963F85E00C1D6D9 /* CommonView.swift in Sources */,
 				C36ABB772963F76900C1D6D9 /* IconSelectView.swift in Sources */,
-				C36ABBA42963FAD200C1D6D9 /* CreateRoutineFormComponent.swift in Sources */,
 				C36ABB8F2963F94500C1D6D9 /* EquipmentsGridView.swift in Sources */,
+				C36ABBB329641C1A00C1D6D9 /* RoutinePartialView.swift in Sources */,
 				C36ABB832963F88800C1D6D9 /* Error.swift in Sources */,
 				C36ABB852963F89900C1D6D9 /* Enums.swift in Sources */,
 				C36ABB8D2963F92000C1D6D9 /* PartGridView.swift in Sources */,
@@ -388,13 +407,16 @@
 				C36ABB6A2963F61F00C1D6D9 /* MainView.swift in Sources */,
 				C36ABB5C2963F4C700C1D6D9 /* RouterApp.swift in Sources */,
 				C36ABB9B2963FA1300C1D6D9 /* CreateExerciseFormView.swift in Sources */,
+				C36ABBAB29640E1500C1D6D9 /* RoutineFormModel.swift in Sources */,
 				C36ABB992963F9FB00C1D6D9 /* CreateExerciseFormViewModel.swift in Sources */,
+				C36ABBB729641CBD00C1D6D9 /* RoutinePartialModel.swift in Sources */,
 				C36ABB752963F75E00C1D6D9 /* IconPickerView.swift in Sources */,
 				C36ABB812963F87C00C1D6D9 /* CommonFunction.swift in Sources */,
 				C36ABB972963F9D600C1D6D9 /* ExerciseFormModel.swift in Sources */,
 				C36ABB7B2963F7D500C1D6D9 /* Modifier.swift in Sources */,
 				C36ABB872963F8AF00C1D6D9 /* Protocol.swift in Sources */,
-				C36ABBA82963FB0E00C1D6D9 /* RoutineFormModel.swift in Sources */,
+				C36ABBB529641C9F00C1D6D9 /* RoutinePartialViewModel.swift in Sources */,
+				C36ABBAE29641AB300C1D6D9 /* CreateRoutineFormView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,7 +549,7 @@
 				DEVELOPMENT_TEAM = 3RPG64SDVF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = Router/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -557,7 +579,7 @@
 				DEVELOPMENT_TEAM = 3RPG64SDVF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = Router/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
