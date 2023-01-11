@@ -79,11 +79,11 @@
 		C36ABBA52963FAF000C1D6D9 /* RoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFormView.swift; sourceTree = "<group>"; };
 		C36ABBA92964019200C1D6D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C36ABBAA29640E1500C1D6D9 /* RoutineFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFormModel.swift; sourceTree = "<group>"; };
-		C36ABBAD29641AB300C1D6D9 /* CreateRoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateRoutineFormView.swift; path = ../../../../Router2/Router/RoutineForm/CreateRoutineFormView.swift; sourceTree = "<group>"; };
-		C36ABBAF29641AC400C1D6D9 /* CreateRoutineFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateRoutineFormViewModel.swift; path = ../../../../Router2/Router/RoutineForm/CreateRoutineFormViewModel.swift; sourceTree = "<group>"; };
-		C36ABBB229641C1A00C1D6D9 /* RoutinePartialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutinePartialView.swift; path = ../../../../../Router2/Router/RoutineForm/RoutinePartialView.swift; sourceTree = "<group>"; };
-		C36ABBB429641C9F00C1D6D9 /* RoutinePartialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutinePartialViewModel.swift; path = ../../../../../Router2/Router/RoutineForm/RoutinePartialViewModel.swift; sourceTree = "<group>"; };
-		C36ABBB629641CBD00C1D6D9 /* RoutinePartialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutinePartialModel.swift; path = ../../../../../Router2/Router/RoutineForm/RoutinePartialModel.swift; sourceTree = "<group>"; };
+		C36ABBAD29641AB300C1D6D9 /* CreateRoutineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormView.swift; sourceTree = "<group>"; };
+		C36ABBAF29641AC400C1D6D9 /* CreateRoutineFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoutineFormViewModel.swift; sourceTree = "<group>"; };
+		C36ABBB229641C1A00C1D6D9 /* RoutinePartialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinePartialView.swift; sourceTree = "<group>"; };
+		C36ABBB429641C9F00C1D6D9 /* RoutinePartialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinePartialViewModel.swift; sourceTree = "<group>"; };
+		C36ABBB629641CBD00C1D6D9 /* RoutinePartialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinePartialModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,19 +239,11 @@
 			children = (
 				C36ABBAD29641AB300C1D6D9 /* CreateRoutineFormView.swift */,
 				C36ABBAF29641AC400C1D6D9 /* CreateRoutineFormViewModel.swift */,
-				C36ABBB129641BFC00C1D6D9 /* RoutinePartial */,
-			);
-			path = CreateRoutineForm;
-			sourceTree = "<group>";
-		};
-		C36ABBB129641BFC00C1D6D9 /* RoutinePartial */ = {
-			isa = PBXGroup;
-			children = (
 				C36ABBB229641C1A00C1D6D9 /* RoutinePartialView.swift */,
 				C36ABBB429641C9F00C1D6D9 /* RoutinePartialViewModel.swift */,
 				C36ABBB629641CBD00C1D6D9 /* RoutinePartialModel.swift */,
 			);
-			path = RoutinePartial;
+			path = CreateRoutineForm;
 			sourceTree = "<group>";
 		};
 		D75B765F575B11F6714D2D87 /* Pods */ = {

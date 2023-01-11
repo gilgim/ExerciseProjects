@@ -171,12 +171,14 @@ struct ListDragBlock: ViewModifier {
                         .foregroundColor(color)
                         .frame(width: 100)
                         .overlay {
-                            Image(systemName: "text.justify")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(imageColor)
-                                .frame(width: 25)
-                                .position(.init(x: 75, y: 60))
+                            HStack {
+                                Spacer().frame(width: 50)
+                                Image(systemName: "text.justify")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(imageColor)
+                                    .frame(width: 25)
+                            }
                         }
                     
                 }

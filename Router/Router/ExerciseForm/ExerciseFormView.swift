@@ -128,9 +128,12 @@ struct ExerciseFormView: View {
                 }
             }
         }
-        //  MARK: View Appear
+        //  MARK: Life Cycle
         .onAppear() {
             self.exerciseVm.viewAppearAction()
+        }
+        .onDisappear() {
+            self.exerciseVm.appExerciseListUpdate()
         }
         //  MARK: Stack Navigation
         //  navigation stack에 push 되었을 때 할당되는 navigation 특성입니다.
