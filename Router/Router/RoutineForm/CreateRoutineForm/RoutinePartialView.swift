@@ -10,8 +10,10 @@ import SwiftUI
 struct RoutinePartialView: View {
     let id = UUID()
     @State var int: Int
-    @Binding var setArray: [RoutineComponentType]
+    @State var isKindAlert: Bool = false
     @State var viewSetArray: [RoutineComponentType] = []
+    @Binding var setArray: [RoutineComponentType]
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
@@ -36,14 +38,12 @@ struct RoutinePartialView: View {
                         Image(systemName: "arrowshape.forward.fill")
                     }
                 }
-                
                 Button {
-                    self.viewSetArray.append(RoutineComponentType.Rest(time: 60))
+                    self.isKindAlert.toggle()
                 }label: {
                     Circle()
                         .modifier(CustomCircleModifier(color: .cyan, iconName: "plus", 15, whiteLinePadding: 6, lineWidth: 3))
                 }
-                
                 Spacer().frame(width: 100)
             }
         }
@@ -51,7 +51,15 @@ struct RoutinePartialView: View {
         .modifier(ListDragBlock(color: .yellow, imageColor: .accentColor))
         .frame(height: 100)
         .onChange(of: self.viewSetArray) { _ in
+            //  상위 뷰와의 바인딩이 원활하지 않아 해당 뷰가 들고 있는 세트 배열이 변화될 때 대입해준다.
             self.setArray = self.viewSetArray
+        }
+        .nav
+        .confirmationDialog("", isPresented: $isKindAlert) {
+            Button("운동") {}
+            Button("휴식") {self.viewSetArray.append(RoutineComponentType.Rest(time: 60))}
+        } message: {
+            Text("이미지 타입을 선택해주세요.")
         }
     }
 }
